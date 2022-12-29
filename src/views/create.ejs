@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>CRUD</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+      <div class="container mt-4">     
+            <div class="card border-secondary">  
+                <div class="card-header">Nuevo Registro</div>
+                <div class="card-body">
+                    <form action="/save" method="POST">
+                        <div class="mb-3">
+                        <label for="name" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="name" name="name" tabindex="1">
+                        </div>   
+                        <div class="mb-3">
+                        <label for="user" class="form-label">Rol</label>
+                        <select id="rol" name="rol" class="form-select" aria-label="Default select example" tabindex="2">
+                            <option value="admin" selected>Admin</option>
+                            <option value="data entry">Data Entry</option>                    
+                        </select>
+                        </div>                                   
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>        
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -4,11 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/main.css">
-    <title><%= title %></title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>crud</title>
 </head>
 <body>
-   <h1>mi primera pagina web as</h1> 
    <%- include('partials/navigation.ejs') %>
+   <div class="container">    
+    <a href="/create" class="btn btn-outline-primary mt-4"><i class='bx bxs-plus-circle bx-md'></i></a>    
+  <table class="table table-bordered table-striped text-center mt-4">
+    <thead>
+      <tr class="bg-primary text-white">
+        <th scope="col">ID</th>
+        <th scope="col">USUARIO</th>
+        <th scope="col">ROL</th>            
+        <th scope="col">ACCIONES</th>            
+      </tr>
+    </thead>
+    <tbody>
+      <% results.forEach((user)=>{ %>
+        <tr>  
+            <td><%= user.id %></td>  
+            <td><%= user.user %></td>
+            <td><%= user.rol %></td>
+            <td>
+              <a href="/edit/<%= user.id %>" class="btn btn-outline-info"><i class='bx bxs-edit'></i></a>
+              <a href="/delete/<%= user.id %>" class="btn btn-outline-danger"><i class='bx bxs-trash-alt'></i></a>                   
+            </td>
+        </tr>                                   
+     <% }) %>
+    </tbody>
+  </table>
+  </div>
+   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
 </html>
