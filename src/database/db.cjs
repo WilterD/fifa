@@ -7,9 +7,9 @@ const conexion = mysql.createConnection({
     database: 'oceeucabgy'
 });
 
-conexion.connect(function(error){
+conexion.connect((error) =>{
     if(error){
-        throw error;
+        console.error('Error de conexion', error.stack);
         return
     }
     console.log('Conexion exitosa')
