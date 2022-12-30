@@ -16,34 +16,34 @@ router.get("/", (req, res) => {
 
 
 
-// router.get('/edit/:id', (req,res)=>{    
-//   const id = req.params.id;
-//   conexion.query('SELECT * FROM users WHERE id=?',[id] , (error, results) => {
-//       if (error) {
-//           throw error;
-//       }else{            
-//           res.render('edit.ejs', {user:results[0]});            
-//       }        
-//   });
-// });
+router.get('/edit/:id', (req,res)=>{    
+  const id = req.params.id;
+  conexion.query('SELECT * FROM users WHERE id=?',[id] , (error, results) => {
+      if (error) {
+          throw error;
+      }else{            
+          res.render('edit.ejs', {name:results[0]});            
+      }        
+  });
+});
 
-// router.get('/delete/:id', (req, res) => {
-//   const id = req.params.id;
-//   conexion.query('DELETE FROM users WHERE id = ?',[id], (error, results)=>{
-//       if(error){
-//           console.log(error);
-//       }else{           
-//           res.redirect('/');         
-//       }
-//   })
-// });
+router.get('/delete/:id', (req, res) => {
+  const id = req.params.id;
+  conexion.query('DELETE FROM users WHERE id = ?',[id], (error, results)=>{
+      if(error){
+          console.log(error);
+      }else{           
+          res.redirect('/');         
+      }
+  })
+});
 
-// router.post('/update', mycrud.update);
 
 router.get('/create', (req, res) => {
   res.render('create');
 });
 
 router.post('/save', mycrud.save);
+router.post('/update', mycrud.update);
 
 export default router;

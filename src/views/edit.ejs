@@ -9,23 +9,23 @@
 </head>
 <body>
     <%- include('partials/navigation.ejs') %>
-      <% if (user) { %>
+      <% if (name) { %>
       <div class="container mt-4">          
           <div class="card border-secondary">  
                 <div class="card-header">Editar Registro</div>
                 <div class="card-body">
                     <form action="/update" method="POST">
-                         <input id="id" name="id" value="<%= user.id %>" hidden>
+                         <input id="id" name="id" value="<%= name.id %>" hidden>
                         <div class="mb-3">
-                          <label for="user" class="form-label">Usuario</label>
-                          <input type="text" class="form-control" id="user" name="user" tabindex="1" value="<%= user.user  %>">                        
+                          <label for="name" class="form-label">Usuario</label>
+                          <input type="text" class="form-control" id="name" name="name" tabindex="1" value="<%= name.name  %>">                        
                         </div>   
                         <div class="mb-3">
-                          <h3><%= user.rol %></h3>
+                          <h3><%= name.rol %></h3>
                           <label for="rol" class="form-label">Rol</label>
                           <select id="rol" name="rol" class="form-select" tabindex="2">
-                            <option <%= user.rol=='admin' ? "selected" : '' %> value="admin">Admin</option>
-                            <option <%= user.rol=='data entry' ? "selected" : '' %> value="dataentry">Data entry</option>                            
+                            <option <%= name.rol=='admin' ? "selected" : '' %> value="admin">Admin</option>
+                            <option <%= name.rol=='data entry' ? "selected" : '' %> value="dataentry">Data entry</option>                            
                           </select>
                         </div>                                                              
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
