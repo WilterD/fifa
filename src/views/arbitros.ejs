@@ -24,14 +24,14 @@
       </tr>
     </thead>
     <tbody>
-      <% results.forEach((user)=>{ %>
+      <% resultados.forEach((user)=>{ %>
         <tr>  
             <td><%= user.id %></td>  
             <td><%= user.nombre %></td>
             <td><%= user.rol %></td>
             <td><%= user.pais %></td>
             <td>
-              <a href="/edit/<%= user.id %>" class="btn btn-outline-info"><i class='bx bxs-edit'></i></a>
+              <a href="/editarArbitro/<%= user.id %>" class="btn btn-outline-info"><i class='bx bxs-edit'></i></a>
               <a href="/delete/<%= user.id %>" class="btn btn-outline-danger"><i class='bx bxs-trash-alt'></i></a>                   
             </td>
         </tr>                                   

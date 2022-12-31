@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>CRUD</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+      <% if (name) { %>
+      <div class="container mt-4">          
+          <div class="card border-secondary">  
+                <div class="card-header">Editar Árbitro</div>
+                <div class="card-body">
+                    <form action="/updateArbitro" method="POST">
+                         <input id="id" name="id" value="<%= name.id %>" hidden>
+                        <div class="mb-3">
+                          <label for="nombre" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= name.nombre  %>">                        
+                        </div>   
+                        <div class="mb-3">
+                          <h3><%= name.rol %></h3>
+                          <label for="rol" class="form-label">Rol</label>
+                          <select id="rol" name="rol" class="form-select" tabindex="2">
+                            <option <%= name.rol=='Principal' ? "selected" : '' %> value="Principal">Principal</option>
+                            <option <%= name.rol=='Asistente Adicional' ? "selected" : '' %> value="Asistente Adicional">Asistente Adicional</option>      
+                            <option <%= name.rol=='Asistente Var' ? "selected" : '' %> value="Asistente Var">Asistente Var</option>
+                            <option <%= name.rol=='Asistente Lateral' ? "selected" : '' %> value="Asistente Lateral">Asistente Lateral</option>                      
+                          </select>
+                        </div>   
+                        
+                        <div class="mb-3">
+                            <h3><%= name.pais %></h3>
+                            <label for="pais" class="form-label">País</label>
+                            <select id="pais" name="pais" class="form-select" tabindex="2">
+                              <option <%= name.pais=='Venezuela' ? "selected" : '' %> value="Venezuela">Venezuela</option>
+                              <option <%= name.pais=='México' ? "selected" : '' %> value="México">México</option>      
+                                                    
+                            </select>
+                          </div> 
+
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+                    </form>      
+                </div>
+            </div>     
+      </div>
+      <% } %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>

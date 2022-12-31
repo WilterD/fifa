@@ -40,4 +40,19 @@ exports.update = (req, res)=>{
         }
 });
 };
+
+exports.updateArbitro = (req, res)=>{
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+    const rol = req.body.rol;
+    const pais = req.body.pais;
+    conexion.query('UPDATE arbitro SET ? WHERE id = ?',[{nombre:nombre, rol:rol, pais:pais}, id], (error, results)=>{
+        if(error){
+            console.log(error);
+        }else{           
+            res.redirect('/arbitros');         
+        }
+});
+};
+
     
