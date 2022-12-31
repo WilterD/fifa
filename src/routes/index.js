@@ -51,6 +51,8 @@ router.get('/editarArbitro/:id', (req,res)=>{
 
 // fin editar un registro
 
+// Eliminar un registro
+
 router.get('/delete/:id', (req, res) => {
   const id = req.params.id;
   conexion.query('DELETE FROM users WHERE id = ?',[id], (error, results)=>{
@@ -61,6 +63,21 @@ router.get('/delete/:id', (req, res) => {
       }
   })
 });
+
+router.get('/deleteArbitro/:id', (req, res) => {
+  const id = req.params.id;
+  conexion.query('DELETE FROM arbitro WHERE id = ?',[id], (error, results)=>{
+      if(error){
+          console.log(error);
+      }else{           
+          res.redirect('/arbitros');         
+      }
+  })
+});
+
+// fin eliminar un registro
+
+
 
 
 router.get('/create', (req, res) => {

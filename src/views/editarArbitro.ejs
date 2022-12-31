@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
     <title>CRUD</title>
 </head>
 <body>
@@ -21,7 +21,6 @@
                           <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= name.nombre  %>">                        
                         </div>   
                         <div class="mb-3">
-                          <h3><%= name.rol %></h3>
                           <label for="rol" class="form-label">Rol</label>
                           <select id="rol" name="rol" class="form-select" tabindex="2">
                             <option <%= name.rol=='Principal' ? "selected" : '' %> value="Principal">Principal</option>
@@ -32,7 +31,6 @@
                         </div>   
                         
                         <div class="mb-3">
-                            <h3><%= name.pais %></h3>
                             <label for="pais" class="form-label">País</label>
                             <select id="pais" name="pais" class="form-select" tabindex="2">
                               <option <%= name.pais=='Venezuela' ? "selected" : '' %> value="Venezuela">Venezuela</option>
