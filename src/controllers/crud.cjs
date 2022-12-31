@@ -13,6 +13,20 @@ exports.save = (req, res) => {
     });
 } 
 
+exports.saveArbitro = (req, res) => {
+    const nombre = req.body.nombre;
+    const rol = req.body.rol;
+    const pais = req.body.pais;
+
+    conexion.query('INSERT INTO arbitro SET ?', {nombre: nombre, rol: rol, pais: pais}, (error, results) => {
+        if(error){
+            console.log(error);
+        }else{
+            res.redirect('/arbitros');
+        }
+    });
+} 
+
 //ACTUALIZAR un REGISTRO
 exports.update = (req, res)=>{
     const id = req.body.id;
