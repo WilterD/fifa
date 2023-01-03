@@ -26,6 +26,34 @@ exports.saveArbitro = (req, res) => {
         }
     });
 } 
+exports.saveHotel = (req, res) => {
+    const nombre = req.body.nombre;
+    const direccion = req.body.direccion;
+    const telefono = req.body.telefono;
+
+    conexion.query('INSERT INTO hotel SET ?', {nombre: nombre, direccion: direccion, telefono: telefono}, (error, results) => {
+        if(error){
+            console.log(error);
+        }else{
+            res.redirect('/hotel');
+        }
+    });
+} 
+
+exports.updateHotel = (req, res)=>{
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+    const ciudad = req.body.ciudad;
+    const direccion = req.body.direccion;
+    const telefono = req.body.telefono;
+    conexion.query('UPDATE arbitro SET ? WHERE id = ?',[{nombre:nombre, ciudad:ciudad, direccion:direccion, telefono:telefono}, id], (error, results)=>{
+        if(error){
+            console.log(error);
+        }else{           
+            res.redirect('/arbitros');         
+        }
+});
+};
 
 //ACTUALIZAR un REGISTRO
 exports.update = (req, res)=>{

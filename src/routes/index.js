@@ -2,6 +2,7 @@ import { Router } from "express";
 const router = Router();
 import conexion from '../database/db.cjs';
 import mycrud from '../controllers/crud.cjs';
+// const { json } = require('express');
 
 router.get("/", (req, res) => {
   conexion.query('SELECT * FROM users', (error, results) => {
@@ -14,6 +15,18 @@ router.get("/", (req, res) => {
   });
 });
 
+//ruta para enviar los datos en formato json
+router.get('/data', (req, res)=>{     
+  conexion.query('SELECT * FROM users',(error, results)=>{
+      if(error){
+          throw error;
+      } else {                                                   
+          data = JSON.stringify(results);
+          res.send(data);          
+      }   
+  })
+})
+
 router.get("/arbitros", (req, res) => {
   conexion.query('SELECT * FROM arbitro', (error, resultados) => {
     if(error){
@@ -21,6 +34,17 @@ router.get("/arbitros", (req, res) => {
     }else{
       res.render('arbitros.ejs',{resultados:resultados})
       console.log(resultados)
+    }
+  });
+});
+
+router.get("/hotel", (req, res) => {
+  conexion.query('SELECT * FROM hotel', (error, results) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('hotel.ejs',{results:results})
+      console.log(results)
     }
   });
 });
@@ -53,6 +77,7 @@ router.get('/editarArbitro/:id', (req,res)=>{
 
 // Eliminar un registro
 
+//RUTA PARA ELIMINAR UN REGISTRO SELECCIONADO
 router.get('/delete/:id', (req, res) => {
   const id = req.params.id;
   conexion.query('DELETE FROM users WHERE id = ?',[id], (error, results)=>{
@@ -80,6 +105,8 @@ router.get('/deleteArbitro/:id', (req, res) => {
 
 
 
+
+
 router.get('/create', (req, res) => {
   res.render('create');
 });
@@ -88,10 +115,16 @@ router.get('/crearArbitro', (req, res) => {
   res.render('crearArbitro');
 });
 
+router.get('/crear-hotel', (req, res) => {
+  res.render('crear-hotel');
+});
+
 router.post('/save', mycrud.save);
 router.post('/saveArbitro', mycrud.saveArbitro);
+router.post('/saveHotel', mycrud.saveHotel);
 
-router.post('/updateArbitro', mycrud.updateArbitro);
 router.post('/update', mycrud.update);
+router.post('/updateArbitro', mycrud.updateArbitro);
+router.post('/updateHotel', mycrud.updateHotel);
 
 export default router;

@@ -1,40 +1,59 @@
 <div class="navigation">
   <div class="menuToggle"></div>
   <ul>
-    <li class="list active" style="--clr:#f44336;">
+    <li class="list" style="--clr:#f44336;">
       <a href="/">
-        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+        <span class="icon"><i class='bx bx-home-alt' ></i></span>
         <span class="text">Home</span>
       </a>
     </li>
     <li class="list" style="--clr:#ffa117;">
       <a href="/arbitros">
-        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+        <span class="icon"><i class='bx bxs-group'></i></span>
         <span class="text">Árbitros</span>
       </a>
     </li>
     <li class="list" style="--clr:#0fc70f;">
-      <a href="#">
-        <span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span>
-        <span class="text">Messages</span>
+      <a href="/hotel">
+        <span class="icon"><i class='bx bx-building-house' ></i></span>
+        <span class="text">Hotel</span>
       </a>
     </li>
     <li class="list" style="--clr:#2196f3;">
-      <a href="#">
-        <span class="icon"><ion-icon name="camera-outline"></ion-icon></span>
-        <span class="text">Photos</span>
+      <a href="/equipos">
+        <span class="icon"><i class='bx bxs-user-badge'></i></span>
+        <span class="text">Equipos</span>
       </a>
     </li>
     <li class="list" style="--clr:#b145e9;">
-      <a href="#">
-        <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-        <span class="text">Settings</span>
+      <a href="/partidos">
+        <span class="icon"><i class='bx bx-football' ></i></span>
+        <span class="text">Partidos</span>
       </a>
     </li>
   </ul>
 </div>
 
 <script>
+
+  // obtener la url
+  const url = window.location.href;
+  console.log(url)
+  // si el usuario esta en la pagina de arbitros entonces el menu se activa y los demas se desactivan
+  if(url.includes('/arbitros')){
+    document.querySelector('.list:nth-child(2)').classList.add('active');
+  }else if(url.includes('hotel')){
+    document.querySelector('.list:nth-child(3)').classList.add('active')
+  }else if(url.includes('equipos')){
+    document.querySelector('.list:nth-child(4)').classList.add('active');
+  }else if(url.includes('partidos')){
+    document.querySelector('.list:nth-child(5)').classList.add('active');
+  }else{
+    document.querySelector('.list:nth-child(1)').classList.add('active');
+  }
+
+  
+
   const menuToggle = document.querySelector('.menuToggle');
   const navigation = document.querySelector('.navigation');
   menuToggle.onclick = function(){
@@ -51,5 +70,3 @@
   item.addEventListener('click',activeLink))
   
 </script>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

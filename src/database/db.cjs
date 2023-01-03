@@ -12,7 +12,7 @@ conexion.connect((error) =>{
         console.error('Error de conexion', error.stack);
         return
     }
-    console.log('Conexion exitosa')
+    console.log('Conexion exitosa a la bd')
 });
 
 module.exports = conexion;
