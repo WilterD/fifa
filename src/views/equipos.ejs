@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Árbitros</title>
+</head>
+<body>
+   <%- include('partials/navigation.ejs') %>
+   <div class="container ">    
+    <div class="row">
+      <div class="col-md-5 offset-md-10 mb-3">
+        
+    <a href="/crearEquipo" class="btn btn-outline-primary mt-4 fs-2"> Agregar <i class="fas fa-plus-circle"></i></a>  
+    </div>  </div>  
+  <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
+    <thead>
+      <tr class="bg-primary text-white">
+        <th scope="col">Código</th>
+        <th scope="col">Nombre</th>            
+        <th scope="col">Director Técnico</th>    
+        <th scope="col">Eslogan</th>    
+        <th scope="col">Confederación</th>    
+        <th scope="col">Continente</th>    
+        <th scope="col">Color Uniforme</th>    
+        <th scope="col">Acciones</th>           
+      </tr>
+    </thead>
+    <tbody>
+      <% resultados.forEach((equipo)=>{ %>
+        <tr>  
+            <td><%= equipo.codigoEquipo %></td>  
+            <td><%= equipo.nombre %></td>
+            <td><%= equipo.directorT %></td>
+            <td><%= equipo.eslogan %></td>
+            <td>confederacion</td>
+            <td>continente</td>
+            <td><%= equipo.color %></td>
+            <td>
+              <a href="/editarEquipo/<%= equipo.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
+              <a onclick="confirmar('<%= equipo.id %>','deleteEquipo')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+            </td>
+        </tr>                                   
+     <% }) %>
+    </tbody>
+  </table>
+  </div>
+  <%- include('partials/scripts.ejs') %>
+</body>
+</html>

@@ -46,7 +46,7 @@
   const url = window.location.href;
   console.log(url)
   // si el usuario esta en la pagina de arbitros entonces el menu se activa y los demas se desactivan
-  if(url.includes('/arbitros')){
+  if(url.includes('arbitros')){
     document.querySelector('.list:nth-child(2)').classList.add('active');
   }else if(url.includes('hotel')){
     document.querySelector('.list:nth-child(3)').classList.add('active')

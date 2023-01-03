@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/head.ejs') %>
+    <title>CRUD</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+      <div class="container mt-4">     
+            <div class="card border-secondary">  
+                <div class="card-header">Nuevo Equipo</div>
+                <div class="card-body">
+                    <form action="/saveEquipo" method="POST">
+                        <div class="mb-3">
+                                <label for="nombreEquipo" class="form-label">Nombre de Equipo</label>
+                                <select id="pais" name="nombre" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                    <% paises.forEach((pais)=>{ %>
+                                        <option value="<%= pais.nombre %>"><%= pais.nombre %></option>
+                                    <% }) %>
+                                    </select>
+                         </div>
+                        <div class="mb-3">
+                            <label for="director" class="form-label">Director Técnico</label>
+                            <input type="text" required class="form-control" id="directorT" name="directorT" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="eslogan" class="form-label">Eslogan</label>
+                            <input type="text" required class="form-control" id="eslogan" name="eslogan" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="confederacion" class="form-label">Confederación</label>
+                            <select id="nombre" required name="nombre" class="form-select" aria-label="Default select example" tabindex="2">
+                                <% conf.forEach((conf)=>{ %>
+                                    <option required value="<%= conf.nombre %>"><%= conf.nombre %> (<%= conf.siglasConf %>)</option>
+                                <% }) %>
+                                </select>
+                     </div>
+                     <div class="mb-3">
+                            <label for="color" class="form-label">Color Uniforme</label>
+                            <input required type="color" class="form-control" id="color" name="color" tabindex="1">
+                        </div>  
+                         
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/equipos" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>        
+      </div>
+      <%- include('partials/scripts.ejs') %>
+</body>
+</html>

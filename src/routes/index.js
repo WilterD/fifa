@@ -2,7 +2,6 @@ import { Router } from "express";
 const router = Router();
 import conexion from '../database/db.cjs';
 import mycrud from '../controllers/crud.cjs';
-// const { json } = require('express');
 
 router.get("/", (req, res) => {
   conexion.query('SELECT * FROM users', (error, results) => {
@@ -38,6 +37,17 @@ router.get("/arbitros", (req, res) => {
   });
 });
 
+router.get("/equipos", (req, res) => {
+  conexion.query('SELECT * FROM equipo', (error, resultados) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('equipos.ejs',{resultados:resultados})
+      console.log(resultados)
+    }
+  });
+});
+
 router.get("/hotel", (req, res) => {
   conexion.query('SELECT * FROM hotel', (error, resultados) => {
     if(error){
@@ -48,6 +58,26 @@ router.get("/hotel", (req, res) => {
     }
   });
 });
+
+// trear los datos de la tabla pais cuando se crea equipo y traer todos los nombres de confederacion
+router.get("/crearEquipo", (req, res) => {
+  conexion.query('SELECT nombre FROM pais', (error, paises) => {
+    if(error){
+      console.log(error);
+    }else{
+      conexion.query('SELECT * FROM confederacion', (error, conf) => {
+        if(error){
+          console.log(error);
+        }else{
+          res.render('crearEquipo.ejs',{paises:paises, conf:conf})
+          // console.log(paises)
+        }
+      });
+    }
+  });
+});
+
+
 
 
 // Editar un registro
@@ -75,11 +105,23 @@ router.get('/editarArbitro/:id', (req,res)=>{
 
 router.get('/editarHotel/:id', (req,res)=>{    
   const id = req.params.id;
+  
   conexion.query('SELECT * FROM hotel WHERE id=?',[id] , (error, results) => {
       if (error) {
           throw error;
       }else{            
           res.render('editarHotel.ejs', {name:results[0]});            
+      }        
+  });
+});
+
+router.get('/editarEquipo/:id', (req,res)=>{    
+  const id = req.params.id;
+  conexion.query('SELECT * FROM equipo WHERE id=?',[id] , (error, results) => {
+      if (error) {
+          throw error;
+      }else{            
+          res.render('editarEquipo.ejs', {name:results[0]});            
       }        
   });
 });
@@ -122,31 +164,43 @@ router.get('/deleteHotel/:id', (req, res) => {
   })
 });
 
+router.get('/deleteEquipo/:id', (req, res) => {
+  const id = req.params.id;
+  conexion.query('DELETE FROM equipo WHERE id = ?',[id], (error, results)=>{
+      if(error){
+          console.log(error);
+      }else{           
+          res.redirect('/equipos');         
+      }
+  })
+});
+
 // fin eliminar un registro
 
-
-
-
-
-
+// Crear registros
 router.get('/create', (req, res) => {
   res.render('create');
 });
-
 router.get('/crearArbitro', (req, res) => {
   res.render('crearArbitro');
 });
-
 router.get('/crearHotel', (req, res) => {
   res.render('crearHotel');
 });
+router.get('/crearEquipo', (req, res) => {
+  res.render('crearEquipo');
+});
 
+// Guardar registros
 router.post('/save', mycrud.save);
 router.post('/saveArbitro', mycrud.saveArbitro);
 router.post('/saveHotel', mycrud.saveHotel);
+router.post('/saveEquipo', mycrud.saveEquipo);
 
+// actualizar registros
 router.post('/update', mycrud.update);
 router.post('/updateArbitro', mycrud.updateArbitro);
 router.post('/updateHotel', mycrud.updateHotel);
+router.post('/updateEquipo', mycrud.updateEquipo);
 
 export default router;

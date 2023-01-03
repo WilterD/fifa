@@ -12,7 +12,7 @@
         
     <a href="/crearHotel" class="btn btn-outline-primary mt-4 fs-2"> Agregar <i class="fas fa-plus-circle"></i></a>  
     </div>  </div>  
-  <table class="table table-bordered table-striped text-center mt-4" id="users">
+  <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
     <thead>
       <tr class="bg-primary text-white">
         <th scope="col">ID</th>
@@ -23,15 +23,15 @@
       </tr>
     </thead>
     <tbody>
-      <% resultados.forEach((user)=>{ %>
+      <% resultados.forEach((hotel)=>{ %>
         <tr>  
-            <td><%= user.id %></td>  
-            <td><%= user.codHotel %></td>
-            <td><%= user.nombre %></td>
-            <td><%= user.direccion %></td>
+            <td><%= hotel.id %></td>  
+            <td><%= hotel.codHotel %></td>
+            <td><%= hotel.nombre %></td>
+            <td><%= hotel.direccion %></td>
             <td>
-              <a href="/editarHotel/<%= user.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
-              <a onclick="confirmar('<%= user.id %>','deleteHotel')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+              <a href="/editarHotel/<%= hotel.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
+              <a onclick="confirmar('<%= hotel.id %>','deleteHotel')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>                                   
      <% }) %>

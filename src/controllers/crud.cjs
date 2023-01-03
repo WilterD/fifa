@@ -26,6 +26,7 @@ exports.saveArbitro = (req, res) => {
         }
     });
 } 
+
 exports.saveHotel = (req, res) => {
     const codHotel = req.body.codHotel;
     const nombre = req.body.nombre;
@@ -40,11 +41,26 @@ exports.saveHotel = (req, res) => {
     });
 } 
 
+exports.saveEquipo = (req, res) => {
+    const nombre = req.body.nombre;
+    const directorT = req.body.directorT;
+    const eslogan = req.body.eslogan;
+
+    conexion.query('INSERT INTO equipo SET ?', {nombre: nombre, directorT: directorT, eslogan: eslogan}, (error, results) => {
+        if(error){
+            console.log(error);
+        }else{
+            res.redirect('/equipos');
+        }
+    });
+} 
+
 exports.updateHotel = (req, res)=>{
     const id = req.body.id;
     const codHotel = req.body.codHotel;
     const nombre = req.body.nombre;
     const direccion = req.body.direccion;
+    
 
     conexion.query('UPDATE hotel SET ? WHERE id = ?',[{codHotel:codHotel, nombre:nombre, direccion:direccion}, id], (error, results)=>{
         if(error){
@@ -54,6 +70,8 @@ exports.updateHotel = (req, res)=>{
         }
 });
 };
+
+
 
 //ACTUALIZAR un REGISTRO
 exports.update = (req, res)=>{
@@ -79,6 +97,21 @@ exports.updateArbitro = (req, res)=>{
             console.log(error);
         }else{           
             res.redirect('/arbitros');         
+        }
+});
+};
+
+exports.updateEquipo = (req, res)=>{
+    const codigoEquipo = req.body.codigoEquipo;
+    const nombre = req.body.nombre;
+    const directorT = req.body.directorT;
+    const eslogan = req.body.eslogan;
+
+    conexion.query('UPDATE equipo SET ? WHERE id = ?',[{codigoEquipo:codigoEquipo, nombre:nombre, directorT:directorT,eslogan:eslogan}, id], (error, results)=>{
+        if(error){
+            console.log(error);
+        }else{           
+            res.redirect('/equipos');         
         }
 });
 };
