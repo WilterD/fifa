@@ -5,34 +5,37 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   
   <script> 
-  $('#users').DataTable({    
-    ajax: {
-        url: "/data",
-        dataSrc: ""
-    },   
-    columns: [ 
-        {"data": "id"},        
-        {'data': 'user'},
-        {'data': 'rol'},          
-        {"data": null,
-            "render": function (data) { 
-                return '<a href="/edit/'+data.id+ '"class="btn btn-info"><i class="fas fa-edit"></i></a><a onclick="confirmar('+data.id+')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>'                           
-                }
-        }
-    ],
-    pageLength : 5,
-    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]     
-  }); 
 
+  $(document).ready(function(){
+    $('#users').DataTable({
+      "language": {
+        "lengthMenu": "Mostrar _MENU_ registros por página",
+        "zeroRecords": "No se encontraron registros",
+        "info": "Mostrando página _PAGE_ de _PAGES_",
+        "infoEmpty": "No hay registros disponibles",
+        "infoFiltered": "(filtrado de _MAX_ registros totales)",
+        "search": "Buscar:",
+        "paginate": {
+          "first": "Primero",
+          "last": "Último",
+          "next": "Siguiente",
+          "previous": "Anterior"
+           
+        }
+      }
+    });
+  });
+  
 
   function confirmar(id) {
     Swal.fire({
-        title: '¿Confirma eliminar el registro: '+id+'?',
+        title: '¿Confirma eliminar el usuario?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Confirmar'
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {   
           window.location = '/delete/'+id;                              
