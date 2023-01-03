@@ -27,11 +27,11 @@ exports.saveArbitro = (req, res) => {
     });
 } 
 exports.saveHotel = (req, res) => {
+    const codHotel = req.body.codHotel;
     const nombre = req.body.nombre;
     const direccion = req.body.direccion;
-    const telefono = req.body.telefono;
 
-    conexion.query('INSERT INTO hotel SET ?', {nombre: nombre, direccion: direccion, telefono: telefono}, (error, results) => {
+    conexion.query('INSERT INTO hotel SET ?', {codHotel: codHotel,nombre:nombre, direccion: direccion}, (error, results) => {
         if(error){
             console.log(error);
         }else{
@@ -42,15 +42,15 @@ exports.saveHotel = (req, res) => {
 
 exports.updateHotel = (req, res)=>{
     const id = req.body.id;
+    const codHotel = req.body.codHotel;
     const nombre = req.body.nombre;
-    const ciudad = req.body.ciudad;
     const direccion = req.body.direccion;
-    const telefono = req.body.telefono;
-    conexion.query('UPDATE arbitro SET ? WHERE id = ?',[{nombre:nombre, ciudad:ciudad, direccion:direccion, telefono:telefono}, id], (error, results)=>{
+
+    conexion.query('UPDATE hotel SET ? WHERE id = ?',[{codHotel:codHotel, nombre:nombre, direccion:direccion}, id], (error, results)=>{
         if(error){
             console.log(error);
         }else{           
-            res.redirect('/arbitros');         
+            res.redirect('/hotel');         
         }
 });
 };

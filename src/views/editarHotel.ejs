@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Editar</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+      <% if (name) { %>
+      <div class="container mt-4">          
+          <div class="card border-secondary">  
+                <div class="card-header">Editar Hotel</div>
+                <div class="card-body">
+                    <form action="/updateHotel" method="POST">
+                         <input id="id" name="id" value="<%= name.id %>" hidden>
+                         <div class="mb-3">
+                            <label for="name" class="form-label">Código del hotel</label>
+                            <input type="text" class="form-control" id="codigo" name="codHotel" tabindex="1" value="<%= name.codHotel  %>">
+                            </div> 
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre del hotel</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= name.nombre  %>">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Dirección del hotel</label>
+                            <textarea type="text" class="form-control" id="direccion" name="direccion" tabindex="1" ><%= name.direccion  %></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+                    </form>      
+                </div>
+            </div>     
+      </div>
+      <% } %>
+      <%- include('partials/scripts.ejs') %>
+
+</body>
+</html>

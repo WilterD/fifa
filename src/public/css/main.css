@@ -143,10 +143,7 @@ body{
 	opacity: 0;
 	transition: 0.5s;
 }
-.navigation ul li.active a .icon::before 
-{
-	opacity: 0.5;
-}
+
 .navigation ul li a .text 
 {
 	position: relative;

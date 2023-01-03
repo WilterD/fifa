@@ -2,40 +2,42 @@
 <html lang="es">
 <head>
   <%- include('partials/head.ejs') %>
-  <title>crud</title>
+    <title>Árbitros</title>
 </head>
 <body>
    <%- include('partials/navigation.ejs') %>
-   <div class="container">    
-    <a href="/create" class="btn btn-outline-primary mt-4"><i class='bx bxs-plus-circle bx-md'></i></a>    
-  <table class="table table-bordered table-striped text-center mt-4">
+   <div class="container ">    
+    <div class="row">
+      <div class="col-md-5 offset-md-10 mb-3">
+        
+    <a href="/crearHotel" class="btn btn-outline-primary mt-4 fs-2"> Agregar <i class="fas fa-plus-circle"></i></a>  
+    </div>  </div>  
+  <table class="table table-bordered table-striped text-center mt-4" id="users">
     <thead>
       <tr class="bg-primary text-white">
-        <th scope="col">Código Hotel</th>
+        <th scope="col">ID</th>
+        <th scope="col">Código</th>
         <th scope="col">Nombre</th>            
-        <th scope="col">Dirección</th>
-        <th scope="col">Acciones</th>            
+        <th scope="col">Dirección</th>    
+        <th scope="col">Acciones</th>           
       </tr>
     </thead>
     <tbody>
-      <!-- TODO CREAR HOTEL-->
-      <% results.forEach((user)=>{ %>
+      <% resultados.forEach((user)=>{ %>
         <tr>  
-            <td><%= user.codHotel %></td>  
+            <td><%= user.id %></td>  
+            <td><%= user.codHotel %></td>
             <td><%= user.nombre %></td>
             <td><%= user.direccion %></td>
             <td>
-              <a href="/edit/<%= user.id %>" class="btn btn-outline-info"><i class='bx bxs-pencil'></i></a>
-              <a href="/delete/<%= user.id %>" class="btn btn-outline-danger"><i class='bx bxs-trash-alt'></i></a>                   
+              <a href="/editarHotel/<%= user.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
+              <a onclick="confirmar('<%= user.id %>','deleteHotel')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>                                   
      <% }) %>
     </tbody>
   </table>
   </div>
-  
-  <%- include('partials/js/scripts.ejs') %>
-
+  <%- include('partials/scripts.ejs') %>
 </body>
 </html>
-

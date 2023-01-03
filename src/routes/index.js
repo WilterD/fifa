@@ -39,12 +39,12 @@ router.get("/arbitros", (req, res) => {
 });
 
 router.get("/hotel", (req, res) => {
-  conexion.query('SELECT * FROM hotel', (error, results) => {
+  conexion.query('SELECT * FROM hotel', (error, resultados) => {
     if(error){
       console.log(error);
     }else{
-      res.render('hotel.ejs',{results:results})
-      console.log(results)
+      res.render('hotel.ejs',{resultados:resultados})
+      console.log(resultados)
     }
   });
 });
@@ -69,6 +69,17 @@ router.get('/editarArbitro/:id', (req,res)=>{
           throw error;
       }else{            
           res.render('editarArbitro.ejs', {name:results[0]});            
+      }        
+  });
+});
+
+router.get('/editarHotel/:id', (req,res)=>{    
+  const id = req.params.id;
+  conexion.query('SELECT * FROM hotel WHERE id=?',[id] , (error, results) => {
+      if (error) {
+          throw error;
+      }else{            
+          res.render('editarHotel.ejs', {name:results[0]});            
       }        
   });
 });
@@ -100,6 +111,17 @@ router.get('/deleteArbitro/:id', (req, res) => {
   })
 });
 
+router.get('/deleteHotel/:id', (req, res) => {
+  const id = req.params.id;
+  conexion.query('DELETE FROM hotel WHERE id = ?',[id], (error, results)=>{
+      if(error){
+          console.log(error);
+      }else{           
+          res.redirect('/hotel');         
+      }
+  })
+});
+
 // fin eliminar un registro
 
 
@@ -115,8 +137,8 @@ router.get('/crearArbitro', (req, res) => {
   res.render('crearArbitro');
 });
 
-router.get('/crear-hotel', (req, res) => {
-  res.render('crear-hotel');
+router.get('/crearHotel', (req, res) => {
+  res.render('crearHotel');
 });
 
 router.post('/save', mycrud.save);
