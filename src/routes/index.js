@@ -21,7 +21,7 @@ router.get('/data', (req, res)=>{
       if(error){
           throw error;
       } else {                                                   
-          data = JSON.stringify(results);
+          const data = JSON.stringify(results);
           res.send(data);          
       }   
   })
