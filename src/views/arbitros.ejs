@@ -31,10 +31,7 @@
             <td><%= user.pais %></td>
             <td>
               <a href="/editarArbitro/<%= user.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
-              
-              <a onclick="confirmar(<%= user.id %>)" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
-              <!-- <a href="/editarArbitro/<%= user.id %>" class="btn btn-outline-info"><i class='bx bxs-edit'></i></a> -->
-              <!-- <a href="/deleteArbitro/<%= user.id %>" class="btn btn-outline-danger"><i class='bx bxs-trash-alt'></i></a>                    -->
+              <a onclick="confirmar('<%= user.id %>','deleteArbitro')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>                                   
      <% }) %>

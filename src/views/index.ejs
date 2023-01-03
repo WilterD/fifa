@@ -31,7 +31,7 @@
             <td>
               <a href="/edit/<%= user.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
               
-              <a onclick="confirmar(<%= user.id %>)" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>                   
+              <a onclick="confirmar('<%= user.id %>','delete')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>                   
             </td>
         </tr>                                   
      <% }) %>

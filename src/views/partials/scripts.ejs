@@ -27,7 +27,7 @@
   });
   
 
-  function confirmar(id) {
+  function confirmar(id,ruta) {
     Swal.fire({
         title: '¿Confirma eliminar el usuario?',
         icon: 'warning',
@@ -38,7 +38,7 @@
         cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {   
-          window.location = '/delete/'+id;                              
+          window.location = ruta+'/'+id;                              
         }
     });
   };
