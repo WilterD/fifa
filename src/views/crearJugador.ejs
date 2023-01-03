@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/head.ejs') %>
+    <title>CRUD</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+      <div class="container mt-4">     
+            <div class="card border-secondary">  
+                <div class="card-header">Nuevo Jugador</div>
+                <div class="card-body">
+                    <form action="/saveJugador" method="POST">
+                        <div class="mb-3">
+                        <label for="name" class="form-label">Nombre del Jugador</label>
+                        <input required type="text" class="form-control" id="nombre" name="nombre" tabindex="1">
+                        </div>   
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Alias del Jugador</label>
+                            <input type="text" class="form-control" id="alias" name="alias" tabindex="1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="fecha" class="form-label">Fecha de Nacimiento</label>
+                                <input required type="date" class="form-control" id="fechaNac" name="fechaNac" tabindex="1">
+                                </div>
+                        <div class="mb-3">
+                        <label for="posicion" class="form-label">Posición</label>
+                        <select id="posicion" name="posicion" class="form-select" aria-label="Default select example" tabindex="2">
+                            <option value="Portero" selected>Portero</option>
+                            <option value="Defensor Central" selected>Defensor Central</option>
+                            <option value="Defensor Lateral" selected>Defensor Lateral</option>
+                            <option value="Volante Interior" selected>Volante Interior</option>
+                            <option value="Medio Centrocampista" selected>Medio Centrocampista</option>
+                            <option value="Media Punta" selected>Media Punta</option>
+                            <option value="Delantero" selected>Delantero</option>
+                            <option value="Centrodelantero" selected>Centrodelantero</option>
+                            <option value="Delantero Extremo Lateral" selected>Delantero Extremo Lateral</option>
+                                               
+                        </select>
+                        </div>   
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nro Camisa</label>
+                            <input required type="text" class="form-control" id="nroCamisa" name="nroCamisa" tabindex="1">
+                            </div>                                
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/jugadores" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>        
+      </div>
+      <%- include('partials/scripts.ejs') %>
+</body>
+</html>

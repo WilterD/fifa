@@ -43,3 +43,41 @@
     });
   };
   </script>
+
+  <!-- sidebar Menu  -->
+  <script>
+
+    // obtener la url
+    const url = window.location.href;
+    console.log(url)
+    // si el usuario esta en la pagina de arbitros entonces el menu se activa y los demas se desactivan
+    if(url.includes('arbitros')){
+      document.querySelector('.list:nth-child(2)').classList.add('active');
+    }else if(url.includes('hotel')){
+      document.querySelector('.list:nth-child(3)').classList.add('active')
+    }else if(url.includes('equipos')){
+      document.querySelector('.list:nth-child(4)').classList.add('active');
+    }else if(url.includes('partidos')){
+      document.querySelector('.list:nth-child(5)').classList.add('active');
+    }else{
+      document.querySelector('.list:nth-child(1)').classList.add('active');
+    }
+  
+    
+  
+    const menuToggle = document.querySelector('.menuToggle');
+    const navigation = document.querySelector('.navigation');
+    menuToggle.onclick = function(){
+      navigation.classList.toggle('open')
+    }
+  
+    const list = document.querySelectorAll('.list');
+    function activeLink(){
+      list.forEach((item) =>
+      item.classList.remove('active'));
+      this.classList.add('active');
+    }
+    list.forEach((item) =>
+    item.addEventListener('click',activeLink))
+    
+  </script>

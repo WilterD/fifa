@@ -41,16 +41,43 @@ exports.saveHotel = (req, res) => {
     });
 } 
 
-exports.saveEquipo = (req, res) => {
-    const nombre = req.body.nombre;
-    const directorT = req.body.directorT;
-    const eslogan = req.body.eslogan;
+// exports.saveEquipo = (req, res) => {
+//     const nombre = req.body.nombre;
+//     const directorT = req.body.directorT;
+//     const eslogan = req.body.eslogan;
 
-    conexion.query('INSERT INTO equipo SET ?', {nombre: nombre, directorT: directorT, eslogan: eslogan}, (error, results) => {
+//     const confederacion = req.body.confederacion;
+
+//     const pais = req.body.pais;
+
+//     const local = req.body.local;
+//     const visitante = req.body.visitante;
+
+//     conexion.query('INSERT INTO coloruniforme SET ?', {nombre: nombre, directorT: directorT, eslogan: eslogan}, (error, results) => {
+//         if(error){
+//             console.log(error);
+//         }else{
+//             conexion.query('INSERT INTO equipo SET ?', {nombre: nombre, directorT: directorT, eslogan: eslogan}, (error, results) => {
+
+
+
+//             res.redirect('/equipos');
+//         }
+//     });
+// } 
+
+exports.saveJugador = (req, res) => {
+    const nombre = req.body.nombre;
+    const alias = req.body.alias;
+    const fechaNac = req.body.fechaNac;
+    const posicion = req.body.posicion;
+    const nroCamisa = req.body.nroCamisa;
+
+    conexion.query('INSERT INTO jugador SET ?', {nombre:nombre, alias: alias,fechaNac:fechaNac,posicion:posicion,nroCamisa:nroCamisa}, (error, results) => {
         if(error){
             console.log(error);
         }else{
-            res.redirect('/equipos');
+            res.redirect('/jugadores');
         }
     });
 } 
@@ -67,6 +94,25 @@ exports.updateHotel = (req, res)=>{
             console.log(error);
         }else{           
             res.redirect('/hotel');         
+        }
+});
+};
+
+
+exports.updateJugador = (req, res)=>{
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+    const alias = req.body.alias;
+    const fechaNac = req.body.fechaNac;
+    const posicion = req.body.posicion;
+    const nroCamisa = req.body.nroCamisa;
+    
+
+    conexion.query('UPDATE jugador SET ? WHERE id = ?',[{nombre:nombre, alias:alias, fechaNac:fechaNac,posicion:posicion,nroCamisa:nroCamisa}, id], (error, results)=>{
+        if(error){
+            console.log(error);
+        }else{           
+            res.redirect('/jugadores');         
         }
 });
 };

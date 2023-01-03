@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Jugadores</title>
+</head>
+<body>
+   <%- include('partials/navigation.ejs') %>
+   <div class="container ">    
+    <div class="row">
+      <div class="col-md-5 offset-md-10 mb-3">
+        
+    <a href="/crearJugador" class="btn btn-outline-primary mt-4 fs-2"> Agregar <i class="fas fa-plus-circle"></i></a>  
+    </div>  </div>  
+  <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
+    <thead>
+      <tr class="bg-primary text-white">
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>            
+        <th scope="col">Alias</th>    
+        <th scope="col">Fecha de Nacimiento</th>           
+        <th scope="col">Posición</th>           
+        <th scope="col">Nro Camisa</th>           
+        <th scope="col">Acciones</th>           
+      </tr>
+    </thead>
+    <tbody>
+      <% resultados.forEach((jugador)=>{ %>
+        <tr>  
+            <td><%= jugador.id %></td>  
+            <td><%= jugador.nombre %></td>
+            <td><%= jugador.alias %></td>
+            <td><%= jugador.fechaNac %></td>
+            <td><%= jugador.posicion %></td>
+            <td><%= jugador.nroCamisa %></td>
+            <td>
+              <a href="/editarJugador/<%= jugador.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
+              <a onclick="confirmar('<%= jugador.id %>','deleteJugador')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+            </td>
+        </tr>                                   
+     <% }) %>
+    </tbody>
+  </table>
+  </div>
+
+  <%- include('partials/scripts.ejs') %>
+
+</body>
+</html>
