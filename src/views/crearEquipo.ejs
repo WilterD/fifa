@@ -28,21 +28,21 @@
                             <input type="text" required class="form-control" id="eslogan" name="eslogan" tabindex="1">
                         </div>  
                         <div class="mb-3">
-                            <label for="confederacion" class="form-label">Confederación</label>
+                            <label for="confederacion" class="form-label">CodigoPais</label>
                             <select id="codigoEquipo" required name="codigoEquipo" class="form-select" aria-label="Default select example" tabindex="2">
-                                <% conf.forEach((conf)=>{ %>
-                                    <option required value="<%= conf.nombre %>"><%= conf.nombre %> (<%= conf.siglasConf %>)</option>
+                                <% paises.forEach((pais)=>{ %>
+                                    <option required value="<%= pais.codSiglas %>"><%= pais.codSiglas %></option>
                                 <% }) %>
                                 </select>
                      </div>
-                     <div class="mb-3">
+                     <!-- <div class="mb-3">
                             <label for="local" class="form-label">Color Uniforme (Local)</label>
                             <input value="#920920" required type="color" class="form-control" id="local" name="local" tabindex="1" />  
                      </div>  
                      <div class="mb-3">
                         <label for="visitante" class="form-label">Color Uniforme (Visitante)</label>
                         <input required type="color" class="form-control" id="visitante" name="visitante" tabindex="1" value="#328733">
-                     </div> 
+                     </div>  -->
                          
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/equipos" class="btn btn-secondary">Cancelar</a>

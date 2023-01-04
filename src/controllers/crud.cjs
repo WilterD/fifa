@@ -42,10 +42,11 @@ exports.saveHotel = (req, res) => {
 } 
 
 exports.saveEquipo = (req, res) => {
+    let last_id = conexion.query('SELECT MAX(id) FROM equipo');
     const nombre = req.body.nombre;
     const directorT = req.body.directorT;
     const eslogan = req.body.eslogan;
-    const codigoEquipo = req.body.codigoEquipo;
+    let codigoEquipo = req.body.codigoEquipo;
 
     const local = req.body.local;
     const visitante = req.body.visitante;
@@ -53,26 +54,27 @@ exports.saveEquipo = (req, res) => {
     conexion.query('INSERT INTO equipo SET ?', {codigoEquipo: codigoEquipo, nombre: nombre, directorT: directorT, eslogan: eslogan}, (error, results) => {
         if(error){
             console.log(error);
-        }else{
-            conexion.query('INSERT INTO coloruniforme SET ?', {codigoEquipo: codigoEquipo, local: local, visitante: visitante}, (error, results) => {
-                if(error){
-                    console.log(error);
-                }else{
-                res.redirect('/equipos');
-                }
-        });
-    }
+        }
     });
+
+    // conexion.query('INSERT INTO coloruniforme SET ?', {id:last_id+1,codigoEquipo: codigoEquipo, local: local, visitante: visitante}, (error, results) => {
+    //     if(error){
+    //         console.log(error);
+    //     }else{
+    //     res.redirect('/equipos');
+    //     }
+    // });
 }
 
 
+            
 exports.saveJugador = (req, res) => {
     const nombre = req.body.nombre;
     const alias = req.body.alias;
-    const fechaNac = req.body.fechaNac;
     const posicion = req.body.posicion;
     const nroCamisa = req.body.nroCamisa;
-
+    const fechaNac = req.body.fechaNac;
+    
     conexion.query('INSERT INTO jugador SET ?', {nombre:nombre, alias: alias,fechaNac:fechaNac,posicion:posicion,nroCamisa:nroCamisa}, (error, results) => {
         if(error){
             console.log("ocurrio un pinguie peo")
@@ -81,15 +83,14 @@ exports.saveJugador = (req, res) => {
             res.redirect('/jugadores');
         }
     });
-} 
-
+}
+  
 exports.updateHotel = (req, res)=>{
     const id = req.body.id;
     const codHotel = req.body.codHotel;
     const nombre = req.body.nombre;
     const direccion = req.body.direccion;
     
-
     conexion.query('UPDATE hotel SET ? WHERE id = ?',[{codHotel:codHotel, nombre:nombre, direccion:direccion}, id], (error, results)=>{
         if(error){
             console.log(error);
@@ -99,7 +100,6 @@ exports.updateHotel = (req, res)=>{
 });
 };
 
-
 exports.updateJugador = (req, res)=>{
     const id = req.body.id;
     const nombre = req.body.nombre;
@@ -108,7 +108,6 @@ exports.updateJugador = (req, res)=>{
     const posicion = req.body.posicion;
     const nroCamisa = req.body.nroCamisa;
     
-
     conexion.query('UPDATE jugador SET ? WHERE id = ?',[{nombre:nombre, alias:alias, fechaNac:fechaNac,posicion:posicion,nroCamisa:nroCamisa}, id], (error, results)=>{
         if(error){
             console.log(error);
@@ -117,8 +116,6 @@ exports.updateJugador = (req, res)=>{
         }
 });
 };
-
-
 
 //ACTUALIZAR un REGISTRO
 exports.update = (req, res)=>{
@@ -148,6 +145,7 @@ exports.updateArbitro = (req, res)=>{
 });
 };
 
+
 exports.updateEquipo = (req, res)=>{
     const codigoEquipo = req.body.codigoEquipo;
     const nombre = req.body.nombre;
@@ -162,5 +160,6 @@ exports.updateEquipo = (req, res)=>{
         }
 });
 };
+
 
     

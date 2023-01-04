@@ -32,7 +32,6 @@ router.get("/arbitros", (req, res) => {
       console.log(error);
     }else{
       res.render('arbitros.ejs',{resultados:resultados})
-      console.log(resultados)
     }
   });
 });
@@ -43,7 +42,6 @@ router.get("/equipos", (req, res) => {
       console.log(error);
     }else{
       res.render('equipos.ejs',{resultados:resultados})
-      console.log(resultados)
     }
   });
 });
@@ -65,14 +63,13 @@ router.get("/jugadores", (req, res) => {
       console.log(error);
     }else{
       res.render('jugadores.ejs',{resultados:resultados})
-      console.log(resultados)
     }
   });
 });
 
 // trear los datos de la tabla pais cuando se crea equipo y traer todos los nombres de confederacion
 router.get("/crearEquipo", (req, res) => {
-  conexion.query('SELECT nombre FROM pais', (error, paises) => {
+  conexion.query('SELECT * FROM pais', (error, paises) => {
     if(error){
       console.log(error);
     }else{
@@ -80,7 +77,7 @@ router.get("/crearEquipo", (req, res) => {
         if(error){
           console.log(error);
         }else{
-          res.render('crearEquipo.ejs',{paises:paises, conf:conf})
+          res.render('crearEquipo.ejs',{paises:paises,conf:conf})
         }
       });
     }
@@ -252,6 +249,6 @@ router.post('/update', mycrud.update);
 router.post('/updateArbitro', mycrud.updateArbitro);
 router.post('/updateHotel', mycrud.updateHotel);
 router.post('/updateJugador', mycrud.updateJugador);
-// router.post('/updateEquipo', mycrud.updateEquipo);
+router.post('/updateEquipo', mycrud.updateEquipo);
 
 export default router;
