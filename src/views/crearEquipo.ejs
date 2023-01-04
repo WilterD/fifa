@@ -29,7 +29,7 @@
                         </div>  
                         <div class="mb-3">
                             <label for="confederacion" class="form-label">Confederación</label>
-                            <select id="nombre" required name="nombre" class="form-select" aria-label="Default select example" tabindex="2">
+                            <select id="codigoEquipo" required name="codigoEquipo" class="form-select" aria-label="Default select example" tabindex="2">
                                 <% conf.forEach((conf)=>{ %>
                                     <option required value="<%= conf.nombre %>"><%= conf.nombre %> (<%= conf.siglasConf %>)</option>
                                 <% }) %>

@@ -41,30 +41,27 @@ exports.saveHotel = (req, res) => {
     });
 } 
 
-// exports.saveEquipo = (req, res) => {
-//     const nombre = req.body.nombre;
-//     const directorT = req.body.directorT;
-//     const eslogan = req.body.eslogan;
+exports.saveEquipo = (req, res) => {
+    const nombre = req.body.nombre;
+    const directorT = req.body.directorT;
+    const eslogan = req.body.eslogan;
+    const codigoEquipo = req.body.codigoEquipo;
 
-//     const confederacion = req.body.confederacion;
+    const local = req.body.local;
+    const visitante = req.body.visitante;
 
-//     const pais = req.body.pais;
+    conexion.query('INSERT INTO equipo SET ?', {codigoEquipo: codigoEquipo, nombre: nombre, directorT: directorT, eslogan: eslogan}, (error, results) => {
+        if(error){
+            console.log(error);
+        }else{
+            conexion.query('INSERT INTO coloruniforme SET ?', {codigoEquipo: codigoEquipo, local: local, visitante: visitante}, (error, results) => {
+                
+                res.redirect('/equipos');
+        });
+    }
+    });
+}
 
-//     const local = req.body.local;
-//     const visitante = req.body.visitante;
-
-//     conexion.query('INSERT INTO coloruniforme SET ?', {nombre: nombre, directorT: directorT, eslogan: eslogan}, (error, results) => {
-//         if(error){
-//             console.log(error);
-//         }else{
-//             conexion.query('INSERT INTO equipo SET ?', {nombre: nombre, directorT: directorT, eslogan: eslogan}, (error, results) => {
-
-
-
-//             res.redirect('/equipos');
-//         }
-//     });
-// } 
 
 exports.saveJugador = (req, res) => {
     const nombre = req.body.nombre;

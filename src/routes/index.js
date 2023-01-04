@@ -37,16 +37,16 @@ router.get("/arbitros", (req, res) => {
   });
 });
 
-// router.get("/equipos", (req, res) => {
-//   conexion.query('SELECT * FROM equipo', (error, resultados) => {
-//     if(error){
-//       console.log(error);
-//     }else{
-//       res.render('equipos.ejs',{resultados:resultados})
-//       console.log(resultados)
-//     }
-//   });
-// });
+router.get("/equipos", (req, res) => {
+  conexion.query('SELECT * FROM equipo', (error, resultados) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('equipos.ejs',{resultados:resultados})
+      console.log(resultados)
+    }
+  });
+});
 
 router.get("/hotel", (req, res) => {
   conexion.query('SELECT * FROM hotel', (error, resultados) => {
@@ -71,22 +71,22 @@ router.get("/jugadores", (req, res) => {
 });
 
 // trear los datos de la tabla pais cuando se crea equipo y traer todos los nombres de confederacion
-// router.get("/crearEquipo", (req, res) => {
-//   conexion.query('SELECT nombre FROM pais', (error, paises) => {
-//     if(error){
-//       console.log(error);
-//     }else{
-//       conexion.query('SELECT * FROM confederacion', (error, conf) => {
-//         if(error){
-//           console.log(error);
-//         }else{
-//           res.render('crearEquipo.ejs',{paises:paises, conf:conf})
-//           // console.log(paises)
-//         }
-//       });
-//     }
-//   });
-// });
+router.get("/crearEquipo", (req, res) => {
+  conexion.query('SELECT nombre FROM pais', (error, paises) => {
+    if(error){
+      console.log(error);
+    }else{
+      conexion.query('SELECT * FROM confederacion', (error, conf) => {
+        if(error){
+          console.log(error);
+        }else{
+          res.render('crearEquipo.ejs',{paises:paises, conf:conf})
+          // console.log(paises)
+        }
+      });
+    }
+  });
+});
 
 router.get("/crearJugador", (req, res) => {
   conexion.query('SELECT * FROM jugador', (error, jugador) => {
@@ -97,15 +97,6 @@ router.get("/crearJugador", (req, res) => {
     }
   });
 });
-
-      
-  
-
-
-
-
-
-
 
 // Editar un registro
 router.get('/edit/:id', (req,res)=>{    
@@ -154,16 +145,16 @@ router.get('/editarJugador/:id', (req,res)=>{
   });
 });
 
-// router.get('/editarEquipo/:id', (req,res)=>{    
-//   const id = req.params.id;
-//   conexion.query('SELECT * FROM equipo WHERE id=?',[id] , (error, results) => {
-//       if (error) {
-//           throw error;
-//       }else{            
-//           res.render('editarEquipo.ejs', {name:results[0]});            
-//       }        
-//   });
-// });
+router.get('/editarEquipo/:id', (req,res)=>{    
+  const id = req.params.id;
+  conexion.query('SELECT * FROM equipo WHERE id=?',[id] , (error, results) => {
+      if (error) {
+          throw error;
+      }else{            
+          res.render('editarEquipo.ejs', {name:results[0]});            
+      }        
+  });
+});
 
 // fin editar un registro
 
@@ -203,16 +194,16 @@ router.get('/deleteHotel/:id', (req, res) => {
   })
 });
 
-// router.get('/deleteEquipo/:id', (req, res) => {
-//   const id = req.params.id;
-//   conexion.query('DELETE FROM equipo WHERE id = ?',[id], (error, results)=>{
-//       if(error){
-//           console.log(error);
-//       }else{           
-//           res.redirect('/equipos');         
-//       }
-//   })
-// });
+router.get('/deleteEquipo/:id', (req, res) => {
+  const id = req.params.id;
+  conexion.query('DELETE FROM equipo WHERE id = ?',[id], (error, results)=>{
+      if(error){
+          console.log(error);
+      }else{           
+          res.redirect('/equipos');         
+      }
+  })
+});
 
 
 router.get('/deleteJugador/:id', (req, res) => {
@@ -251,7 +242,7 @@ router.post('/save', mycrud.save);
 router.post('/saveArbitro', mycrud.saveArbitro);
 router.post('/saveHotel', mycrud.saveHotel);
 router.post('/saveJugador', mycrud.saveJugador);
-// router.post('/saveEquipo', mycrud.saveEquipo);
+router.post('/saveEquipo', mycrud.saveEquipo);
 
 // actualizar registros
 router.post('/update', mycrud.update);
