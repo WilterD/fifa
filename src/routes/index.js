@@ -81,12 +81,23 @@ router.get("/crearEquipo", (req, res) => {
           console.log(error);
         }else{
           res.render('crearEquipo.ejs',{paises:paises, conf:conf})
-          // console.log(paises)
         }
       });
     }
   });
 });
+
+router.get("/crearArbitro", (req, res) => {
+  conexion.query('SELECT nombre FROM pais', (error, paises) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('crearArbitro.ejs',{paises:paises})
+        }
+      });
+    }
+  );
+
 
 router.get("/crearJugador", (req, res) => {
   conexion.query('SELECT * FROM jugador', (error, jugador) => {
@@ -223,18 +234,10 @@ router.get('/deleteJugador/:id', (req, res) => {
 router.get('/create', (req, res) => {
   res.render('create');
 });
-router.get('/crearArbitro', (req, res) => {
-  res.render('crearArbitro');
-});
+
 router.get('/crearHotel', (req, res) => {
   res.render('crearHotel');
 });
-router.get('/crearJugador', (req, res) => {
-  res.render('crearJugador');
-});
-// router.get('/crearEquipo', (req, res) => {
-//   res.render('crearEquipo');
-// });
 
 
 // Guardar registros

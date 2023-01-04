@@ -55,8 +55,11 @@ exports.saveEquipo = (req, res) => {
             console.log(error);
         }else{
             conexion.query('INSERT INTO coloruniforme SET ?', {codigoEquipo: codigoEquipo, local: local, visitante: visitante}, (error, results) => {
-                
+                if(error){
+                    console.log(error);
+                }else{
                 res.redirect('/equipos');
+                }
         });
     }
     });
@@ -72,6 +75,7 @@ exports.saveJugador = (req, res) => {
 
     conexion.query('INSERT INTO jugador SET ?', {nombre:nombre, alias: alias,fechaNac:fechaNac,posicion:posicion,nroCamisa:nroCamisa}, (error, results) => {
         if(error){
+            console.log("ocurrio un pinguie peo")
             console.log(error);
         }else{
             res.redirect('/jugadores');

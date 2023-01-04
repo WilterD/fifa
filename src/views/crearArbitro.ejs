@@ -16,7 +16,7 @@
                         <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1">
                         </div>   
                         <div class="mb-3">
-                        <label for="rol" class="form-label">Rol</label>
+                        <label for="rol" class="form-label">Rol del árbitro</label>
                         <select id="rol" name="rol" class="form-select" aria-label="Default select example" tabindex="2">
                             <option value="Árbitro Principal" selected>Árbitro Principal </option>
                             <option value="Árbitro Asistente Uno">Árbitro Asistente Uno</option>                    
@@ -27,13 +27,12 @@
                         </select>
                         </div>   
                         <div class="mb-3">
-                            <label for="pais" class="form-label">País</label>
-                            <select id="pais" name="pais" class="form-select" aria-label="Default select example" tabindex="2">
-                                <option value="Venezuela" selected>Venezuela</option>
-                                <option value="México">México</option>                    
-                                <option value="Perú">Perú</option>                    
-                                <option value="Chile">Chile</option>                    
-                            </select>
+                            <label for="rol" class="form-label">País del árbitro</label>
+                            <select id="pais" name="pais" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <% paises.forEach((pais)=>{ %>
+                                    <option value="<%= pais.nombre %>"><%= pais.nombre %></option>
+                                <% }) %>
+                                </select>
                             </div>                                 
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/arbitros" class="btn btn-secondary">Cancelar</a>
