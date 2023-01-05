@@ -33,8 +33,8 @@
             <td><%= hotel.nombre %></td>
             <td><%= hotel.direccion %></td>
             <td>
-              <a href="/editarHotel/<%= hotel.id %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
-              <a onclick="confirmar('<%= hotel.id %>','deleteHotel')" class="btn btn-outline-danger">
+              <a href="/editarHotel/<%= hotel.codHotel %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+              <a onclick="confirmar('<%= hotel.codHotel %>','deleteHotel')" class="btn btn-outline-danger">
                 <i class='bx bxs-trash'></i></a>
             </td>
         </tr>                                   

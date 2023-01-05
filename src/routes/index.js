@@ -127,9 +127,9 @@ router.get('/editarHotel/:id', (req,res)=>{
 });
 
 
-router.get('/deleteHotel/:id', (req, res) => {
-  const id = req.params.id;
-  conexion.query('DELETE FROM hotel WHERE id = ?',[id], (error, results)=>{
+router.get('/deleteHotel/:codHotel', (req, res) => {
+  const codHotel = req.params.codHotel;
+  conexion.query('DELETE FROM hotel WHERE codHotel = ?',[codHotel], (error, results)=>{
       if(error){
           console.log(error);
       }else{           
