@@ -1,5 +1,4 @@
-const Swal = require('sweetalert2');
-const asyncErrors = require('express-async-errors');
+
 
 const conexion = require("../database/db.cjs");
 
@@ -150,7 +149,6 @@ exports.saveHospedaje = (req, res) => {
                   if (error) {
                     console.log(error);
                   } else {
-                    console.log("todo bien");
                     res.redirect("/hotel");
                   }
                 }

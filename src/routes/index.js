@@ -265,6 +265,17 @@ router.get('/deleteJugador/:id', (req, res) => {
   })
 });
 
+router.get('/deleteHospedaje/:id', (req, res) => {
+  const id = req.params.id;
+  conexion.query('DELETE FROM alojamiento WHERE id = ?',[id], (error, results)=>{
+      if(error){
+          console.log(error);
+      }else{           
+          res.redirect('/hospedaje');         
+      }
+  })
+});
+
 // fin eliminar un registro
 
 // Crear registros

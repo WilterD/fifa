@@ -38,37 +38,7 @@
   </div>
 
 
-  <div class="container ">    
-    <div class="row">
-      <div class="col-md-5 offset-md-10 mb-3">
-        
-    <a href="/crearHospedaje" class="btn btn-outline-primary mt-4 fs-2"> Agregar Hospedaje <i class="fas fa-plus-circle"></i></a>  
-    </div>  </div>  
-  <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
-    <thead>
-      <tr class="bg-primary text-white">
-        <th scope="col">ID</th>
-        <th scope="col">Código</th>            
-        <th scope="col">ID_equipo</th>    
-        <th scope="col">Fecha Inicio</th>           
-        <th scope="col">Fecha Cierre</th>           
-      </tr>
-    </thead>
-    <tbody>
-      <% resultados.forEach((hospedaje)=>{ %>
-        <tr>  
-            <td><%= hospedaje.codHotel %></td>
-            <td><%= hospedaje.nombre %></td>
-            <td><%= hospedaje.direccion %></td>
-            <td>
-              <a href="/editarHospedaje/<%= hospedaje.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
-              <a onclick="confirmar('<%= hospedaje.id %>','deleteHospedaje')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
-            </td>
-        </tr>                                   
-     <% }) %>
-    </tbody>
-  </table>
-  </div>
+  
 
 
   <%- include('partials/scripts.ejs') %>
