@@ -3,28 +3,6 @@ const router = Router();
 import conexion from '../database/db.cjs';
 import mycrud from '../controllers/crud.cjs';
 
-router.get("/", (req, res) => {
-  conexion.query('SELECT * FROM users', (error, results) => {
-    if(error){
-      console.log(error);
-    }else{
-      res.render('index.ejs',{results:results})
-    }
-  });
-});
-
-//ruta para enviar los datos en formato json
-router.get('/data', (req, res)=>{     
-  conexion.query('SELECT * FROM users',(error, results)=>{
-      if(error){
-          throw error;
-      } else {                                                   
-          const data = JSON.stringify(results);
-          res.send(data);          
-      }   
-  })
-})
-
 router.get("/arbitros", (req, res) => {
   conexion.query('SELECT * FROM arbitro', (error, resultados) => {
     if(error){
@@ -140,17 +118,6 @@ router.get("/crearJugador", (req, res) => {
   });
 });
 
-// Editar un registro
-router.get('/edit/:id', (req,res)=>{    
-  const id = req.params.id;
-  conexion.query('SELECT * FROM users WHERE id=?',[id] , (error, results) => {
-      if (error) {
-          throw error;
-      }else{            
-          res.render('edit.ejs', {name:results[0]});            
-      }        
-  });
-});
 
 router.get('/editarArbitro/:id', (req,res)=>{    
   const id = req.params.id;
@@ -174,6 +141,34 @@ router.get('/editarHotel/:id', (req,res)=>{
       }        
   });
 });
+
+router.get('/editarHospedaje/:id', (req,res)=>{    
+  const id = req.params.id;
+  
+  conexion.query('SELECT * FROM alojamiento WHERE id=?',[id] , (error, results) => {
+      if (error) {
+          throw error;
+      }else{         
+        let codHotel = results[0].id_hotel;
+        conexion.query('SELECT nombre FROM hotel WHERE codHotel=?' ,[codHotel], (error, hotel) => {
+          if(error){
+            console.log(error);
+          }else{
+            let codigo = results[0].id_equipo;
+            conexion.query('SELECT nombre FROM equipo WHERE codigo=?' ,[codigo], (error, equipo) => {
+              if(error){
+                console.log(error);
+              }else{
+               
+                res.render('editarHospedaje.ejs', {hospedaje:results[0],hotel:hotel,equipo:equipo})
+
+              }
+            });
+          }
+        });
+      }
+    })});
+
 
 router.get('/editarJugador/:id', (req,res)=>{    
   const id = req.params.id;
@@ -208,17 +203,7 @@ router.get('/editarEquipo/:codigo', (req,res)=>{
 
 // Eliminar un registro
 
-//RUTA PARA ELIMINAR UN REGISTRO SELECCIONADO
-router.get('/delete/:id', (req, res) => {
-  const id = req.params.id;
-  conexion.query('DELETE FROM users WHERE id = ?',[id], (error, results)=>{
-      if(error){
-          console.log(error);
-      }else{           
-          res.redirect('/');         
-      }
-  })
-});
+
 
 router.get('/deleteArbitro/:id', (req, res) => {
   const id = req.params.id;
