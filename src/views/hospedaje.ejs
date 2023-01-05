@@ -7,13 +7,18 @@
 <body>
    <%- include('partials/navigation.ejs') %>
 
-  <div class="container ">    
-    <div class="row">
-      <div class="col-md-5 offset-md-10 mb-3">
-        
-    <a href="/crearHospedaje" class="btn btn-outline-primary mt-4 fs-2"> Agregar Hospedaje <i class="fas fa-plus-circle"></i></a>  
-    </div>  </div>  
-  <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
+   <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      >>> Alojamiento
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="">
+          <a href="/crearHospedaje" class="btn btn-outline-primary fs-2 btn-block"> Agregar <i class='bx bxs-plus-circle'></i></a> 
+        </div> 
+        <div class="col-xs-12 mt-3">
+          <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
     <thead>
       <tr class="bg-primary text-white">
         <th scope="col">ID</th>
@@ -36,15 +41,28 @@
             <td><%= hospedaje.fecha_inicio %></td>
             <td><%= hospedaje.fecha_fin %></td>
             <td>
-              <a href="/editarHospedaje/<%= hospedaje.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
-              <a onclick="confirmar('<%= hospedaje.id %>','deleteHospedaje')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+              <a href="/editarHospedaje/<%= hospedaje.id %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+              <a onclick="confirmar('<%= hospedaje.id %>','deleteHospedaje')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
             </td>
         </tr>                                   
      <% }) %>
      <% }) %>
     </tbody>
   </table>
-  </div>
+</div>
+</div>
+</div>
+</section> 
+
+<section class="home-section">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 mx-auto">
+  Cuida tu ambiente
+</div>
+</div>
+</div>
+</section>
 
 
   <%- include('partials/scripts.ejs') %>

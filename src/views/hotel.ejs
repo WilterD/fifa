@@ -6,13 +6,18 @@
 </head>
 <body>
    <%- include('partials/navigation.ejs') %>
-   <div class="container ">    
-    <div class="row">
-      <div class="col-md-5 offset-md-10 mb-3">
-        
-    <a href="/crearHotel" class="btn btn-outline-primary mt-4 fs-2"> Agregar <i class="fas fa-plus-circle"></i></a>  
-    </div>  </div>  
-  <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
+   <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      >>> Hoteles
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="">
+          <a href="/crearHotel" class="btn btn-outline-primary fs-2 btn-block"> Agregar <i class='bx bxs-plus-circle'></i></a> 
+        </div> 
+        <div class="col-xs-12 mt-3">
+          <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
     <thead>
       <tr class="bg-primary text-white">
         <th scope="col">Código</th>
@@ -28,18 +33,30 @@
             <td><%= hotel.nombre %></td>
             <td><%= hotel.direccion %></td>
             <td>
-              <a href="/editarHotel/<%= hotel.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
-              <a onclick="confirmar('<%= hotel.id %>','deleteHotel')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+              <a href="/editarHotel/<%= hotel.id %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+              <a onclick="confirmar('<%= hotel.id %>','deleteHotel')" class="btn btn-outline-danger">
+                <i class='bx bxs-trash'></i></a>
             </td>
         </tr>                                   
      <% }) %>
     </tbody>
   </table>
+</div>
+</div>
+</div>
+</section> 
+
+<section class="home-section">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 mx-auto">
+  Cuida tu ambiente
+</div>
+</div>
+</div>
+</section>
+  </table>
   </div>
-
-
-  
-
 
   <%- include('partials/scripts.ejs') %>
 </body>
