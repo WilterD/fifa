@@ -7,49 +7,31 @@
 <body>
     <%- include('partials/navigation.ejs') %>
       <% if (equipo) { %>
-      <div class="container mt-4">          
-          <div class="card border-secondary">  
-                <div class="card-header">Editar Hotel</div>
-                <div class="card-body">
-                    <form action="/updateHotel" method="POST">
-                         <input id="id" name="id" value="<%= equipo.id %>" hidden>
-                         <div class="mb-3">
-                            <label for="equipo" class="form-label">Código</label>
-                            <input type="text" class="form-control" id="codigo" name="codHotel" tabindex="1" value="<%= equipo.codigo  %>">
-                            </div> 
-                        <div class="mb-3">
-                            <label for="equipo" class="form-label">Nombre Equipo</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= equipo.nombre  %>">
-                        </div>  
-                        <div class="mb-3">
-                            <label for="equipo" class="form-label">Director Técnico</label>
-                            <input type="text" class="form-control" id="director" name="directorT" tabindex="1" value="<%= equipo.directorT  %>">
-                        </div>  
-                        <div class="mb-3">
-                            <label for="equipo" class="form-label">Eslogan</label>
-                            <input type="text" class="form-control" id="eslogan" name="eslogan" tabindex="1" value="<%= equipo.eslogan  %>">
-                        </div>  
-                        <div class="mb-3">
-                            <label for="equipo" class="form-label">confederacion</label>
-                            <input type="text" class="form-control" id="confederacion" name="confederacion" tabindex="1" value="confederacion">
-                        </div>  
-                        <div class="mb-3">
-                            <label for="equipo" class="form-label">continente</label>
-                            <input type="text" class="form-control" id="continente" name="continente" tabindex="1" value="continente">
-                        </div>  
-                        <div class="mb-3">
-                            <label for="equipo" class="form-label">Color Uniforme</label>
-                            <input type="text" class="form-control" id="color" name="color" tabindex="1" value="<%= equipo.color  %>">
-                        </div>  
-
-                        
-
-                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
-                        <a href="/" class="btn btn-secondary">Cancelar</a>
-                    </form>      
-                </div>
-            </div>     
-      </div>
+        <div class="container mt-4">          
+            <div class="card border-secondary">  
+                  <div class="card-header">Editar Equipo</div>
+                  <div class="card-body">
+                      <form action="/updateEquipo" method="POST">
+                           <input id="codigo" name="<%= equipo.codigo  %>" value="<%= equipo.codigo %>" hidden>
+                          <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre Equipo</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= equipo.nombre %>">                        
+                          </div>   
+                          <div class="mb-3">
+                            <label for="nombre" class="form-label">Eslogan</label>
+                            <input type="text" class="form-control" id="eslogan" name="eslogan" tabindex="1" value="<%= equipo.eslogan %>">                        
+                          </div>  
+                          <div class="mb-3">
+                            <label for="nombre" class="form-label">Director Técnico</label>
+                            <input type="text" class="form-control" id="directorT" name="directorT" tabindex="1" value="<%= equipo.directorT %>">                        
+                          </div>  
+  
+                          <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                          <a href="/" class="btn btn-secondary">Cancelar</a>
+                      </form>      
+                  </div>
+              </div>     
+        </div>
       <% } %>
       <%- include('partials/scripts.ejs') %>
 

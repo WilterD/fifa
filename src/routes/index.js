@@ -187,16 +187,22 @@ router.get('/editarJugador/:id', (req,res)=>{
   });
 });
 
-router.get('/editarEquipo/:id', (req,res)=>{    
-  const id = req.params.id;
-  conexion.query('SELECT * FROM equipo WHERE id=?',[id] , (error, results) => {
+router.get('/editarEquipo/:codigo', (req,res)=>{    
+  const codigo = req.params.codigo;
+  conexion.query('SELECT * FROM equipo WHERE codigo=?',[codigo] , (error, results) => {
       if (error) {
           throw error;
       }else{            
-          res.render('editarEquipo.ejs', {name:results[0]});            
-      }        
-  });
+        conexion.query('SELECT nombre FROM pais', (error, paises) => {
+          if(error){
+            console.log(error);
+          }else{
+            res.render('editarEquipo.ejs', {equipo:results[0],paises:paises});           
+      } 
+    });
+  }
 });
+});      
 
 // fin editar un registro
 
@@ -236,9 +242,9 @@ router.get('/deleteHotel/:id', (req, res) => {
   })
 });
 
-router.get('/deleteEquipo/:id', (req, res) => {
-  const id = req.params.id;
-  conexion.query('DELETE FROM equipo WHERE id = ?',[id], (error, results)=>{
+router.get('/deleteEquipo/:codigo', (req, res) => {
+  const codigo = req.params.codigo;
+  conexion.query('DELETE FROM pais WHERE siglas = ?',[codigo], (error, results)=>{
       if(error){
           console.log(error);
       }else{           

@@ -30,8 +30,8 @@
             <td><%= equipo.directorT %></td>
             <td><%= equipo.eslogan %></td>
             <td>
-              <a href="/editarEquipo/<%= equipo.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
-              <a onclick="confirmar('<%= equipo.id %>','deleteEquipo')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+              <a href="/editarEquipo/<%= equipo.codigo %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
+              <a onclick="confirmar('<%= equipo.codigo %>','deleteEquipo')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>                                   
      <% }) %>

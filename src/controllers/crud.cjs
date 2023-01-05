@@ -267,26 +267,26 @@ exports.updateArbitro = (req, res) => {
 };
 
 exports.updateEquipo = (req, res) => {
-  const codigoEquipo = req.body.codigoEquipo;
+  const codigo = req.body.codigo;
   const nombre = req.body.nombre;
   const directorT = req.body.directorT;
   const eslogan = req.body.eslogan;
 
   conexion.query(
-    "UPDATE equipo SET ? WHERE id = ?",
+    "UPDATE equipo SET ? WHERE codigo = ?",
     [
       {
-        codigoEquipo: codigoEquipo,
         nombre: nombre,
         directorT: directorT,
         eslogan: eslogan,
       },
-      id,
+      codigo,
     ],
     (error, results) => {
       if (error) {
         console.log(error);
       } else {
+        console.log(object)
         res.redirect("/equipos");
       }
     }
