@@ -15,7 +15,7 @@
   <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
     <thead>
       <tr class="bg-primary text-white">
-        <th scope="col">ID</th>
+        <th scope="col">Código Árbitro</th>
         <th scope="col">Nombre</th>
         <th scope="col">Tipo de árbitro</th>            
         <th scope="col">País</th>    
@@ -25,13 +25,13 @@
     <tbody>
       <% resultados.forEach((user)=>{ %>
         <tr>  
-            <td><%= user.id %></td>  
+            <td><%= user.codArbitro %></td>  
             <td><%= user.nombre %></td>
             <td><%= user.rol %></td>
             <td><%= user.pais %></td>
             <td>
-              <a href="/editarArbitro/<%= user.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
-              <a onclick="confirmar('<%= user.id %>','deleteArbitro')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+              <a href="/editarArbitro/<%= user.codArbitro %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
+              <a onclick="confirmar('<%= user.codArbitro %>','deleteArbitro')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>                                   
      <% }) %>

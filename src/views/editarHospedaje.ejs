@@ -17,8 +17,9 @@
 
                         <!--aqui se muestra el nombre del hotel a editar-->
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Hotel a hospedar el equipo</label>
+                            <label for="nombre" class="form-label">Hotel a hospedar el equipo <%= hotel.nombre %></label>
                             <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= hotel.nombre %>">
+                            <%= hotel.nombre %>
                         </div>
                         
                         <div class="mb-3">
@@ -34,7 +35,7 @@
                             <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" tabindex="1" value="<%= hospedaje.fecha_fin %>">
                         </div> 
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
-                        <a href="/hotel" class="btn btn-secondary">Cancelar</a>
+                        <a href="/hospedaje" class="btn btn-secondary">Cancelar</a>
                     </form>
                 </div>
             </div>        

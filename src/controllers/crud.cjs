@@ -1,5 +1,6 @@
 const conexion = require("../database/db.cjs");
 
+// arbitros
 exports.saveArbitro = (req, res) => {
   const nombre = req.body.nombre;
   const rol = req.body.rol;
@@ -18,6 +19,27 @@ exports.saveArbitro = (req, res) => {
   );
 };
 
+
+exports.updateArbitro = (req, res) => {
+  const codArbitro = req.body.codArbitro;
+  const nombre = req.body.nombre;
+  const rol = req.body.rol;
+  const pais = req.body.pais;
+  conexion.query(
+    "UPDATE arbitro SET ? WHERE codArbitro = ?",
+    [{ nombre: nombre, rol: rol, pais: pais }, codArbitro],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/arbitros");
+      }
+    }
+  );
+};
+
+// hoteles
+
 exports.saveHotel = (req, res) => {
   const codHotel = req.body.codHotel;
   const nombre = req.body.nombre;
@@ -35,6 +57,27 @@ exports.saveHotel = (req, res) => {
     }
   );
 };
+
+exports.updateHotel = (req, res) => {
+  const id = req.body.id;
+  const codHotel = req.body.codHotel;
+  const nombre = req.body.nombre;
+  const direccion = req.body.direccion;
+
+  conexion.query(
+    "UPDATE hotel SET ? WHERE id = ?",
+    [{ codHotel: codHotel, nombre: nombre, direccion: direccion }, id],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/hotel");
+      }
+    }
+  );
+};
+
+// Equipos
 
 exports.saveEquipo = (req, res) => {
 
@@ -88,8 +131,24 @@ exports.saveEquipo = (req, res) => {
       }
     );
   };
+
+  exports.updateEquipo = (req, res) => {
+    const codigo = req.body.codigo;
+    const nombre = req.body.nombre;
+    const directorT = req.body.directorT;
+    const eslogan = req.body.eslogan;
+    
+      conexion.query("UPDATE equipo SET ? WHERE codigo = ?", [{nombre: nombre, directorT: directorT, eslogan: eslogan}, codigo], (error, results) => {
+        if (error) {
+          console.log(error);
+        } else {
+          res.redirect("/equipos");
+        }
+      });
+    };
         
     
+// hospedaje
 
 exports.saveHospedaje = (req, res) => {
   let id_hotel = req.body.id_hotel;
@@ -142,6 +201,8 @@ exports.saveHospedaje = (req, res) => {
   );
 };
 
+// jugadores
+
 exports.saveJugador = (req, res) => {
   const nombre = req.body.nombre;
   const alias = req.body.alias;
@@ -168,24 +229,7 @@ exports.saveJugador = (req, res) => {
   );
 };
 
-exports.updateHotel = (req, res) => {
-  const id = req.body.id;
-  const codHotel = req.body.codHotel;
-  const nombre = req.body.nombre;
-  const direccion = req.body.direccion;
 
-  conexion.query(
-    "UPDATE hotel SET ? WHERE id = ?",
-    [{ codHotel: codHotel, nombre: nombre, direccion: direccion }, id],
-    (error, results) => {
-      if (error) {
-        console.log(error);
-      } else {
-        res.redirect("/hotel");
-      }
-    }
-  );
-};
 
 exports.updateJugador = (req, res) => {
   const id = req.body.id;
@@ -217,39 +261,6 @@ exports.updateJugador = (req, res) => {
   );
 };
 
-//ACTUALIZAR un REGISTRO
-
-exports.updateArbitro = (req, res) => {
-  const id = req.body.id;
-  const nombre = req.body.nombre;
-  const rol = req.body.rol;
-  const pais = req.body.pais;
-  conexion.query(
-    "UPDATE arbitro SET ? WHERE id = ?",
-    [{ nombre: nombre, rol: rol, pais: pais }, id],
-    (error, results) => {
-      if (error) {
-        console.log(error);
-      } else {
-        res.redirect("/arbitros");
-      }
-    }
-  );
-};
 
 
 
-  exports.updateEquipo = (req, res) => {
-  const codigo = req.body.codigo;
-  const nombre = req.body.nombre;
-  const directorT = req.body.directorT;
-  const eslogan = req.body.eslogan;
-  
-    conexion.query("UPDATE equipo SET ? WHERE codigo = ?", [{nombre: nombre, directorT: directorT, eslogan: eslogan}, codigo], (error, results) => {
-      if (error) {
-        console.log(error);
-      } else {
-        res.redirect("/equipos");
-      }
-    });
-  };

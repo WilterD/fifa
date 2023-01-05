@@ -12,7 +12,7 @@
                 <div class="card-header">Editar Árbitro</div>
                 <div class="card-body">
                     <form action="/updateArbitro" method="POST">
-                         <input id="id" name="id" value="<%= name.id %>" hidden>
+                         <input id="codArbitro" name="codArbitro" value="<%= name.codArbitro %>" hidden>
                         <div class="mb-3">
                           <label for="nombre" class="form-label">Nombre</label>
                           <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= name.nombre  %>">                        
@@ -37,7 +37,7 @@
                           </div> 
 
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
-                        <a href="/" class="btn btn-secondary">Cancelar</a>
+                        <a href="/arbitros" class="btn btn-secondary">Cancelar</a>
                     </form>      
                 </div>
             </div>     
