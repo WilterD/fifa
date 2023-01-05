@@ -3,6 +3,21 @@ const asyncErrors = require('express-async-errors');
 
 const conexion = require("../database/db.cjs");
 
+exports.saveGrupo = (req, res) => {
+  const letraGrupo = req.body.letraGrupo;
+
+  conexion.query(
+    "INSERT INTO grupo SET ?",
+    {letraGrupo:letraGrupo},
+    (error, results) =>{
+      if(error) {
+        console.log(error);
+      } else {
+        res.redirect("/");
+      }
+    })
+}
+
 exports.save = (req, res) => {
   const name = req.body.name;
   const rol = req.body.rol;

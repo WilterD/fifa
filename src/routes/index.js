@@ -130,6 +130,11 @@ router.get("/crearArbitro", (req, res) => {
   );
 
 
+router.get("/crearGrupo", (req, res) => {
+  res.render("crearGrupo.ejs");
+})
+
+
 router.get("/crearJugador", (req, res) => {
   conexion.query('SELECT * FROM jugador', (error, jugador) => {
     if(error){
@@ -265,6 +270,18 @@ router.get('/deleteJugador/:id', (req, res) => {
   })
 });
 
+router.get('/partidos', (req, res)=>{
+  conexion.query('SELECT * FROM partido', (error, partidos)=>{
+    if (error) {
+      console.log(error);
+    } else {
+      res.render('partidos.ejs', {partidos:partidos});
+    }
+  })
+  
+})
+
+
 // fin eliminar un registro
 
 // Crear registros
@@ -284,6 +301,7 @@ router.post('/saveHotel', mycrud.saveHotel);
 router.post('/saveJugador', mycrud.saveJugador);
 router.post('/saveEquipo', mycrud.saveEquipo);
 router.post('/saveHospedaje', mycrud.saveHospedaje);
+router.post('/saveGrupo', mycrud.saveGrupo);
 
 // actualizar registros
 router.post('/update', mycrud.update);

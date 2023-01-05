@@ -40,8 +40,8 @@ CREATE TABLE arbitro(
     FOREIGN KEY(codPais) REFERENCES pais(codPais)
 );
 
-CREATE TABLE partida(
-    codPartida INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE partido(
+    codPartido INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     fecha DATETIME NOT NULL,
     FOREIGN KEY(fecha) REFERENCES jornadas(fecha),
     codEstadio INT NOT NULL,
@@ -77,11 +77,16 @@ CREATE TABLE equipo(
     nombreDT VARCHAR(50) NOT NULL
 );
 
+
+
 CREATE TABLE juegan(
-    codPartida INT NOT NULL,
-    FOREIGN KEY(codPartida) REFERENCES partida(codPartida),
-    codEquipo VARCHAR(3) NOT NULL,
-    FOREIGN KEY(codEquipo) REFERENCES equipo(codEquipo)
+    codPartido INT NOT NULL,
+    FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
+    codEquipo1 VARCHAR(3) NOT NULL,
+    FOREIGN KEY(codEquipo1) REFERENCES equipo(codEquipo),
+    codEquipo2 VARCHAR(3) NOT NULL,
+    FOREIGN KEY(codEquipo2) REFERENCES equipo(codEquipo),
+    PRIMARY KEY(codPartido)
 );
 
 CREATE TABLE coloresUniforme (
