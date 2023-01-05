@@ -1,3 +1,6 @@
+const Swal = require('sweetalert2');
+const asyncErrors = require('express-async-errors');
+
 const conexion = require("../database/db.cjs");
 
 exports.save = (req, res) => {
@@ -54,18 +57,24 @@ exports.saveHotel = (req, res) => {
 };
 
 exports.saveEquipo = (req, res) => {
-  const nombre = req.body.nombre;
-  const directorT = req.body.directorT;
-  const eslogan = req.body.eslogan;
-  conexion.query(
-    "SELECT siglas FROM pais WHERE nombre = ?",
-    [nombre],
-    (error, results) => {
-      if (error) {
-        console.log(error);
-      } else {
+
+    const nombre = req.body.nombre;
+    const directorT = req.body.directorT;
+    const eslogan = req.body.eslogan;
+    conexion.query(
+      "SELECT siglas FROM pais WHERE nombre = ?",
+      [nombre],
+      (error, results) => {
+        if (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al guardar el equipo!',
+          });
+          res.sendStatus(500);
+          return;
+        }
         let codigo = results[0].siglas;
-        console.log(codigo);
 
         conexion.query(
           "INSERT INTO equipo SET ?",
@@ -81,8 +90,6 @@ exports.saveEquipo = (req, res) => {
             } else {
               const color1 = req.body.color1;
               const color2 = req.body.color2;
-              console.log("mostrar codigo")
-              console.log(codigo);
 
               conexion.query(
                 "INSERT INTO color_uniforme SET ?",
@@ -99,9 +106,10 @@ exports.saveEquipo = (req, res) => {
           }
         );
       }
-    }
-  );
-};
+    );
+  };
+        
+    
 
 exports.saveHospedaje = (req, res) => {
   let id_hotel = req.body.id_hotel;

@@ -244,7 +244,7 @@ router.get('/deleteHotel/:id', (req, res) => {
 
 router.get('/deleteEquipo/:codigo', (req, res) => {
   const codigo = req.params.codigo;
-  conexion.query('DELETE FROM pais WHERE siglas = ?',[codigo], (error, results)=>{
+  conexion.query('DELETE FROM equipo WHERE codigo = ?',[codigo], (error, results)=>{
       if(error){
           console.log(error);
       }else{           
