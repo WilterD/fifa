@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/head.ejs') %>
+    <title>CRUD</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+      <div class="container mt-4">     
+            <div class="card border-secondary">  
+                <div class="card-header">Nuevo Hospedaje</div>
+                <div class="card-body">
+                    <form action="/saveHospedaje" method="POST">
+                        <div class="mb-3">
+                            <label for="rol" class="form-label">Nombre del Hotel</label>
+                            <select id="id_hotel" name="id_hotel" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <% hoteles.forEach((hotel)=>{ %>
+                                    <option value="<%= hotel.nombre %>"><%= hotel.nombre %></option>
+                                <% }) %>
+                                </select>
+                            </div>  
+                        <div class="mb-3">
+                            <label for="rol" class="form-label">Equipo a hospedar en el hotel</label>
+                            <select id="id_equipo" name="id_equipo" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <% equipos.forEach((equipo)=>{ %>
+                                    <option value="<%= equipo.nombre %>"><%= equipo.nombre %></option>
+                                <% }) %>
+                                </select>
+                            </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Fecha Inicio</label>
+                            <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" tabindex="1"></input>
+                        </div> 
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Fecha Cierre</label>
+                            <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" tabindex="1"></input>
+                        </div> 
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/hotel" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>        
+      </div>
+      <%- include('partials/scripts.ejs') %>
+</body>
+</html>

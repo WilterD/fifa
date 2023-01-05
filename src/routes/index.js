@@ -9,7 +9,6 @@ router.get("/", (req, res) => {
       console.log(error);
     }else{
       res.render('index.ejs',{results:results})
-      console.log(results)
     }
   });
 });
@@ -52,10 +51,29 @@ router.get("/hotel", (req, res) => {
       console.log(error);
     }else{
       res.render('hotel.ejs',{resultados:resultados})
-      console.log(resultados)
     }
   });
 });
+
+router.get("/hospedaje", (req, res) => {
+  conexion.query('SELECT * FROM alojamiento', (error, alojamientos) => {
+    if(error){
+      console.log(error);
+    }else{
+      conexion.query("SELECT nombre FROM equipo", (error, equipos) => {
+        if(error){
+          console.log(error);
+        }else{
+          res.render('hospedaje.ejs',{alojamientos:alojamientos,equipos:equipos})
+              }
+            });
+          }
+        });
+      });
+
+
+
+      
 
 router.get("/jugadores", (req, res) => {
   conexion.query('SELECT * FROM jugador', (error, resultados) => {
@@ -78,6 +96,22 @@ router.get("/crearEquipo", (req, res) => {
           console.log(error);
         }else{
           res.render('crearEquipo.ejs',{paises:paises,conf:conf})
+        }
+      });
+    }
+  });
+});
+
+router.get("/crearHospedaje", (req, res) => {
+  conexion.query('SELECT nombre FROM hotel', (error, hoteles) => {
+    if(error){
+      console.log(error);
+    }else{
+      conexion.query('SELECT nombre FROM equipo', (error, equipos) => {
+        if(error){
+          console.log(error);
+        }else{
+          res.render('crearHospedaje.ejs',{hoteles:hoteles,equipos:equipos})
         }
       });
     }
@@ -243,6 +277,7 @@ router.post('/saveArbitro', mycrud.saveArbitro);
 router.post('/saveHotel', mycrud.saveHotel);
 router.post('/saveJugador', mycrud.saveJugador);
 router.post('/saveEquipo', mycrud.saveEquipo);
+router.post('/saveHospedaje', mycrud.saveHospedaje);
 
 // actualizar registros
 router.post('/update', mycrud.update);
