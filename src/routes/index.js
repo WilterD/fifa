@@ -145,22 +145,26 @@ router.get('/editarHotel/:id', (req,res)=>{
 router.get('/editarHospedaje/:id', (req,res)=>{    
   const id = req.params.id;
   
-  conexion.query('SELECT * FROM alojamiento WHERE id=?',[id] , (error, results) => {
+  conexion.query('SELECT * FROM alojamiento WHERE id=?',[id] , (error, alojamiento) => {
       if (error) {
           throw error;
       }else{         
-        let codHotel = results[0].id_hotel;
+        let codHotel = alojamiento[0].id_hotel;
         conexion.query('SELECT nombre FROM hotel WHERE codHotel=?' ,[codHotel], (error, hotel) => {
           if(error){
             console.log(error);
           }else{
-            let codigo = results[0].id_equipo;
+            let codigo = alojamiento[0].id_equipo;
             conexion.query('SELECT nombre FROM equipo WHERE codigo=?' ,[codigo], (error, equipo) => {
               if(error){
                 console.log(error);
               }else{
+
+                console.log(equipo)
+                console.log(hotel)
+                console.log(alojamiento[0])
                
-                res.render('editarHospedaje.ejs', {hospedaje:results[0],hotel:hotel,equipo:equipo})
+                res.render('editarHospedaje.ejs', {hospedaje:alojamiento[0],hotel:hotel,equipo:equipo})
 
               }
             });
@@ -274,7 +278,6 @@ router.get('/crearHotel', (req, res) => {
 
 
 // Guardar registros
-router.post('/save', mycrud.save);
 router.post('/saveArbitro', mycrud.saveArbitro);
 router.post('/saveHotel', mycrud.saveHotel);
 router.post('/saveJugador', mycrud.saveJugador);

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <%- include('partials/head.ejs') %>
-    <title>CRUD</title>
+    <title>Editar Hospedaje</title>
 </head>
 <body>
     <%- include('partials/navigation.ejs') %>
@@ -18,7 +18,7 @@
                         <!--aqui se muestra el nombre del hotel a editar-->
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Hotel a hospedar el equipo</label>
-                            <input id="nombre" name="nombre" class="form-control" tabindex="1" required value="<%= hotel.nombre %>" />
+                            <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= hotel.nombre %>">
                         </div>
                         
                         <div class="mb-3">
