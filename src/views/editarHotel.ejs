@@ -2,11 +2,17 @@
 <html lang="es">
 <head>
   <%- include('partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/main.css">
+
     <title>Editar Hotel</title>
 </head>
 <body>
     <%- include('partials/navigation.ejs') %>
       <% if (name) { %>
+        <section class="home-section">
+            <div class="home-content">
+              <i class='bx bx-menu' ></i>
+            </div>
       <div class="container mt-4">          
           <div class="card border-secondary">  
                 <div class="card-header">Editar Hotel</div>
@@ -29,6 +35,7 @@
                 </div>
             </div>     
       </div>
+        </section>
       <% } %>
       <%- include('partials/scripts.ejs') %>
 

@@ -28,16 +28,12 @@ router.get("/crearArbitro", (req, res) => {
     conexion.query('SELECT * FROM arbitro WHERE codArbitro=?',[codArbitro] , (error, arbitro) => {
         if (error) {
             throw error;
-        }else{            
-            conexion.query("SELECT nombre FROM pais", (error, paises) => {
-              if(error){
-                console.log(error);
-                }else{
-                  res.render('editarArbitro.ejs',{arbitro:arbitro,paises:paises}) 
-                }});
-        }        
-    });
-  });
+        }else{  
+                  console.log(arbitro)          
+                  res.render('editarArbitro.ejs',{arbitro:arbitro}) 
+                }
+              });
+            });
 
   router.get('/deleteArbitro/:codArbitro', (req, res) => {
     const codArbitro = req.params.codArbitro;

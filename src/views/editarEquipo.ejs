@@ -2,10 +2,15 @@
 <html lang="es">
 <head>
   <%- include('partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/main.css">
     <title>Editar Equipo</title>
 </head>
 <body>
     <%- include('partials/navigation.ejs') %>
+    <section class="home-section">
+      <div class="home-content">
+        <i class='bx bx-menu' ></i>
+      </div>
       <% if (equipo) { %>
         <div class="container mt-4">          
             <div class="card border-secondary">  
@@ -32,6 +37,7 @@
                   </div>
               </div>     
         </div>
+    </section>
       <% } %>
       <%- include('partials/scripts.ejs') %>
 

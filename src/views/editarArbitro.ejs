@@ -2,17 +2,23 @@
 <html lang="es">
 <head>
   <%- include('partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/main.css">
     <title>Editar Árbitro</title>
 </head>
 <body>
     <%- include('partials/navigation.ejs') %>
+    <section class="home-section">
+      <div class="home-content">
+        <i class='bx bx-menu' ></i>
+      </div>
       <% if (arbitro) { %>
+        
       <div class="container mt-4">          
           <div class="card border-secondary">  
                 <div class="card-header">Editar Árbitro</div>
                 <div class="card-body">
                     <form action="/updateArbitro" method="POST">
-                         <input id="codArbitro" name="codArbitro" value="<%= arbitro.codArbitro %>" hidden>
+                         <input id="codArbitro" name="codArbitro" value="<%= arbitro.codArbitro %>">
                         <div class="mb-3">
                           <label for="nombre" class="form-label">Nombre</label>
                           <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= arbitro.nombre  %>">                        
@@ -29,10 +35,7 @@
                         
                         <div class="mb-3">
                             <label for="pais" class="form-label">País</label>
-                            <select id="pais" name="pais" class="form-select" tabindex="2">
-                              <option value="<%= paises.nombre %>"> <%= paises.nombre %> </option>      
-                                                    
-                            </select>
+                            <input type="text" class="form-control" id="pais" name="pais" tabindex="1" value="<%= arbitro.pais  %>">     
                           </div> 
 
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
@@ -41,6 +44,7 @@
                 </div>
             </div>     
       </div>
+    </section>
       <% } %>
       <%- include('partials/scripts.ejs') %>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
