@@ -27,32 +27,6 @@
       }
     });
   });
-  
-
-  function confirmar(id,ruta) {
-    Swal.fire({
-        title: '¿Confirma eliminar el registro seleccionado?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Confirmar',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        if (result.isConfirmed) {   
-          window.location = ruta+'/'+id;                              
-        }
-    });
-  };
-
-  function errorDuplicado(){
-    Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: '¡Este equipo ya existe!'
-})
-  }
-
 
   </script>
 
