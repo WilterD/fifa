@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/main.css">
+    <title>Editar País</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+    <section class="home-section">
+      <div class="home-content">
+        <i class='bx bx-menu' ></i>
+      </div>
+      <% if (pais) { %>
+        <div class="container mt-4">          
+            <div class="card border-secondary">  
+                  <div class="card-header">Editar País</div>
+                  <div class="card-body">
+                      <form action="/updatePais" method="POST">
+                           <input id="siglas" name="siglas" value="<%= pais.siglas %>" hidden>
+                          <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre del País</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= pais.nombre %>">                        
+                          </div>   
+
+                          <div class="mb-3">
+                            <label for="nombre" class="form-label">Confederación </label>
+                            <select  class="form-select" name="nombreConf" required>
+                                <option value="" disabled selected >Seleccione una Confederación</option>
+                                <% conf.forEach((c)=>{ %>
+                                <option value="<%= c.nombre %>"><%= c.nombre %></option>
+                                <%  }) %>
+                            </select>
+                                             
+                          </div>   
+
+                          
+                          
+  
+                          <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                          <a href="/paises" class="btn btn-secondary">Cancelar</a>
+                      </form>      
+                  </div>
+              </div>     
+        </div>
+    </section>
+      <% } %>
+      <%- include('partials/scripts.ejs') %>
+
+</body>
+</html>

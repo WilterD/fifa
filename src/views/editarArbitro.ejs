@@ -18,7 +18,7 @@
                 <div class="card-header">Editar Árbitro</div>
                 <div class="card-body">
                     <form action="/updateArbitro" method="POST">
-                         <input id="codArbitro" name="codArbitro" value="<%= arbitro.codArbitro %>">
+                         <input id="codArbitro" hidden name="codArbitro" value="<%= arbitro.codArbitro %>">
                         <div class="mb-3">
                           <label for="nombre" class="form-label">Nombre</label>
                           <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= arbitro.nombre  %>">                        

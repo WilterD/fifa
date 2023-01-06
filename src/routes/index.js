@@ -29,8 +29,7 @@ router.get("/crearArbitro", (req, res) => {
         if (error) {
             throw error;
         }else{  
-                  console.log(arbitro)          
-                  res.render('editarArbitro.ejs',{arbitro:arbitro}) 
+                  res.render('editarArbitro.ejs',{arbitro:arbitro[0]}) 
                 }
               });
             });
@@ -314,6 +313,56 @@ router.get('/deleteConfederacion/:id', (req, res) => {
   })
 });
 
+
+router.get("/paises", (req, res) => {
+  conexion.query('SELECT * FROM pais', (error, resultados) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('paises.ejs',{resultados:resultados})
+    }
+  });
+});
+
+router.get("/crearPais", (req, res) => {
+  conexion.query('SELECT * FROM confederacion', (error, resultados) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('crearPais.ejs',{resultados:resultados})
+    }
+  });
+});
+
+router.get('/editarPais/:siglas', (req,res)=>{    
+  const siglas = req.params.siglas;
+  conexion.query('SELECT * FROM pais WHERE siglas=?',[siglas] , (error, pais) => {
+      if (error) {
+          throw error;
+      }else{  
+                conexion.query('SELECT nombre FROM confederacion', (error, conf)=>{
+                  if(error){
+                    console.log(error);
+                  }else{
+                    res.render('editarPais.ejs',{pais:pais[0],conf:conf}) 
+                }
+                })
+              }
+            })
+          });
+                
+
+router.get('/deletePais/:siglas', (req, res) => {
+  const siglas = req.params.siglas;
+  conexion.query('DELETE FROM pais WHERE siglas = ?',[siglas], (error, results)=>{
+      if(error){
+          console.log(error);
+      }else{           
+          res.redirect('/paises');         
+      }
+  })
+});
+
             
                  
                    
@@ -332,6 +381,7 @@ router.post('/saveJugador', mycrud.saveJugador);
 router.post('/saveEquipo', mycrud.saveEquipo);
 router.post('/saveHospedaje', mycrud.saveHospedaje);
 router.post('/saveConfederacion', mycrud.saveConfederacion);
+router.post('/savePais', mycrud.savePais);
 
 // actualizar registros
 router.post('/updateArbitro', mycrud.updateArbitro);
@@ -340,5 +390,6 @@ router.post('/updateHospedaje', mycrud.updateHospedaje);
 router.post('/updateJugador', mycrud.updateJugador);
 router.post('/updateEquipo', mycrud.updateEquipo);
 router.post('/updateConfederacion', mycrud.updateConfederacion);
+router.post('/updatePais', mycrud.updatePais);
 
 export default router;

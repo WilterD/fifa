@@ -344,3 +344,60 @@ exports.updateConfederacion = (req, res) => {
   );
 };
 
+
+exports.savePais = (req, res) => {
+  const siglas = req.body.siglas;
+  const nombre = req.body.nombre;
+  const nombreConf = req.body.nombreConf;
+
+
+  conexion.query("SELECT id FROM confederacion WHERE nombre = ?",[nombreConf],(error,id_ConfTabla) =>{
+    confederacion_id = id_ConfTabla[0].id;
+    if(error){
+      console.log(error);
+    }else{
+      conexion.query("INSERT INTO pais SET ?", {
+        siglas:siglas,
+        nombre:nombre,
+        confederacion_id: confederacion_id,
+        nombreConf: nombreConf
+      },
+      (error, results) => {
+        if (error) {
+          console.log(error);
+        } else {
+          res.redirect("/paises");
+        }
+      })
+    }
+  }
+  );
+};
+
+
+exports.updatePais = (req, res) => {
+  const siglas = req.body.siglas;
+  const nombre = req.body.nombre;
+  const nombreConf = req.body.nombreConf;
+  conexion.query("SELECT id FROM confederacion WHERE nombre = ?",[nombreConf],(error,id_ConfTabla) =>{
+    confederacion_id = id_ConfTabla[0].id;
+
+    if(error){
+      console.log(error);
+    }else{
+
+      conexion.query(
+        "UPDATE pais SET ? WHERE siglas = ?",    
+        [{ siglas: siglas, nombre: nombre, confederacion_id: confederacion_id, nombreConf: nombreConf}, siglas],
+        (error, results) => {
+          if (error) {
+            console.log(error);
+          } else {
+            res.redirect("/paises");
+          }
+        }
+      );
+
+    }
+  })};
+
