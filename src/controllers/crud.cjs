@@ -232,17 +232,17 @@ exports.saveJugador = (req, res) => {
   const nombre = req.body.nombre;
   const alias = req.body.alias;
   const posicion = req.body.posicion;
-  const nroCamisa = req.body.nroCamisa;
-  const fechaNac = req.body.fechaNac;
+  const num_camiseta = req.body.num_camiseta;
+  const fecha_nacimiento = req.body.fecha_nacimiento;
 
   conexion.query(
     "INSERT INTO jugador SET ?",
     {
       nombre: nombre,
       alias: alias,
-      fechaNac: fechaNac,
+      fecha_nacimiento: fecha_nacimiento,
       posicion: posicion,
-      nroCamisa: nroCamisa,
+      num_camiseta: num_camiseta,
     },
     (error, results) => {
       if (error) {
@@ -260,9 +260,9 @@ exports.updateJugador = (req, res) => {
   const id = req.body.id;
   const nombre = req.body.nombre;
   const alias = req.body.alias;
-  const fechaNac = req.body.fechaNac;
+  const fecha_nacimiento = req.body.fecha_nacimiento;
   const posicion = req.body.posicion;
-  const nroCamisa = req.body.nroCamisa;
+  const num_camiseta = req.body.num_camiseta;
 
   conexion.query(
     "UPDATE jugador SET ? WHERE id = ?",
@@ -270,9 +270,9 @@ exports.updateJugador = (req, res) => {
       {
         nombre: nombre,
         alias: alias,
-        fechaNac: fechaNac,
+        fecha_nacimiento: fecha_nacimiento,
         posicion: posicion,
-        nroCamisa: nroCamisa,
+        num_camiseta: num_camiseta,
       },
       id,
     ],

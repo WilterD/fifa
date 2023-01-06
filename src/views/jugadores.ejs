@@ -35,12 +35,12 @@
             <td><%= jugador.id %></td>  
             <td><%= jugador.nombre %></td>
             <td><%= jugador.alias %></td>
-            <td><%= jugador.fechaNac %></td>
+            <td><%= jugador.fecha_nacimiento %></td>
             <td><%= jugador.posicion %></td>
-            <td><%= jugador.nroCamisa %></td>
+            <td><%= jugador.num_camiseta %></td>
             <td>
-              <a href="/editarJugador/<%= jugador.id %>" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i></a>
-              <a onclick="confirmar('<%= jugador.id %>','deleteJugador')" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+              <a href="/editarJugador/<%= jugador.id %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+              <a onclick="confirmar('<%= jugador.id %>','deleteJugador')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
             </td>
         </tr>                                   
      <% }) %>

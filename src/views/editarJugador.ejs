@@ -3,7 +3,6 @@
 <head>
   <%- include('partials/head.ejs') %>
   <link rel="stylesheet" href="/css/main.css">
-
     <title>Editar Jugador</title>
 </head>
 <body>
@@ -30,15 +29,15 @@
                           </div>
                           <div class="mb-3">
                             <label for="alias" class="form-label">Fecha de Nacimiento</label>
-                            <input type="text" class="form-control" id="fechaNac" name="fechaNac" tabindex="1" value="<%= name.fechaNac  %>">                        
+                            <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" tabindex="1" value="<%= name.fecha_nacimiento  %>">                        
                           </div>
                           <div class="mb-3">
                             <label for="posicion" class="form-label">Posición</label>
                             <input type="text" class="form-control" id="posicion" name="posicion" tabindex="1" value="<%= name.posicion  %>">                        
                           </div>
                           <div class="mb-3">
-                            <label for="nroCamisa" class="form-label">Número de Camisa</label>
-                            <input type="text" class="form-control" id="nroCamisa" name="nroCamisa" tabindex="1" value="<%= name.nroCamisa  %>">                        
+                            <label for="num_camiseta" class="form-label">Número de Camisa</label>
+                            <input type="text" class="form-control" id="num_camiseta" name="num_camiseta" tabindex="1" value="<%= name.num_camiseta  %>">                        
                           </div>
                           <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/" class="btn btn-secondary">Cancelar</a>
