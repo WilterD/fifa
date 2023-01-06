@@ -55,17 +55,38 @@ exports.saveArbitro = (req, res) => {
 
 
 exports.savePartido = (req, res) => {
-  const fecha = req.body.fecha;
+  const fecha = req.body.fecha.slice(0, 19).replace('T', ' ') + ":00";  //.toISOString().slice(0, 19).replace('T', ' ');
+
   const codEstadio = req.body.codEstadio;
-  const capacidad = req.body.capacidad;
+
+
+  const codEquipo1 = req.body.codEquipo1;
+  const codEquipo2 = req.body.codEquipo2;
+
+  const arbitros  = req.body.arbitros;
+
+  console.log(arbitros);
+
+
 
   conexion.query('INSERT INTO partido SET ?', 
-  {fecha:fecha, codEstadio:codEstadio, capacidad:capacidad},
+  {fecha:fecha, codEstadio:codEstadio},
   (error, results)=>{
     if (error){
       console.log(error);
     } else {
-      res.redirect("/partidos");
+
+      conexion.query('INSERT INTO juegan SET ?',
+       {codEquipo1, codEquipo2},
+       (error, results) => {
+        if (error) {
+          console.log(error);
+        } else {
+          res.redirect("/partidos");
+        }
+       });
+
+      
     }
   })
 }

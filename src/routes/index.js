@@ -144,11 +144,26 @@ router.get("/crearPartido", (req, res) => {
         if (error) {
           console.log(error);
         } else {
-          conexion.query('SELECT * FROM ciudad', (error, ciudad)=>{
+          conexion.query('SELECT * FROM equipo', (error, equipos)=>{
             if (error) {
               console.log(error);
             } else {
-              res.render('crearPartido.ejs', {jornadas:jornadas, estadios:estadios, ciudad:ciudad});
+              conexion.query('SELECT * FROM pais', (error, paises) =>{
+                if (error) {
+                  console.log(error);
+                } else {
+
+                  conexion.query('SELECT * FROM arbitro', (error, arbitros) => {
+                    if (error) {
+                      console.log(error);
+                    } else {
+                      res.render('crearPartido.ejs', {jornadas:jornadas, estadios:estadios, equipos:equipos, paises:paises, arbitros});
+                    }
+                  });          
+                }
+
+              })
+              
             }
           });
           

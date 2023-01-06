@@ -21,14 +21,14 @@ app.use('/', indexRoutes);
 app.use(express.static(join(__dirname,'public')));
 
 
-app.use((err, req, res, next) => {
+/*app.use((err, req, res, next) => {
   Swal.fire({
     icon: 'error',
     title: 'Oops...',
     text: 'Ha ocurrido un error inesperado!',
   });
   res.sendStatus(500);
-});
+}); */
 
 app.listen(3000, () => {
   console.log('Server iniciado en puerto 3000');

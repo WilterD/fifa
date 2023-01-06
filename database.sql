@@ -64,9 +64,9 @@ CREATE TABLE telefonos (
 CREATE TABLE arbitran (
     codArbitro INT NOT NULL,
     FOREIGN KEY(codArbitro) REFERENCES Arbitro(codArbitro),
-    codPartida INT NOT NULL,
-    FOREIGN KEY(codPartida) REFERENCES partida(codPartida),
-    PRIMARY KEY(codArbitro, codPartida)
+    codPartido INT NOT NULL,
+    FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
+    PRIMARY KEY(codArbitro, codPartido)
 );
 
 CREATE TABLE equipo(
@@ -101,9 +101,9 @@ CREATE TABLE alojan(
     FOREIGN KEY(codHotel) REFERENCES hotel(codHotel),
     codEquipo VARCHAR(3) NOT NULL,
     FOREIGN KEY (codEquipo) REFERENCES equipo(codEquipo),
-    codPartida INT NOT NULL, 
-    FOREIGN KEY(codPArtida) REFERENCES partida(codPArtida),
-    PRIMARY KEY(codHotel, codEquipo, codPartida)
+    codPartido INT NOT NULL, 
+    FOREIGN KEY(codPArtido) REFERENCES partido(codPArtido),
+    PRIMARY KEY(codHotel, codEquipo, codPartido)
 );
 
 CREATE TABLE jugador(
@@ -120,9 +120,9 @@ CREATE TABLE jugador(
 CREATE TABLE estadisticasIndividuales (
     codJugador INT NOT NULL,
     FOREIGN KEY(codJugador) REFERENCES jugador(codJugador),
-    codPartida INT NOT NULL,
-    FOREIGN KEY(codPartida) REFERENCES partida(codPartida),
-    PRIMARY KEY(codJugador, codPartida),
+    codPartido INT NOT NULL,
+    FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
+    PRIMARY KEY(codJugador, codPartido),
     ataque INT NOT NULL,
     defensa INT NOT NULL,
     pases INT NOT NULL,
@@ -137,9 +137,9 @@ CREATE TABLE estadisticasIndividuales (
 CREATE TABLE estadisticasPortero (
     codJugador INT NOT NULL,
     FOREIGN KEY(codJugador) REFERENCES jugador(codJugador),
-    codPartida INT NOT NULL,
-    FOREIGN KEY(codPartida) REFERENCES partida(codPartida),
-    PRIMARY KEY(codJugador, codPartida),
+    codPartido INT NOT NULL,
+    FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
+    PRIMARY KEY(codJugador, codPartido),
     disparosAtajados INT NOT NULL,
     disparosDesviados INT NOT NULL,
     golesRecibidos INT NOT NULL,
@@ -150,9 +150,9 @@ CREATE TABLE estadisticasPortero (
 CREATE TABLE estadisticasGenerales (
     codEquipo VARCHAR(3) NOT NULL,
     FOREIGN KEY(codEquipo) REFERENCES equipo(codEquipo),
-    codPartida INT NOT NULL,
-    FOREIGN KEY(codPartida) REFERENCES partida(codPartida),
-    PRIMARY KEY(codEquipo, codPartida),
+    codPartido INT NOT NULL,
+    FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
+    PRIMARY KEY(codEquipo, codPartido),
     posesionBalon INT NOT NULL,
     tirosArco INT NOT NULL,
     tirosArcoAcertados INT NOT NULL,
