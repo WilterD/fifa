@@ -17,7 +17,7 @@
                   <div class="card-header">Editar Equipo</div>
                   <div class="card-body">
                       <form action="/updateEquipo" method="POST">
-                           <input id="codigo" name="<%= equipo.codigo  %>" value="<%= equipo.codigo %>" hidden>
+                           <input id="codigo" name="codigo" value="<%= equipo.codigo %>" hidden>
                           <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre Equipo</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= equipo.nombre %>">                        
@@ -32,7 +32,7 @@
                           </div>  
   
                           <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
-                          <a href="/" class="btn btn-secondary">Cancelar</a>
+                          <a href="/equipos" class="btn btn-secondary">Cancelar</a>
                       </form>      
                   </div>
               </div>     

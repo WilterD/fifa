@@ -28,12 +28,13 @@
               </tr>
           </thead>
           <tbody>
-      <% resultados.forEach((equipo)=>{ %>
+      <%  resultados.forEach((equipo)=>{ %>
         <tr>  
             <td><%= equipo.codigo %></td>  
             <td><%= equipo.nombre %></td>
             <td><%= equipo.directorT %></td>
             <td><%= equipo.eslogan %></td>
+        
             <td>
               <a href="/editarEquipo/<%= equipo.codigo %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
               <a onclick="confirmar('<%= equipo.codigo %>','deleteEquipo')" class="btn btn-outline-danger">

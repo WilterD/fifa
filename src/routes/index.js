@@ -51,7 +51,13 @@ router.get("/equipos", (req, res) => {
     if(error){
       console.log(error);
     }else{
-      res.render('equipos.ejs',{resultados:resultados})
+      conexion.query("SELECT * from color_uniforme", (error,colores) =>{
+        if(error){
+          console.log(error);
+        }else{
+          res.render('equipos.ejs',{resultados:resultados,colores:colores})
+        }
+      })
     }
   });
 });
@@ -222,7 +228,13 @@ router.get("/crearJugador", (req, res) => {
     if(error){
       console.log(error);
     }else{
-      res.render('crearJugador.ejs',{jugador:jugador})
+      conexion.query("SELECT * FROM equipo", (error,equipos) =>{
+        if(error){
+          console.log(error);
+        }else{
+          res.render('crearJugador.ejs',{jugador:jugador,equipos:equipos})
+        }
+      })
     }
   });
 });

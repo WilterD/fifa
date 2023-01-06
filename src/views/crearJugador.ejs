@@ -55,6 +55,14 @@
                                 <input required type="number" class="form-control" id="num_camiseta" name="num_camiseta"
                                     tabindex="1">
                             </div>
+                            <div class="mb-3">
+                                <label for="nombreEquipo" class="form-label">Equipo</label>
+                                <select name="nombreEquipo" id="nombreEquipo" class="form-select"> 
+                                    <% equipos.forEach((equipo)=>{ %>
+                                    <option value="<%= equipo.nombre %>"> <%= equipo.nombre %> </option>
+                                    <% }) %>
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                             <a href="/jugadores" class="btn btn-secondary">Cancelar</a>
                         </form>

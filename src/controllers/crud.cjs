@@ -234,24 +234,39 @@ exports.saveJugador = (req, res) => {
   const posicion = req.body.posicion;
   const num_camiseta = req.body.num_camiseta;
   const fecha_nacimiento = req.body.fecha_nacimiento;
+  const nombreEquipo = req.body.nombreEquipo;
 
-  conexion.query(
-    "INSERT INTO jugador SET ?",
-    {
-      nombre: nombre,
-      alias: alias,
-      fecha_nacimiento: fecha_nacimiento,
-      posicion: posicion,
-      num_camiseta: num_camiseta,
-    },
-    (error, results) => {
-      if (error) {
-        console.log(error);
-      } else {
-        res.redirect("/jugadores");
-      }
+  conexion.query("SELECT codigo FROM equipo WHERE nombre = ?",[nombreEquipo],(error,id_equipoTabla) =>{
+    let equipo_id = id_equipoTabla[0].codigo; // obtener el codigo de ese equipo para guardarlo
+    if(error){
+      console.log(error)
+    }else{
+      conexion.query(
+        "INSERT INTO jugador SET ?",
+        {
+          nombre: nombre,
+          alias: alias,
+          fecha_nacimiento: fecha_nacimiento,
+          posicion: posicion,
+          num_camiseta: num_camiseta,
+          nombreEquipo: nombreEquipo,
+          equipo_id:equipo_id
+        },
+        (error, results) => {
+          if (error) {
+            console.log(error);
+          } else {
+            res.redirect("/jugadores");
+          }
+        }
+      );
     }
-  );
+
+    
+
+  })
+
+  
 };
 
 
