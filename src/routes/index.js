@@ -182,23 +182,15 @@ router.get("/hospedaje", (req, res) => {
             if (error) {
                 throw error;
             }else{         
-              let codHotel = alojamiento[0].id_hotel;
-              conexion.query('SELECT nombre FROM hotel WHERE codHotel=?' ,[codHotel], (error, hotel) => {
+              conexion.query('SELECT nombre FROM hotel', (error, hotel) => {
                 if(error){
                   console.log(error);
                 }else{
-                  let codigo = alojamiento[0].id_equipo;
-                  conexion.query('SELECT nombre FROM equipo WHERE codigo=?' ,[codigo], (error, equipo) => {
+                  conexion.query('SELECT nombre FROM equipo' ,(error, equipo) => {
                     if(error){
                       console.log(error);
                     }else{
-      
-                      console.log(equipo)
-                      console.log(hotel)
-                      console.log(alojamiento[0])
-                     
                       res.render('editarHospedaje.ejs', {hospedaje:alojamiento[0],hotel:hotel,equipo:equipo})
-      
                     }
                   });
                 }

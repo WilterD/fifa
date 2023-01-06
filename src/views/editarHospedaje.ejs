@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <form action="/updateHospedaje" method="POST">
 
-                        <!--aqui se muestra el nombre del hotel a editar-->
+                        <input type="hidden" hidden class="form-control" id="id" name="id" tabindex="1" value="<%= hospedaje.id %>">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Hotel a hospedar el equipo</label>
                             <input type="text" class="form-control" id="nombreHotel" name="nombreHotel" tabindex="1" value="<%= hospedaje.nombreHotel %>">
