@@ -135,6 +135,29 @@ router.get("/crearGrupo", (req, res) => {
 })
 
 
+router.get("/crearPartido", (req, res) => {
+  conexion.query('SELECT * FROM jornadas', (error, jornadas)=>{
+    if(error) {
+      console.log(error);
+    } else {
+      conexion.query('SELECT * FROM estadio', (error, estadios)=> {
+        if (error) {
+          console.log(error);
+        } else {
+          conexion.query('SELECT * FROM ciudad', (error, ciudad)=>{
+            if (error) {
+              console.log(error);
+            } else {
+              res.render('crearPartido.ejs', {jornadas:jornadas, estadios:estadios, ciudad:ciudad});
+            }
+          });
+          
+        }
+      })
+    }
+  });
+})
+
 router.get("/crearJugador", (req, res) => {
   conexion.query('SELECT * FROM jugador', (error, jugador) => {
     if(error){
@@ -302,6 +325,7 @@ router.post('/saveJugador', mycrud.saveJugador);
 router.post('/saveEquipo', mycrud.saveEquipo);
 router.post('/saveHospedaje', mycrud.saveHospedaje);
 router.post('/saveGrupo', mycrud.saveGrupo);
+router.post('/savePartido', mycrud.savePartido);
 
 // actualizar registros
 router.post('/update', mycrud.update);

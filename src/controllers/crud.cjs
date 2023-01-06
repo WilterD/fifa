@@ -53,6 +53,23 @@ exports.saveArbitro = (req, res) => {
   );
 };
 
+
+exports.savePartido = (req, res) => {
+  const fecha = req.body.fecha;
+  const codEstadio = req.body.codEstadio;
+  const capacidad = req.body.capacidad;
+
+  conexion.query('INSERT INTO partido SET ?', 
+  {fecha:fecha, codEstadio:codEstadio, capacidad:capacidad},
+  (error, results)=>{
+    if (error){
+      console.log(error);
+    } else {
+      res.redirect("/partidos");
+    }
+  })
+}
+
 exports.saveHotel = (req, res) => {
   const codHotel = req.body.codHotel;
   const nombre = req.body.nombre;
@@ -288,6 +305,8 @@ exports.updateArbitro = (req, res) => {
     }
   );
 };
+
+
 
 
 

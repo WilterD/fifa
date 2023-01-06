@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/head.ejs') %>
+    <title>CRUD</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+      <div class="container mt-4">     
+            <div class="card border-secondary">  
+                <div class="card-header">Nuevo partido</div>
+                <div class="card-body">
+                    <form action="/savePartido" method="POST">
+                        <div class="mb-3">
+                            <label for="fechaa" class="form-label">Nombre de Equipo</label>
+                            <select id="fecha" name="nombre" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <% jornadas.forEach((jornada)=>{ %>
+                                    <option value="<%= jornada.fecha %>"><%= jornada.fecha %></option>
+                                <% }) %>
+                            </select>
+                        </div>   
+                        <label for="codEstadio" class="form-label">Nombre de Equipo</label>
+                        <select id="codEstadio" name="codEstadio" class="form-select" aria-label="Default select example" tabindex="2" required>
+                            <% estadios.forEach((estadio)=>{ %>
+                                <option value="<%= estadio.codEstadio %>"><%= estadio.codEstadio %> - <%= estadio.nombreEstadio %></option>
+                            <% }) %>
+                            </select>
+                        <div class="mb-3">
+                            <label for="capacidad" class="form-label">Capacidad</label>
+                            <input type="text" class="form-control" id="capacidad" name="capacidad" tabindex="1">
+                        </div>          
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/partidos" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>        
+      </div>
+      <%- include('partials/scripts.ejs') %>
+</body>
+</html>
