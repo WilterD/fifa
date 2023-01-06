@@ -12,11 +12,8 @@
                 <div class="card-header">Editar Hotel</div>
                 <div class="card-body">
                     <form action="/updateHotel" method="POST">
-                         <input id="id" name="id" value="<%= name.id %>" hidden>
-                         <div class="mb-3">
-                            <label for="name" class="form-label">Código del hotel</label>
-                            <input type="text" class="form-control" id="codigo" name="codHotel" tabindex="1" value="<%= name.codHotel  %>">
-                            </div> 
+                         <input id="id" name="codHotel" value="<%= name.codHotel %>" hidden>
+                         
                         <div class="mb-3">
                             <label for="name" class="form-label">Nombre del hotel</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= name.nombre  %>">

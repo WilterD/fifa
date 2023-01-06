@@ -59,14 +59,14 @@ exports.saveHotel = (req, res) => {
 };
 
 exports.updateHotel = (req, res) => {
-  const id = req.body.id;
+
   const codHotel = req.body.codHotel;
   const nombre = req.body.nombre;
   const direccion = req.body.direccion;
 
   conexion.query(
-    "UPDATE hotel SET ? WHERE id = ?",
-    [{ codHotel: codHotel, nombre: nombre, direccion: direccion }, id],
+    "UPDATE hotel SET ? WHERE codHotel = ?",
+    [{nombre: nombre, direccion: direccion }, codHotel],
     (error, results) => {
       if (error) {
         console.log(error);
@@ -153,9 +153,11 @@ exports.saveEquipo = (req, res) => {
 exports.saveHospedaje = (req, res) => {
   let id_hotel = req.body.id_hotel;
   let fecha_inicio = req.body.fecha_inicio;
-  // cambiar fecha_inicio a formato date
-
   let fecha_fin = req.body.fecha_fin;
+  let nombreHotel = req.body.id_hotel;
+  let nombreEquipo = req.body.id_equipo;
+
+
   // obtener el codHotel de hotel y guardar en la variable id_hotel
   conexion.query(
     "SELECT codHotel FROM hotel WHERE nombre = ?",
@@ -182,6 +184,8 @@ exports.saveHospedaje = (req, res) => {
                 {
                   id_hotel: id_hotel,
                   id_equipo: id_equipo,
+                  nombreHotel: nombreHotel,
+                  nombreEquipo: nombreEquipo,
                   fecha_inicio: fecha_inicio,
                   fecha_fin: fecha_fin,
                 },
@@ -200,6 +204,27 @@ exports.saveHospedaje = (req, res) => {
     }
   );
 };
+
+exports.updateHospedaje = (req, res) => {
+  const id = req.body.id;
+  const nombreHotel = req.body.nombreHotel;
+  const nombreEquipo = req.body.nombreEquipo;
+  const fecha_inicio = req.body.fecha_inicio;
+  const fecha_fin = req.body.fecha_fin;
+
+  conexion.query(
+    "UPDATE alojamiento SET ? WHERE id = ?",
+    [{ nombreHotel: nombreHotel, nombreEquipo: nombreEquipo, fecha_inicio: fecha_inicio, fecha_fin:fecha_fin }, id],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/hospedaje");
+      }
+    }
+  );
+};
+
 
 // jugadores
 
@@ -261,6 +286,43 @@ exports.updateJugador = (req, res) => {
   );
 };
 
+
+// continente
+
+exports.saveContinente = (req, res) => {
+  const nombre = req.body.nombre;
+
+  conexion.query(
+    "INSERT INTO continente SET ?",
+    {
+      nombre: nombre
+    },
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/continentes");
+      }
+    }
+  );
+};
+
+exports.updateContinente = (req, res) => {
+  const id = req.body.id;
+  const nombre = req.body.nombre;
+
+  conexion.query(
+    "UPDATE continente SET ? WHERE id = ?",
+    [{ nombre: nombre}, id],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/continentes");
+      }
+    }
+  );
+};
 
 
 

@@ -7,8 +7,6 @@
 <body>
     <%- include('partials/navigation.ejs') %>
     <% if (hospedaje) { %>
-        <% if (hotel) { %>
-        <% if (equipo) { %>
       <div class="container mt-4">     
             <div class="card border-secondary">  
                 <div class="card-header">Nuevo Hospedaje</div>
@@ -17,14 +15,14 @@
 
                         <!--aqui se muestra el nombre del hotel a editar-->
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Hotel a hospedar el equipo <%= hotel.nombre %></label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= hotel.nombre %>">
-                            <%= hotel.nombre %>
+                            <label for="nombre" class="form-label">Hotel a hospedar el equipo</label>
+                            <input type="text" class="form-control" id="nombreHotel" name="nombreHotel" tabindex="1" value="<%= hospedaje.nombreHotel %>">
                         </div>
                         
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Equipo a hospedar en el hotel</label>
-                            <input id="nombre" name="nombre" class="form-control" tabindex="1" required value="<%= equipo.nombre %>" />
+                            <input id="nombre" name="nombreEquipo" class="form-control" tabindex="1" required value="<%= hospedaje.nombreEquipo %>" />
+                            
                         </div>
                         <div class="mb-3">
                             <label for="fecha_inicio" class="form-label">Fecha Inicio</label>
@@ -40,8 +38,6 @@
                 </div>
             </div>        
       </div>
-      <% } %>
-      <% } %>
       <% } %>
       <%- include('partials/scripts.ejs') %>
 </body>

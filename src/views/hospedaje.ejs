@@ -23,6 +23,7 @@
       <tr class="bg-primary text-white">
         <th scope="col">ID</th>
         <th scope="col">Código Hotel</th>            
+        <th scope="col">Nombre Hotel</th>            
         <th scope="col">Código Equipo</th>    
         <th scope="col">Nombre Equipo</th>    
         <th scope="col">Fecha Inicio</th>           
@@ -31,13 +32,13 @@
       </tr>
     </thead>
     <tbody>
-    <% equipos.forEach((equipo)=>{ %>
       <% alojamientos.forEach((hospedaje)=>{ %>
         <tr>  
             <td><%= hospedaje.id %></td>
             <td><%= hospedaje.id_hotel %></td>
+            <td><%= hospedaje.nombreHotel %></td>
             <td><%= hospedaje.id_equipo %></td>
-            <td><%= equipo.nombre %></td>
+            <td><%= hospedaje.nombreEquipo %></td>
             <td><%= hospedaje.fecha_inicio %></td>
             <td><%= hospedaje.fecha_fin %></td>
             <td>
@@ -45,7 +46,6 @@
               <a onclick="confirmar('<%= hospedaje.id %>','deleteHospedaje')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
             </td>
         </tr>                                   
-     <% }) %>
      <% }) %>
     </tbody>
   </table>

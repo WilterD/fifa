@@ -25,11 +25,16 @@ router.get("/crearArbitro", (req, res) => {
   );
   router.get('/editarArbitro/:codArbitro', (req,res)=>{    
     const codArbitro = req.params.codArbitro;
-    conexion.query('SELECT * FROM arbitro WHERE codArbitro=?',[codArbitro] , (error, results) => {
+    conexion.query('SELECT * FROM arbitro WHERE codArbitro=?',[codArbitro] , (error, arbitro) => {
         if (error) {
             throw error;
         }else{            
-            res.render('editarArbitro.ejs', {name:results[0]});            
+            conexion.query("SELECT nombre FROM pais", (error, paises) => {
+              if(error){
+                console.log(error);
+                }else{
+                  res.render('editarArbitro.ejs',{arbitro:arbitro,paises:paises}) 
+                }});
         }        
     });
   });
@@ -114,10 +119,10 @@ router.get('/crearHotel', (req, res) => {
 });
 
 
-router.get('/editarHotel/:id', (req,res)=>{    
-  const id = req.params.id;
+router.get('/editarHotel/:codHotel', (req,res)=>{    
+  const codHotel = req.params.codHotel;
   
-  conexion.query('SELECT * FROM hotel WHERE id=?',[id] , (error, results) => {
+  conexion.query('SELECT * FROM hotel WHERE codHotel=?',[codHotel] , (error, results) => {
       if (error) {
           throw error;
       }else{            
@@ -259,6 +264,57 @@ router.get('/deleteJugador/:id', (req, res) => {
 });
 
 
+router.get("/continentes", (req, res) => {
+  conexion.query('SELECT * FROM continente', (error, continentes) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('continentes.ejs',{continentes:continentes})
+    }
+  });
+});
+
+router.get("/crearContinente", (req, res) => {
+  conexion.query('SELECT * FROM continente', (error, continentes) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('crearContinente.ejs',{continentes:continentes})
+    }
+  });
+});
+
+
+router.get('/deleteContinente/:id', (req, res) => {
+  const id = req.params.id;
+  conexion.query('DELETE FROM continente WHERE id = ?',[id], (error, results)=>{
+      if(error){
+          console.log(error);
+      }else{           
+          res.redirect('/continentes');         
+      }
+  })
+});
+
+router.get('/editarContinente/:id', (req,res)=>{    
+  const id = req.params.id;
+  conexion.query('SELECT * FROM continente WHERE id=?',[id] , (error, continentes) => {
+      if (error) {
+          throw error;
+      }else{            
+        res.render('editarContinente.ejs',{continentes:continentes[0]})
+      }
+    });
+}
+);
+
+            
+                 
+                   
+  
+
+
+
 
 
 
@@ -269,11 +325,14 @@ router.post('/saveHotel', mycrud.saveHotel);
 router.post('/saveJugador', mycrud.saveJugador);
 router.post('/saveEquipo', mycrud.saveEquipo);
 router.post('/saveHospedaje', mycrud.saveHospedaje);
+router.post('/saveContinente', mycrud.saveContinente);
 
 // actualizar registros
 router.post('/updateArbitro', mycrud.updateArbitro);
 router.post('/updateHotel', mycrud.updateHotel);
+router.post('/updateHospedaje', mycrud.updateHospedaje);
 router.post('/updateJugador', mycrud.updateJugador);
 router.post('/updateEquipo', mycrud.updateEquipo);
+router.post('/updateContinente', mycrud.updateContinente);
 
 export default router;
