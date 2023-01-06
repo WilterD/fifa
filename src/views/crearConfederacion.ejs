@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/head.ejs') %>
+    <title>Crear Nueva Confederacion</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+      <div class="container mt-4">     
+            <div class="card border-secondary">  
+                <div class="card-header">Nueva Confederación</div>
+                <div class="card-body">
+                    <form action="/saveConfederacion" method="POST">
+                         
+                        
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre Confederación</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1"></input>
+                        </div> 
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Siglas Confederación</label>
+                            <input type="text" class="form-control" id="siglasConf" name="siglasConf" tabindex="1"></input>
+                        </div> 
+                        
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/confederaciones" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>        
+      </div>
+      <%- include('partials/scripts.ejs') %>
+</body>
+</html>

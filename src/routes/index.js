@@ -308,6 +308,50 @@ router.get('/editarContinente/:id', (req,res)=>{
 }
 );
 
+
+router.get("/confederaciones", (req, res) => {
+  conexion.query('SELECT * FROM confederacion', (error, conf) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('confederaciones.ejs',{conf:conf})
+    }
+  });
+});
+
+router.get("/crearConfederacion", (req, res) => {
+  conexion.query('SELECT * FROM confederacion', (error, conf) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('crearConfederacion.ejs',{conf:conf})
+    }
+  });
+});
+
+router.get('/editarConfederacion/:id', (req,res)=>{    
+  const id = req.params.id;
+  conexion.query('SELECT * FROM confederacion WHERE id=?',[id] , (error, conf) => {
+      if (error) {
+          throw error;
+      }else{            
+        res.render('editarConfederacion.ejs',{conf:conf[0]})
+      }
+    });
+}
+);
+
+router.get('/deleteConfederacion/:id', (req, res) => {
+  const id = req.params.id;
+  conexion.query('DELETE FROM confederacion WHERE id = ?',[id], (error, results)=>{
+      if(error){
+          console.log(error);
+      }else{           
+          res.redirect('/confederaciones');         
+      }
+  })
+});
+
             
                  
                    
@@ -326,6 +370,7 @@ router.post('/saveJugador', mycrud.saveJugador);
 router.post('/saveEquipo', mycrud.saveEquipo);
 router.post('/saveHospedaje', mycrud.saveHospedaje);
 router.post('/saveContinente', mycrud.saveContinente);
+router.post('/saveConfederacion', mycrud.saveConfederacion);
 
 // actualizar registros
 router.post('/updateArbitro', mycrud.updateArbitro);
@@ -334,5 +379,6 @@ router.post('/updateHospedaje', mycrud.updateHospedaje);
 router.post('/updateJugador', mycrud.updateJugador);
 router.post('/updateEquipo', mycrud.updateEquipo);
 router.post('/updateContinente', mycrud.updateContinente);
+router.post('/updateConfederacion', mycrud.updateConfederacion);
 
 export default router;

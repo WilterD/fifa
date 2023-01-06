@@ -325,4 +325,42 @@ exports.updateContinente = (req, res) => {
 };
 
 
+exports.saveConfederacion = (req, res) => {
+  const nombre = req.body.nombre;
+  const siglasConf = req.body.siglasConf;
+
+  conexion.query(
+    "INSERT INTO confederacion SET ?",
+    {
+      nombre: nombre,
+      siglasConf: siglasConf
+    },
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/confederaciones");
+      }
+    }
+  );
+};
+
+
+exports.updateConfederacion = (req, res) => {
+  const id = req.body.id;
+  const nombre = req.body.nombre;
+  const siglasConf = req.body.siglasConf;
+
+  conexion.query(
+    "UPDATE confederacion SET ? WHERE id = ?",
+    [{ nombre: nombre,siglasConf:siglasConf}, id],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/confederaciones");
+      }
+    }
+  );
+};
 

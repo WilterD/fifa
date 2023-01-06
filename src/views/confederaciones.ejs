@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Confederaciones</title>
+</head>
+<body>
+   <%- include('partials/navigation.ejs') %>
+
+   <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      >>> Confederaciones
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="">
+          <a href="/crearConfederacion" class="btn btn-outline-primary fs-2 btn-block"> Agregar <i class='bx bxs-plus-circle'></i></a> 
+        </div> 
+        <div class="col-xs-12 mt-3">
+          <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
+    <thead>
+      <tr class="bg-primary text-white">
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>            
+        <th scope="col">Siglas Confederación</th>            
+        <th scope="col">Acciones</th>            
+      </tr>
+    </thead>
+    <tbody>
+      <% conf.forEach((con)=>{ %>
+        <tr>  
+            <td><%= con.id %></td>
+            <td><%= con.nombre %></td>
+            <td><%= con.siglasConf %></td>
+            <td>
+              <a href="/editarConfederacion/<%= con.id %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+              <a onclick="confirmar('<%= con.id %>','deleteConfederacion')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
+            </td>
+        </tr>                                   
+     <% }) %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</section> 
+
+<section class="home-section">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 mx-auto">
+  Cuida tu ambiente
+</div>
+</div>
+</div>
+</section>
+
+
+  <%- include('partials/scripts.ejs') %>
+</body>
+</html>

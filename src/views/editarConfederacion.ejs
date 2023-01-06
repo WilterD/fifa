@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Editar Confederación</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+      <% if (conf) { %>
+      <div class="container mt-4">          
+          <div class="card border-secondary">  
+                <div class="card-header">Editar Confederación</div>
+                <div class="card-body">
+                    <form action="/updateConfederacion" method="POST">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" hidden id="id" name="id" tabindex="1" value="<%= conf.id  %>"> 
+                          <label for="nombre" class="form-label">Nombre de Confederación</label>
+                          <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= conf.nombre  %>">                        
+                        </div> 
+                        <div class="mb-3">
+                          <label for="siglasConf" class="form-label">Siglas de Confederación</label>
+                        <input type="text" class="form-control" id="siglasConf" name="siglasConf" tabindex="1" value="<%= conf.siglasConf  %>">                        
+                      </div> 
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/confederaciones" class="btn btn-secondary">Cancelar</a>
+                    </form>      
+                </div>
+            </div>     
+      </div>
+      <% } %>
+      <%- include('partials/scripts.ejs') %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
