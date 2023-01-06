@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Países</title>
+</head>
+<body>
+   <%- include('partials/navigation.ejs') %>
+   <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      >>> Dashboard
+    </div>
+    <div class="container mt-5">
+        <h1>Dashboard FIFA</h1>
+        <div class="row mt-5">
+          <div class="col-4">
+            <div class="card bg-primary">
+              <div class="card-body">
+                <h5 class="card-title">Países</h5>
+                <p class="card-text"><%= cantidadPaises %> <i class='bx bx-world'></i></p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card shadow-lg bg-success">
+              <div class="card-body shadow-lg">
+                <h5 class="card-title">Equipos </h5>
+                <p class="card-text"><%= cantidadEquipos %> <i class='bx bx-football'></i></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card bg-danger shadow-lg">
+              <div class="card-body shadow-lg">
+                <h5 class="card-title">Jugadores </h5>
+                <p class="card-text"><%= cantidadJugadores %> <i class='bx bxs-user-badge'></i></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 mt-5">
+            <div class="card bg-danger shadow-lg">
+              <div class="card-body shadow-lg">
+                <h5 class="card-title">Hoteles </h5>
+                <p class="card-text"> <%= cantidadHoteles %><i class='bx bxs-user-badge'></i></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 mt-5">
+            <div class="card bg-warning shadow-lg">
+              <div class="card-body shadow-lg">
+                <h5 class="card-title">Estadios </h5>
+                <p class="card-text"><%= cantidadEstadios %> <i class='bx bxs-user-badge'></i></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 mt-5">
+            <div class="card bg-dark shadow-lg">
+              <div class="card-body shadow-lg">
+                <h5 class="card-title">Árbitros </h5>
+                <p class="card-text"><%= cantidadArbitros %> <i class='bx bxs-user-badge'></i></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section> 
+
+  
+  <%- include('partials/scripts.ejs') %>
+</body>
+</html>

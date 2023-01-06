@@ -72,3 +72,24 @@
       sidebar.classList.toggle("close");
     });
     </script>
+
+    <script>
+      const mensajes = [
+  "Reducir, reutilizar y reciclar es importante para proteger el medio ambiente.",
+  "El cambio climático es una realidad y todos podemos contribuir a combatirlo.",
+  "La conservación de la biodiversidad es fundamental para el equilibrio del ecosistema.",
+  "El agua es un recurso escaso y debemos cuidarla y preservarla.",
+  "La contaminación del aire y del agua es un grave problema para la salud humana y el medio ambiente.",
+  "Es nuestra responsabilidad cuidar del planeta para las generaciones futuras."
+];
+
+const mensaje = document.getElementById("mensaje");
+
+function mostrarMensaje() {
+  const indiceAleatorio = Math.floor(Math.random() * mensajes.length);
+  
+  mensaje.textContent = mensajes[indiceAleatorio];
+}
+
+mostrarMensaje();
+    </script>

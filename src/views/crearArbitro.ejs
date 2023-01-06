@@ -33,12 +33,9 @@
                         </div>   
                         <div class="mb-3">
                             <label for="rol" class="form-label">País del árbitro</label>
-                            <select id="pais" name="pais" class="form-select" aria-label="Default select example" tabindex="2" required>
-                                <% paises.forEach((pais)=>{ %>
-                                    <option value="<%= pais.nombre %>"><%= pais.nombre %></option>
-                                <% }) %>
-                                </select>
-                            </div>                                 
+                            <input type="text" class="form-control" id="pais" name="pais" tabindex="1">
+                        </div>
+                                                          
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/arbitros" class="btn btn-secondary">Cancelar</a>
                     </form>

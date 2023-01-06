@@ -363,10 +363,55 @@ router.get('/deletePais/:siglas', (req, res) => {
   })
 });
 
-            
-                 
+          
+        
                    
   
+router.get("/", (req, res) => {
+  conexion.query('SELECT COUNT(*) AS cantidadPaises FROM pais', (error, resultadosPaises) => {
+    if(error){
+      console.log(error);
+    }else{
+      conexion.query('SELECT COUNT(*) AS cantidadEquipos FROM equipo', (error, resultadosEquipos) => {
+      
+      if(error){
+        console.log(error);
+      }else{
+
+        conexion.query('SELECT COUNT(*) AS cantidadJugadores FROM jugador', (error, resultadosJugadores) => {
+          if(error){
+            console.log(error);
+          }else{
+            conexion.query('SELECT COUNT(*) AS cantidadHoteles FROM equipo', (error, resultadosHoteles) => {
+              if(error){
+                console.log(error);
+              }else{
+                conexion.query('SELECT COUNT(*) AS cantidadArbitros FROM arbitro', (error, resultadosArbitros) => {
+                  if(error){
+                    console.log(error);
+                  }else{
+                    conexion.query('SELECT COUNT(*) AS cantidadEstadios FROM estadio', (error, resultadosEstadios) => {
+                      if(error){
+                        console.log(error);
+                      }else{
+
+                        res.render('dashboard.ejs',{
+                          cantidadPaises:resultadosPaises[0].cantidadPaises,   
+                          cantidadEquipos:resultadosEquipos[0].cantidadEquipos,
+                          cantidadJugadores:resultadosJugadores[0].cantidadJugadores,
+                          cantidadArbitros:resultadosArbitros[0].cantidadArbitros,
+                          cantidadHoteles:resultadosHoteles[0].cantidadHoteles,
+                          cantidadEstadios:resultadosEstadios[0].cantidadEstadios});
+                      }
+                    });
+                  }
+                });
+              }
+            })} 
+          })}
+        })}
+      })}
+    );
 
 
 
