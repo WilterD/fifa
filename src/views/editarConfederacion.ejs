@@ -21,6 +21,17 @@
                           <label for="siglasConf" class="form-label">Siglas de Confederación</label>
                         <input type="text" class="form-control" id="siglasConf" name="siglasConf" tabindex="1" value="<%= conf.siglasConf  %>">                        
                       </div> 
+                      <div class="mb-3">
+                        <label for="continente" class="form-label">Continente</label>
+                        <select id="nombreContinente" name="nombreContinente" class="form-select" tabindex="2">
+                          <option <%= conf.nombreContinente=='América' ? "selected" : '' %> value="América">América</option>
+                          <option <%= conf.nombreContinente=='África' ? "selected" : '' %> value="África">África</option>      
+                          <option <%= conf.nombreContinente=='Europa' ? "selected" : '' %> value="Europa">Europa</option>
+                          <option <%= conf.nombreContinente=='Oceanía' ? "selected" : '' %> value="Oceanía">Oceanía</option> 
+                          <option <%= conf.nombreContinente=='Asia' ? "selected" : '' %> value="Asia">Asia</option>                      
+                        </select>   
+                                
+                    </div> 
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/confederaciones" class="btn btn-secondary">Cancelar</a>
                     </form>      

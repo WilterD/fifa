@@ -264,49 +264,6 @@ router.get('/deleteJugador/:id', (req, res) => {
 });
 
 
-router.get("/continentes", (req, res) => {
-  conexion.query('SELECT * FROM continente', (error, continentes) => {
-    if(error){
-      console.log(error);
-    }else{
-      res.render('continentes.ejs',{continentes:continentes})
-    }
-  });
-});
-
-router.get("/crearContinente", (req, res) => {
-  conexion.query('SELECT * FROM continente', (error, continentes) => {
-    if(error){
-      console.log(error);
-    }else{
-      res.render('crearContinente.ejs',{continentes:continentes})
-    }
-  });
-});
-
-
-router.get('/deleteContinente/:id', (req, res) => {
-  const id = req.params.id;
-  conexion.query('DELETE FROM continente WHERE id = ?',[id], (error, results)=>{
-      if(error){
-          console.log(error);
-      }else{           
-          res.redirect('/continentes');         
-      }
-  })
-});
-
-router.get('/editarContinente/:id', (req,res)=>{    
-  const id = req.params.id;
-  conexion.query('SELECT * FROM continente WHERE id=?',[id] , (error, continentes) => {
-      if (error) {
-          throw error;
-      }else{            
-        res.render('editarContinente.ejs',{continentes:continentes[0]})
-      }
-    });
-}
-);
 
 
 router.get("/confederaciones", (req, res) => {
@@ -324,22 +281,27 @@ router.get("/crearConfederacion", (req, res) => {
     if(error){
       console.log(error);
     }else{
-      res.render('crearConfederacion.ejs',{conf:conf})
+          res.render('crearConfederacion.ejs',{conf:conf})
+        }
+      });
     }
-  });
-});
+  );
 
 router.get('/editarConfederacion/:id', (req,res)=>{    
   const id = req.params.id;
   conexion.query('SELECT * FROM confederacion WHERE id=?',[id] , (error, conf) => {
       if (error) {
           throw error;
-      }else{            
-        res.render('editarConfederacion.ejs',{conf:conf[0]})
+      }else{       
+              res.render('editarConfederacion.ejs',{conf:conf[0]})
+            }     
+          }
+        );
       }
-    });
-}
-);
+    );
+  
+    
+      
 
 router.get('/deleteConfederacion/:id', (req, res) => {
   const id = req.params.id;
@@ -369,7 +331,6 @@ router.post('/saveHotel', mycrud.saveHotel);
 router.post('/saveJugador', mycrud.saveJugador);
 router.post('/saveEquipo', mycrud.saveEquipo);
 router.post('/saveHospedaje', mycrud.saveHospedaje);
-router.post('/saveContinente', mycrud.saveContinente);
 router.post('/saveConfederacion', mycrud.saveConfederacion);
 
 // actualizar registros
@@ -378,7 +339,6 @@ router.post('/updateHotel', mycrud.updateHotel);
 router.post('/updateHospedaje', mycrud.updateHospedaje);
 router.post('/updateJugador', mycrud.updateJugador);
 router.post('/updateEquipo', mycrud.updateEquipo);
-router.post('/updateContinente', mycrud.updateContinente);
 router.post('/updateConfederacion', mycrud.updateConfederacion);
 
 export default router;

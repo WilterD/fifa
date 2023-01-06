@@ -287,53 +287,17 @@ exports.updateJugador = (req, res) => {
 };
 
 
-// continente
-
-exports.saveContinente = (req, res) => {
-  const nombre = req.body.nombre;
-
-  conexion.query(
-    "INSERT INTO continente SET ?",
-    {
-      nombre: nombre
-    },
-    (error, results) => {
-      if (error) {
-        console.log(error);
-      } else {
-        res.redirect("/continentes");
-      }
-    }
-  );
-};
-
-exports.updateContinente = (req, res) => {
-  const id = req.body.id;
-  const nombre = req.body.nombre;
-
-  conexion.query(
-    "UPDATE continente SET ? WHERE id = ?",
-    [{ nombre: nombre}, id],
-    (error, results) => {
-      if (error) {
-        console.log(error);
-      } else {
-        res.redirect("/continentes");
-      }
-    }
-  );
-};
-
-
 exports.saveConfederacion = (req, res) => {
   const nombre = req.body.nombre;
   const siglasConf = req.body.siglasConf;
+  const nombreContinente = req.body.nombreContinente;
 
   conexion.query(
     "INSERT INTO confederacion SET ?",
     {
       nombre: nombre,
-      siglasConf: siglasConf
+      siglasConf: siglasConf,
+      nombreContinente: nombreContinente
     },
     (error, results) => {
       if (error) {
@@ -350,10 +314,11 @@ exports.updateConfederacion = (req, res) => {
   const id = req.body.id;
   const nombre = req.body.nombre;
   const siglasConf = req.body.siglasConf;
+  const nombreContinente = req.body.nombreContinente;
 
   conexion.query(
-    "UPDATE confederacion SET ? WHERE id = ?",
-    [{ nombre: nombre,siglasConf:siglasConf}, id],
+    "UPDATE confederacion SET ? WHERE id = ?",    
+    [{ nombre: nombre, siglasConf: siglasConf, nombreContinente: nombreContinente }, id],
     (error, results) => {
       if (error) {
         console.log(error);

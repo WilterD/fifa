@@ -24,6 +24,7 @@
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>            
         <th scope="col">Siglas Confederación</th>            
+        <th scope="col">Continente</th>            
         <th scope="col">Acciones</th>            
       </tr>
     </thead>
@@ -33,6 +34,7 @@
             <td><%= con.id %></td>
             <td><%= con.nombre %></td>
             <td><%= con.siglasConf %></td>
+            <td><%= con.nombreContinente %></td>
             <td>
               <a href="/editarConfederacion/<%= con.id %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
               <a onclick="confirmar('<%= con.id %>','deleteConfederacion')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
