@@ -14,7 +14,7 @@ router.get("/arbitros", (req, res) => {
 });
 
 router.get("/crearArbitro", (req, res) => {
-  conexion.query('SELECT nombre FROM pais', (error, paises) => {
+  conexion.query('SELECT * FROM pais', (error, paises) => {
     if(error){
       console.log(error);
     }else{
@@ -29,10 +29,19 @@ router.get("/crearArbitro", (req, res) => {
         if (error) {
             throw error;
         }else{  
-                  res.render('editarArbitro.ejs',{arbitro:arbitro[0]}) 
+                 conexion.query('SELECT nombrePais FROM pais', (error, paises) => {
+                  if(error){
+                    console.log(error);
+                  }else{
+                    res.render('editarArbitro.ejs', {arbitro:arbitro[0],paises:paises});
+                  }
                 }
-              });
-            });
+              )
+            }
+           }
+          )
+         }
+        )
 
   router.get('/deleteArbitro/:codArbitro', (req, res) => {
     const codArbitro = req.params.codArbitro;

@@ -18,22 +18,15 @@
                     <form action="/saveArbitro" method="POST">
                         <div class="mb-3">
                         <label for="name" class="form-label">Nombre del árbitro</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1">
+                        <input type="text" class="form-control" id="nombreArbitro" name="nombreArbitro" tabindex="1">
                         </div>   
                         <div class="mb-3">
-                        <label for="rol" class="form-label">Rol del árbitro</label>
-                        <select id="rol" name="rol" class="form-select" aria-label="Default select example" tabindex="2">
-                            <option value="Árbitro Principal" selected>Árbitro Principal </option>
-                            <option value="Árbitro Asistente Uno">Árbitro Asistente Uno</option>                    
-                            <option value="Árbitro Asistente Dos">Árbitro Asistente Dos</option>                    
-                            <option value="Cuarto Árbitro">Cuarto Árbitro</option>                    
-                            <option value="Árbitro Var">Árbitro Var</option>                    
-                            <option value="Árbitro Asistente Var">Árbitro Asistente Var</option>                    
-                        </select>
-                        </div>   
-                        <div class="mb-3">
-                            <label for="rol" class="form-label">País del árbitro</label>
-                            <input type="text" class="form-control" id="pais" name="pais" tabindex="1">
+                            <label for="codArbitro" class="form-label">País del árbitro</label>
+                            <select id="codPais" name="codPais" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <% paises.forEach((pais)=>{ %>
+                                    <option value="<%= pais.codPais %>"><%= pais.nombrePais %></option>
+                                <% }) %>
+                            </select>
                         </div>
                                                           
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>

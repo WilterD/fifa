@@ -21,21 +21,15 @@
                          <input id="codArbitro" hidden name="codArbitro" value="<%= arbitro.codArbitro %>">
                         <div class="mb-3">
                           <label for="nombre" class="form-label">Nombre</label>
-                          <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= arbitro.nombre  %>">                        
+                          <input type="text" class="form-control" id="nombreArbitro" name="nombreArbitro" tabindex="1" value="<%= arbitro.nombreArbitro  %>">                        
                         </div>   
                         <div class="mb-3">
-                          <label for="rol" class="form-label">Rol</label>
-                          <select id="rol" name="rol" class="form-select" tabindex="2">
-                            <option <%= arbitro.rol=='Principal' ? "selected" : '' %> value="Principal">Principal</option>
-                            <option <%= arbitro.rol=='Asistente Adicional' ? "selected" : '' %> value="Asistente Adicional">Asistente Adicional</option>      
-                            <option <%= arbitro.rol=='Asistente Var' ? "selected" : '' %> value="Asistente Var">Asistente Var</option>
-                            <option <%= arbitro.rol=='Asistente Lateral' ? "selected" : '' %> value="Asistente Lateral">Asistente Lateral</option>                      
+                            <label for="pais" class="form-label">Código País</label>
+                            <select id="pais" name="codPais" class="form-select" aria-label="Default select example" tabindex="2" required>
+                              <% paises.forEach((pais)=>{ %>
+                                  <option value="<%= pais.codPais %>"><%= pais.nombrePais %></option>
+                              <% }) %>
                           </select>
-                        </div>   
-                        
-                        <div class="mb-3">
-                            <label for="pais" class="form-label">País</label>
-                            <input type="text" class="form-control" id="pais" name="pais" tabindex="1" value="<%= arbitro.pais  %>">     
                           </div> 
 
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>

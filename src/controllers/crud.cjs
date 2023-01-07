@@ -17,13 +17,12 @@ exports.saveGrupo = (req, res) => {
 
 // arbitros
 exports.saveArbitro = (req, res) => {
-  const nombre = req.body.nombre;
-  const rol = req.body.rol;
-  const pais = req.body.pais;
+  const nombreArbitro = req.body.nombreArbitro;
+  const codPais = req.body.codPais;
 
   conexion.query(
     "INSERT INTO arbitro SET ?",
-    { nombre: nombre, rol: rol, pais: pais },
+    { nombreArbitro: nombreArbitro, codPais: codPais },
     (error, results) => {
       if (error) {
         console.log(error);

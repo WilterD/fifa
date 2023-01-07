@@ -23,8 +23,7 @@
               <tr class="bg-primary text-white">
                 <th scope="col">Código Árbitro</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Tipo de árbitro</th>            
-                <th scope="col">País</th>    
+                <th scope="col">Código País</th>    
                 <th scope="col">Acciones</th>           
               </tr>
             </thead>
@@ -32,9 +31,8 @@
               <% resultados.forEach((user)=>{ %>
                 <tr>  
                     <td><%= user.codArbitro %></td>  
-                    <td><%= user.nombre %></td>
-                    <td><%= user.rol %></td>
-                    <td><%= user.pais %></td>
+                    <td><%= user.nombreArbitro %></td>
+                    <td><%= user.codPais %></td>
                     <td>
                       <a href="/editarArbitro/<%= user.codArbitro %>" class="btn btn-outline-info"> <i class='bx bxs-pencil fs-5'></i></a>
                       <a onclick="confirmar('<%= user.codArbitro %>','deleteArbitro')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
