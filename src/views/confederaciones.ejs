@@ -21,9 +21,8 @@
           <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
     <thead>
       <tr class="bg-primary text-white">
-        <th scope="col">ID</th>
-        <th scope="col">Nombre</th>            
         <th scope="col">Siglas Confederación</th>            
+        <th scope="col">Nombre</th>            
         <th scope="col">Continente</th>            
         <th scope="col">Acciones</th>            
       </tr>
@@ -31,13 +30,12 @@
     <tbody>
       <% conf.forEach((con)=>{ %>
         <tr>  
-            <td><%= con.id %></td>
-            <td><%= con.nombre %></td>
-            <td><%= con.siglasConf %></td>
-            <td><%= con.nombreContinente %></td>
+          <td><%= con.siglasConf %></td>
+            <td><%= con.nombreConf %></td>
+            <td><%= con.continente %></td>
             <td>
-              <a href="/editarConfederacion/<%= con.id %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
-              <a onclick="confirmar('<%= con.id %>','deleteConfederacion')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
+              <a href="/editarConfederacion/<%= con.siglasConf %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+              <a onclick="confirmar('<%= con.siglasConf %>','deleteConfederacion')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
             </td>
         </tr>                                   
      <% }) %>

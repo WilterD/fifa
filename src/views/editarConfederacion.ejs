@@ -18,24 +18,19 @@
                 <div class="card-body">
                     <form action="/updateConfederacion" method="POST">
                         <div class="mb-3">
-                            <input type="text" class="form-control" hidden id="id" name="id" tabindex="1" value="<%= conf.id  %>"> 
+                            <input type="text" class="form-control" hidden id="siglasConf" name="siglasConf" tabindex="1" value="<%= conf.siglasConf  %>"> 
                           <label for="nombre" class="form-label">Nombre de Confederación</label>
-                          <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= conf.nombre  %>">                        
+                          <input type="text" class="form-control" id="nombreConf" name="nombreConf" tabindex="1" value="<%= conf.nombreConf  %>">                        
                         </div> 
-                        <div class="mb-3">
-                          <label for="siglasConf" class="form-label">codPais de Confederación</label>
-                        <input type="text" class="form-control" id="siglasConf" name="siglasConf" tabindex="1" value="<%= conf.siglasConf  %>">                        
-                      </div> 
                       <div class="mb-3">
                         <label for="continente" class="form-label">Continente</label>
-                        <select id="nombreContinente" name="nombreContinente" class="form-select" tabindex="2">
-                          <option <%= conf.nombreContinente=='América' ? "selected" : '' %> value="América">América</option>
-                          <option <%= conf.nombreContinente=='África' ? "selected" : '' %> value="África">África</option>      
-                          <option <%= conf.nombreContinente=='Europa' ? "selected" : '' %> value="Europa">Europa</option>
-                          <option <%= conf.nombreContinente=='Oceanía' ? "selected" : '' %> value="Oceanía">Oceanía</option> 
-                          <option <%= conf.nombreContinente=='Asia' ? "selected" : '' %> value="Asia">Asia</option>                      
+                        <select id="continente" name="continente" class="form-select" tabindex="2">
+                          <option <%= conf.continente=='América' ? "selected" : '' %> value="América">América</option>
+                          <option <%= conf.continente=='África' ? "selected" : '' %> value="África">África</option>      
+                          <option <%= conf.continente=='Europa' ? "selected" : '' %> value="Europa">Europa</option>
+                          <option <%= conf.continente=='Oceanía' ? "selected" : '' %> value="Oceanía">Oceanía</option> 
+                          <option <%= conf.continente=='Asia' ? "selected" : '' %> value="Asia">Asia</option>                      
                         </select>   
-                                
                     </div> 
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/confederaciones" class="btn btn-secondary">Cancelar</a>

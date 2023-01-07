@@ -303,9 +303,9 @@ router.get("/crearJugador", (req, res) => {
 });
 
 // Editar un registro
-router.get('/edit/:id', (req,res)=>{    
-  const id = req.params.id;
-  conexion.query('SELECT * FROM confederacion WHERE id=?',[id] , (error, conf) => {
+router.get('/editarConfederacion/:siglasConf', (req,res)=>{    
+  const siglasConf = req.params.siglasConf;
+  conexion.query('SELECT * FROM confederacion WHERE siglasConf=?',[siglasConf] , (error, conf) => {
       if (error) {
           throw error;
       }else{       
@@ -319,9 +319,9 @@ router.get('/edit/:id', (req,res)=>{
     
       
 
-router.get('/deleteConfederacion/:id', (req, res) => {
-  const id = req.params.id;
-  conexion.query('DELETE FROM confederacion WHERE id = ?',[id], (error, results)=>{
+router.get('/deleteConfederacion/:siglasConf', (req, res) => {
+  const siglasConf = req.params.siglasConf;
+  conexion.query('DELETE FROM confederacion WHERE siglasConf = ?',[siglasConf], (error, results)=>{
       if(error){
           console.log(error);
       }else{           
