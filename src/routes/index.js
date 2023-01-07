@@ -446,6 +446,87 @@ router.get("/", (req, res) => {
     );
 
 
+    router.get('/partidos', (req, res)=>{
+      conexion.query('SELECT * FROM partido', (error, partidos)=>{
+        if (error) {
+          console.log(error);
+        } else {
+          res.render('partidos.ejs', {partidos:partidos});
+        }
+      })
+      
+    })
+
+    
+    
+    
+    router.get("/crearPartido", (req, res) => {
+      conexion.query('SELECT * FROM jornadas', (error, jornadas)=>{
+        if(error) {
+          console.log(error);
+        } else {
+          conexion.query('SELECT * FROM estadio', (error, estadios)=> {
+            if (error) {
+              console.log(error);
+            } else {
+              conexion.query('SELECT * FROM equipo', (error, equipos)=>{
+                if (error) {
+                  console.log(error);
+                } else {
+                  conexion.query('SELECT * FROM pais', (error, paises) =>{
+                    if (error) {
+                      console.log(error);
+                    } else {
+    
+                      conexion.query('SELECT * FROM arbitro', (error, arbitros) => {
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          res.render('crearPartido.ejs', {jornadas:jornadas, estadios:estadios, equipos:equipos, paises:paises, arbitros});
+                        }
+                      });          
+                    }
+    
+                  })
+                  
+                }
+              });
+              
+            }
+          })
+        }
+      });
+    })
+
+
+    router.get("/crearGrupo", (req, res) => {
+      res.render("crearGrupo.ejs");
+    })
+
+    router.get('/grupos', (req, res)=>{
+      conexion.query('SELECT * FROM grupo', (error, grupos)=>{
+        if (error) {
+          console.log(error);
+        } else {
+          res.render('grupos.ejs', {grupos:grupos});
+        }
+      })
+      
+    })
+
+
+    router.get('/deleteGrupo/:letraGrupo', (req, res) => {
+      const letraGrupo = req.params.letraGrupo;
+      conexion.query('DELETE FROM grupo WHERE letraGrupo = ?',[letraGrupo], (error, results)=>{
+          if(error){
+              console.log(error);
+          }else{           
+              res.redirect('/grupos');         
+          }
+      })
+    });
+
+
 
 
 
@@ -459,6 +540,8 @@ router.post('/saveEquipo', mycrud.saveEquipo);
 router.post('/saveHospedaje', mycrud.saveHospedaje);
 router.post('/saveConfederacion', mycrud.saveConfederacion);
 router.post('/savePais', mycrud.savePais);
+router.post('/saveGrupo', mycrud.saveGrupo);
+router.post('/savePartido', mycrud.savePartido);
 
 // actualizar registros
 router.post('/updateArbitro', mycrud.updateArbitro);
