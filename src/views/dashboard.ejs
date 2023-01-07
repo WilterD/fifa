@@ -11,7 +11,7 @@
       <i class='bx bx-menu' ></i>
       >>> Dashboard
     </div>
-    <div class="container mt-5">
+    <div class="container">
         <h1>Dashboard FIFA</h1>
         <div class="row mt-5">
           <div class="col-4">
@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="col-4">
-            <div class="card shadow-lg bg-success">
+            <div class="card shadow-lg" style="background-color:forestgreen;">
               <div class="card-body shadow-lg">
                 <h5 class="card-title">Equipos </h5>
                 <p class="card-text"><%= cantidadEquipos %> <i class='bx bx-football'></i></p>
@@ -40,32 +40,45 @@
             </div>
           </div>
           <div class="col-4 mt-5">
-            <div class="card bg-danger shadow-lg">
+            <div class="card shadow-lg" style="background-color:darkcyan;">
               <div class="card-body shadow-lg">
                 <h5 class="card-title">Hoteles </h5>
-                <p class="card-text"> <%= cantidadHoteles %><i class='bx bxs-user-badge'></i></p>
+                <p class="card-text"> <%= cantidadHoteles %> <i class='bx bx-building-house' ></i></p>
               </div>
             </div>
           </div>
           <div class="col-4 mt-5">
-            <div class="card bg-warning shadow-lg">
+            <div style="background-color: blueviolet;" class="card shadow-lg">
               <div class="card-body shadow-lg">
                 <h5 class="card-title">Estadios </h5>
-                <p class="card-text"><%= cantidadEstadios %> <i class='bx bxs-user-badge'></i></p>
+                <p class="card-text"><%= cantidadEstadios %> <i class='bx bx-sitemap'></i></p>
               </div>
             </div>
           </div>
           <div class="col-4 mt-5">
-            <div class="card bg-dark shadow-lg">
+            <div class="card shadow-lg" style="background-color:midnightblue;">
               <div class="card-body shadow-lg">
                 <h5 class="card-title">Árbitros </h5>
-                <p class="card-text"><%= cantidadArbitros %> <i class='bx bxs-user-badge'></i></p>
+                <p class="card-text"><%= cantidadArbitros %> <i class='bx bxs-user-rectangle' ></i></p>
               </div>
             </div>
           </div>
         </div>
       </div>
   </section> 
+
+  <section class="home-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 mx-auto  mt-3">
+          <div id="mensajes">
+  <p id="mensaje"></p>
+  <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   
   <%- include('partials/scripts.ejs') %>
