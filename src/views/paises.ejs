@@ -29,13 +29,13 @@
           <tbody>
       <%  resultados.forEach((pais)=>{ %>
         <tr>  
-            <td><%= pais.siglas %></td>  
-            <td><%= pais.nombre %></td>
+            <td><%= pais.codPais %></td>  
+            <td><%= pais.nombrePais %></td>
             <td><%= pais.nombreConf %></td>
         
             <td>
-              <a href="/editarpais/<%= pais.siglas %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
-              <a onclick="confirmar('<%= pais.siglas %>','deletePais')" class="btn btn-outline-danger">
+              <a href="/editarpais/<%= pais.codPais %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+              <a onclick="confirmar('<%= pais.codPais %>','deletePais')" class="btn btn-outline-danger">
                 <i class='bx bxs-trash'></i></a>
             </td>
         </tr>                                   

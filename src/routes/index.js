@@ -83,7 +83,7 @@ router.get('/editarEquipo/:codigo', (req,res)=>{
       if (error) {
           throw error;
       }else{            
-        conexion.query('SELECT nombre FROM pais', (error, paises) => {
+        conexion.query('SELECT nombrePais FROM pais', (error, paises) => {
           if(error){
             console.log(error);
           }else{
@@ -351,9 +351,9 @@ router.get("/crearPais", (req, res) => {
   });
 });
 
-router.get('/editarPais/:siglas', (req,res)=>{    
-  const siglas = req.params.siglas;
-  conexion.query('SELECT * FROM pais WHERE siglas=?',[siglas] , (error, pais) => {
+router.get('/editarPais/:codPais', (req,res)=>{    
+  const codPais = req.params.codPais;
+  conexion.query('SELECT * FROM pais WHERE codPais=?',[codPais] , (error, pais) => {
       if (error) {
           throw error;
       }else{  
@@ -369,9 +369,9 @@ router.get('/editarPais/:siglas', (req,res)=>{
           });
                 
 
-router.get('/deletePais/:siglas', (req, res) => {
-  const siglas = req.params.siglas;
-  conexion.query('DELETE FROM pais WHERE siglas = ?',[siglas], (error, results)=>{
+router.get('/deletePais/:codPais', (req, res) => {
+  const codPais = req.params.codPais;
+  conexion.query('DELETE FROM pais WHERE codPais = ?',[codPais], (error, results)=>{
       if(error){
           console.log(error);
       }else{           

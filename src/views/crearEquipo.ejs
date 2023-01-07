@@ -18,9 +18,9 @@
                     <form action="/saveEquipo" method="POST">
                         <div class="mb-3">
                                 <label for="nombreEquipo" class="form-label">Nombre de Equipo</label>
-                                <select id="pais" name="nombre" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <select id="pais" name="nombrePais" class="form-select" aria-label="Default select example" tabindex="2" required>
                                     <% paises.forEach((pais)=>{ %>
-                                        <option value="<%= pais.nombre %>"><%= pais.nombre %></option>
+                                        <option value="<%= pais.nombrePais %>"><%= pais.nombrePais %></option>
                                     <% }) %>
                                     </select>
                          </div>

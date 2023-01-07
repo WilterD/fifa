@@ -96,12 +96,12 @@ exports.updateHotel = (req, res) => {
 
 exports.saveEquipo = (req, res) => {
 
-    const nombre = req.body.nombre;
+    const nombrePais = req.body.nombrePais;
     const directorT = req.body.directorT;
     const eslogan = req.body.eslogan;
     conexion.query(
-      "SELECT siglas FROM pais WHERE nombre = ?",
-      [nombre],
+      "SELECT codPais FROM pais WHERE nombrePais = ?",
+      [nombrePais],
       (error, results) => {
         if (error) {
           Swal.fire({
@@ -112,13 +112,13 @@ exports.saveEquipo = (req, res) => {
           res.sendStatus(500);
           return;
         }
-        let codigo = results[0].siglas;
+        let codigo = results[0].codPais;
 
         conexion.query(
           "INSERT INTO equipo SET ?",
           {
             codigo: codigo,
-            nombre: nombre,
+            nombre: nombrePais,
             eslogan: eslogan,
             directorT: directorT
           },
@@ -361,8 +361,8 @@ exports.updateConfederacion = (req, res) => {
 
 
 exports.savePais = (req, res) => {
-  const siglas = req.body.siglas;
-  const nombre = req.body.nombre;
+  const codPais = req.body.codPais;
+  const nombrePais = req.body.nombrePais;
   const nombreConf = req.body.nombreConf;
 
 
@@ -372,8 +372,8 @@ exports.savePais = (req, res) => {
       console.log(error);
     }else{
       conexion.query("INSERT INTO pais SET ?", {
-        siglas:siglas,
-        nombre:nombre,
+        codPais:codPais,
+        nombrePais:nombrePais,
         confederacion_id: confederacion_id,
         nombreConf: nombreConf
       },
@@ -391,8 +391,8 @@ exports.savePais = (req, res) => {
 
 
 exports.updatePais = (req, res) => {
-  const siglas = req.body.siglas;
-  const nombre = req.body.nombre;
+  const codPais = req.body.codPais;
+  const nombrePais = req.body.nombrePais;
   const nombreConf = req.body.nombreConf;
   conexion.query("SELECT id FROM confederacion WHERE nombre = ?",[nombreConf],(error,id_ConfTabla) =>{
     confederacion_id = id_ConfTabla[0].id;
@@ -402,8 +402,8 @@ exports.updatePais = (req, res) => {
     }else{
 
       conexion.query(
-        "UPDATE pais SET ? WHERE siglas = ?",    
-        [{ siglas: siglas, nombre: nombre, confederacion_id: confederacion_id, nombreConf: nombreConf}, siglas],
+        "UPDATE pais SET ? WHERE codPais = ?",    
+        [{ codPais: codPais, nombrePais: nombrePais, confederacion_id: confederacion_id, nombreConf: nombreConf}, codPais],
         (error, results) => {
           if (error) {
             console.log(error);
