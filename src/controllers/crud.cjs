@@ -56,12 +56,12 @@ exports.updateArbitro = (req, res) => {
 
 exports.saveHotel = (req, res) => {
   const codHotel = req.body.codHotel;
-  const nombre = req.body.nombre;
+  const nombreHotel = req.body.nombreHotel;
   const direccion = req.body.direccion;
 
   conexion.query(
     "INSERT INTO hotel SET ?",
-    { codHotel: codHotel, nombre: nombre, direccion: direccion },
+    { codHotel: codHotel, nombreHotel: nombreHotel, direccion: direccion },
     (error, results) => {
       if (error) {
         console.log(error);
@@ -75,12 +75,12 @@ exports.saveHotel = (req, res) => {
 exports.updateHotel = (req, res) => {
 
   const codHotel = req.body.codHotel;
-  const nombre = req.body.nombre;
+  const nombreHotel = req.body.nombreHotel;
   const direccion = req.body.direccion;
 
   conexion.query(
     "UPDATE hotel SET ? WHERE codHotel = ?",
-    [{nombre: nombre, direccion: direccion }, codHotel],
+    [{nombreHotel: nombreHotel, direccion: direccion }, codHotel],
     (error, results) => {
       if (error) {
         console.log(error);
@@ -95,42 +95,29 @@ exports.updateHotel = (req, res) => {
 
 exports.saveEquipo = (req, res) => {
 
-    const nombrePais = req.body.nombrePais;
-    const directorT = req.body.directorT;
-    const eslogan = req.body.eslogan;
-    conexion.query(
-      "SELECT codPais FROM pais WHERE nombrePais = ?",
-      [nombrePais],
-      (error, results) => {
-        if (error) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Ha ocurrido un error al guardar el equipo!',
-          });
-          res.sendStatus(500);
-          return;
-        }
-        let codigo = results[0].codPais;
+    const codEquipo = req.body.codEquipo;
+    const nombreDT = req.body.nombreDT;
+    const esloganEquipo = req.body.esloganEquipo;
+
+    
 
         conexion.query(
           "INSERT INTO equipo SET ?",
           {
-            codigo: codigo,
-            nombre: nombrePais,
-            eslogan: eslogan,
-            directorT: directorT
+            codEquipo: codEquipo,
+            esloganEquipo: esloganEquipo,
+            nombreDT: nombreDT
           },
           (error, results) => {
             if (error) {
               console.log(error);
             } else {
-              const color1 = req.body.color1;
-              const color2 = req.body.color2;
+              const clocal = req.body.clocal;
+              const cvisitante = req.body.cvisitante;
 
               conexion.query(
-                "INSERT INTO color_uniforme SET ?",
-                { id_equipo: codigo, color1: color1, color2: color2 },
+                "INSERT INTO coloresUniforme SET ?",
+                { codEquipo: codEquipo, clocal: clocal, cvisitante: cvisitante },
                 (error, results) => {
                   if (error) {
                     console.log(error);
@@ -143,16 +130,13 @@ exports.saveEquipo = (req, res) => {
           }
         );
       }
-    );
-  };
 
   exports.updateEquipo = (req, res) => {
-    const codigo = req.body.codigo;
-    const nombre = req.body.nombre;
-    const directorT = req.body.directorT;
-    const eslogan = req.body.eslogan;
+    const codEquipo = req.body.codEquipo;
+    const nombreDT = req.body.nombreDT;
+    const esloganEquipo = req.body.esloganEquipo;
     
-      conexion.query("UPDATE equipo SET ? WHERE codigo = ?", [{nombre: nombre, directorT: directorT, eslogan: eslogan}, codigo], (error, results) => {
+      conexion.query("UPDATE equipo SET ? WHERE codEquipo = ?", [{nombreDT: nombreDT, esloganEquipo: esloganEquipo}, codEquipo], (error, results) => {
         if (error) {
           console.log(error);
         } else {
@@ -185,16 +169,16 @@ exports.saveHospedaje = (req, res) => {
         let id_equipo = req.body.id_equipo;
 
         id_equipo = conexion.query(
-          "SELECT codigo FROM equipo WHERE nombre = ?",
+          "SELECT codEquipo FROM equipo WHERE nombre = ?",
           [id_equipo],
           (error, results) => {
             if (error) {
               console.log(error);
             } else {
-              id_equipo = results[0].codigo;
+              id_equipo = results[0].codEquipo;
 
               conexion.query(
-                "INSERT INTO alojamiento SET ?",
+                "INSERT INTO alojan SET ?",
                 {
                   id_hotel: id_hotel,
                   id_equipo: id_equipo,
@@ -227,7 +211,7 @@ exports.updateHospedaje = (req, res) => {
   const fecha_fin = req.body.fecha_fin;
 
   conexion.query(
-    "UPDATE alojamiento SET ? WHERE id = ?",
+    "UPDATE alojan SET ? WHERE id = ?",
     [{ nombreHotel: nombreHotel, nombreEquipo: nombreEquipo, fecha_inicio: fecha_inicio, fecha_fin:fecha_fin }, id],
     (error, results) => {
       if (error) {
@@ -250,8 +234,8 @@ exports.saveJugador = (req, res) => {
   const fecha_nacimiento = req.body.fecha_nacimiento;
   const nombreEquipo = req.body.nombreEquipo;
 
-  conexion.query("SELECT codigo FROM equipo WHERE nombre = ?",[nombreEquipo],(error,id_equipoTabla) =>{
-    let equipo_id = id_equipoTabla[0].codigo; // obtener el codigo de ese equipo para guardarlo
+  conexion.query("SELECT codEquipo FROM equipo WHERE nombre = ?",[nombreEquipo],(error,id_equipoTabla) =>{
+    let equipo_id = id_equipoTabla[0].codEquipo; // obtener el codEquipo de ese equipo para guardarlo
     if(error){
       console.log(error)
     }else{

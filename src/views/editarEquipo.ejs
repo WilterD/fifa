@@ -17,18 +17,23 @@
                   <div class="card-header">Editar Equipo</div>
                   <div class="card-body">
                       <form action="/updateEquipo" method="POST">
-                           <input id="codigo" name="codigo" value="<%= equipo.codigo %>" hidden>
-                          <div class="mb-3">
+                           <input id="codEquipo" name="codEquipo" value="<%= equipo.codEquipo %>" hidden>
+                          <!-- <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre Equipo</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= equipo.nombre %>">                        
-                          </div>   
+                            <select id="codEquipo" name="codEquipo" class="form-select" aria-label="Default select example" tabindex="2" required>
+                              <option value="" selected="selected" disabled>Seleccione un equipo</option>
+                              <% paises.forEach((pais)=>{ %>
+                                  <option value="<%= pais.codPais %>"><%= pais.nombrePais %></option>
+                              <% }) %>
+                              </select>                        
+                          </div>    -->
                           <div class="mb-3">
                             <label for="nombre" class="form-label">Eslogan</label>
-                            <input type="text" class="form-control" id="eslogan" name="eslogan" tabindex="1" value="<%= equipo.eslogan %>">                        
+                            <input type="text" class="form-control" id="esloganEquipo" name="esloganEquipo" tabindex="1" value="<%= equipo.esloganEquipo %>">                        
                           </div>  
                           <div class="mb-3">
                             <label for="nombre" class="form-label">Director Técnico</label>
-                            <input type="text" class="form-control" id="directorT" name="directorT" tabindex="1" value="<%= equipo.directorT %>">                        
+                            <input type="text" class="form-control" id="nombreDT" name="nombreDT" tabindex="1" value="<%= equipo.nombreDT %>">                        
                           </div>  
   
                           <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>

@@ -21,23 +21,21 @@
             <thead>
               <tr class="bg-primary text-white">
                 <th scope="col">Código</th>
-                <th scope="col">Nombre</th>            
-                <th scope="col">Director Técnico</th>    
                 <th scope="col">Eslogan</th>    
+                <th scope="col">Director Técnico</th>    
                 <th scope="col">Acciones</th>           
               </tr>
           </thead>
           <tbody>
       <%  resultados.forEach((equipo)=>{ %>
         <tr>  
-            <td><%= equipo.codigo %></td>  
-            <td><%= equipo.nombre %></td>
-            <td><%= equipo.directorT %></td>
-            <td><%= equipo.eslogan %></td>
+            <td><%= equipo.codEquipo %></td>  
+            <td><%= equipo.nombreDT %></td>
+            <td><%= equipo.esloganEquipo %></td>
         
             <td>
-              <a href="/editarEquipo/<%= equipo.codigo %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
-              <a onclick="confirmar('<%= equipo.codigo %>','deleteEquipo')" class="btn btn-outline-danger">
+              <a href="/editarEquipo/<%= equipo.codEquipo %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+              <a onclick="confirmar('<%= equipo.codEquipo %>','deleteEquipo')" class="btn btn-outline-danger">
                 <i class='bx bxs-trash'></i></a>
             </td>
         </tr>                                   

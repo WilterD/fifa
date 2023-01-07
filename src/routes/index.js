@@ -59,7 +59,7 @@ router.get("/equipos", (req, res) => {
     if(error){
       console.log(error);
     }else{
-      conexion.query("SELECT * from color_uniforme", (error,colores) =>{
+      conexion.query("SELECT * from coloresUniforme", (error,colores) =>{
         if(error){
           console.log(error);
         }else{
@@ -86,9 +86,9 @@ router.get("/crearEquipo", (req, res) => {
   });
 });
 
-router.get('/editarEquipo/:codigo', (req,res)=>{    
-  const codigo = req.params.codigo;
-  conexion.query('SELECT * FROM equipo WHERE codigo=?',[codigo] , (error, results) => {
+router.get('/editarEquipo/:codEquipo', (req,res)=>{    
+  const codEquipo = req.params.codEquipo;
+  conexion.query('SELECT * FROM equipo WHERE codEquipo=?',[codEquipo] , (error, results) => {
       if (error) {
           throw error;
       }else{            
@@ -103,9 +103,9 @@ router.get('/editarEquipo/:codigo', (req,res)=>{
 });
 }); 
 
-router.get('/deleteEquipo/:codigo', (req, res) => {
-  const codigo = req.params.codigo;
-  conexion.query('DELETE FROM equipo WHERE codigo = ?',[codigo], (error, results)=>{
+router.get('/deleteEquipo/:codEquipo', (req, res) => {
+  const codEquipo = req.params.codEquipo;
+  conexion.query('DELETE FROM equipo WHERE codEquipo = ?',[codEquipo], (error, results)=>{
       if(error){
           console.log(error);
       }else{           
@@ -154,7 +154,7 @@ router.get('/deleteHotel/:codHotel', (req, res) => {
 });
 
 router.get("/hospedaje", (req, res) => {
-  conexion.query('SELECT * FROM alojamiento', (error, alojamientos) => {
+  conexion.query('SELECT * FROM alojan', (error, alojamientos) => {
     if(error){
       console.log(error);
     }else{
@@ -188,7 +188,7 @@ router.get("/hospedaje", (req, res) => {
       router.get('/editarHospedaje/:id', (req,res)=>{    
         const id = req.params.id;
         
-        conexion.query('SELECT * FROM alojamiento WHERE id=?',[id] , (error, alojamiento) => {
+        conexion.query('SELECT * FROM alojan WHERE id=?',[id] , (error, alojan) => {
             if (error) {
                 throw error;
             }else{         
@@ -200,7 +200,7 @@ router.get("/hospedaje", (req, res) => {
                     if(error){
                       console.log(error);
                     }else{
-                      res.render('editarHospedaje.ejs', {hospedaje:alojamiento[0],hotel:hotel,equipo:equipo})
+                      res.render('editarHospedaje.ejs', {hospedaje:alojan[0],hotel:hotel,equipo:equipo})
                     }
                   });
                 }
@@ -211,7 +211,7 @@ router.get("/hospedaje", (req, res) => {
       
       router.get('/deleteHospedaje/:id', (req, res) => {
         const id = req.params.id;
-        conexion.query('DELETE FROM alojamiento WHERE id = ?',[id], (error, results)=>{
+        conexion.query('DELETE FROM alojan WHERE id = ?',[id], (error, results)=>{
             if(error){
                 console.log(error);
             }else{           

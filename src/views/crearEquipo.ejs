@@ -18,29 +18,29 @@
                     <form action="/saveEquipo" method="POST">
                         <div class="mb-3">
                                 <label for="nombreEquipo" class="form-label">Nombre de Equipo</label>
-                                <select id="pais" name="nombrePais" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <select id="codEquipo" name="codEquipo" class="form-select" aria-label="Default select example" tabindex="2" required>
                                     <% paises.forEach((pais)=>{ %>
-                                        <option value="<%= pais.nombrePais %>"><%= pais.nombrePais %></option>
+                                        <option value="<%= pais.codPais %>"><%= pais.nombrePais %></option>
                                     <% }) %>
                                     </select>
                          </div>
                          
                         <div class="mb-3">
                             <label for="director" class="form-label">Director Técnico</label>
-                            <input type="text" required class="form-control" id="directorT" name="directorT" tabindex="1">
+                            <input type="text" required class="form-control" id="nombreDT" name="nombreDT" tabindex="1">
                         </div>  
                         <div class="mb-3">
-                            <label for="eslogan" class="form-label">Eslogan</label>
-                            <input type="text" required class="form-control" id="eslogan" name="eslogan" tabindex="1">
+                            <label for="esloganEquipo" class="form-label">Eslogan</label>
+                            <input type="text" required class="form-control" id="esloganEquipo" name="esloganEquipo" tabindex="1">
                         </div>  
                        
                      <div class="mb-3">
                             <label for="local" class="form-label">Color Uniforme (Local)</label>
-                            <input value="#920920" required type="color" class="form-control" id="local" name="color1" tabindex="1" />  
+                            <input value="#920920" required type="color" class="form-control" id="local" name="clocal" tabindex="1" />  
                      </div>  
                      <div class="mb-3">
                         <label for="visitante" class="form-label">Color Uniforme (Visitante)</label>
-                        <input required type="color" class="form-control" id="visitante" name="color2" tabindex="1" value="#328733">
+                        <input required type="color" class="form-control" id="visitante" name="cvisitante" tabindex="1" value="#328733">
                      </div> 
                          
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
