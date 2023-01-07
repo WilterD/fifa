@@ -287,7 +287,7 @@ exports.saveJugador = (req, res) => {
 
 
 exports.updateJugador = (req, res) => {
-  const id = req.body.id;
+  const codJugador = req.body.codJugador;
   const nombre = req.body.nombre;
   const alias = req.body.alias;
   const fecha_nacimiento = req.body.fecha_nacimiento;
@@ -295,7 +295,7 @@ exports.updateJugador = (req, res) => {
   const num_camiseta = req.body.num_camiseta;
 
   conexion.query(
-    "UPDATE jugador SET ? WHERE id = ?",
+    "UPDATE jugador SET ? WHERE codJugador = ?",
     [
       {
         nombre: nombre,
@@ -304,7 +304,7 @@ exports.updateJugador = (req, res) => {
         posicion: posicion,
         num_camiseta: num_camiseta,
       },
-      id,
+      codJugador,
     ],
     (error, results) => {
       if (error) {

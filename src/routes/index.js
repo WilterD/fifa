@@ -238,10 +238,10 @@ router.get("/crearJugador", (req, res) => {
   });
 });
 
-router.get('/editarJugador/:id', (req,res)=>{    
-  const id = req.params.id;
+router.get('/editarJugador/:codJugador', (req,res)=>{    
+  const codJugador = req.params.codJugador;
   
-  conexion.query('SELECT * FROM jugador WHERE id=?',[id] , (error, results) => {
+  conexion.query('SELECT * FROM jugador WHERE codJugador=?',[codJugador] , (error, results) => {
       if (error) {
           throw error;
       }else{            
@@ -251,9 +251,9 @@ router.get('/editarJugador/:id', (req,res)=>{
 });
 
 
-router.get('/deleteJugador/:id', (req, res) => {
-  const id = req.params.id;
-  conexion.query('DELETE FROM jugador WHERE id = ?',[id], (error, results)=>{
+router.get('/deleteJugador/:codJugador', (req, res) => {
+  const codJugador = req.params.codJugador;
+  conexion.query('DELETE FROM jugador WHERE codJugador = ?',[codJugador], (error, results)=>{
       if(error){
           console.log(error);
       }else{           
