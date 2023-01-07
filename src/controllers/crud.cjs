@@ -65,7 +65,7 @@ exports.savePartido = (req, res) => {
 
   const arbitros  = req.body.arbitros;
 
-  console.log(arbitros);
+  //console.log(arbitros);
 
 
 
@@ -75,20 +75,30 @@ exports.savePartido = (req, res) => {
     if (error){
       console.log(error);
     } else {
-
+      console.log(results.insertId);
       conexion.query('INSERT INTO juegan SET ?',
-       {codEquipo1, codEquipo2},
-       (error, results) => {
+        {codPartido: results.insertId,codEquipo1, codEquipo2},
+        (error, results) => {
         if (error) {
           console.log(error);
         } else {
           res.redirect("/partidos");
         }
-       });
-
-      
+      });
     }
-  })
+  });
+
+ /* conexion.query('INSERT INTO juegan SET ?',
+  {codEquipo1, codEquipo2},
+  (error, results) => {
+   if (error) {
+     console.log(error);
+   } else {
+     res.redirect("/partidos");
+   }
+  }); */
+
+
 }
 
 exports.saveHotel = (req, res) => {

@@ -65,6 +65,7 @@ CREATE TABLE arbitran (
     codArbitro INT NOT NULL,
     FOREIGN KEY(codArbitro) REFERENCES Arbitro(codArbitro),
     codPartido INT NOT NULL,
+    rolArbitro VARCHAR(50) NOT NULL,
     FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
     PRIMARY KEY(codArbitro, codPartido)
 );
@@ -80,7 +81,7 @@ CREATE TABLE equipo(
 
 
 CREATE TABLE juegan(
-    codPartido INT NOT NULL,
+    codPartido INT AUTO_INCREMENT NOT NULL,
     FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
     codEquipo1 VARCHAR(3) NOT NULL,
     FOREIGN KEY(codEquipo1) REFERENCES equipo(codEquipo),
