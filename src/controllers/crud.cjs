@@ -227,28 +227,22 @@ exports.updateHospedaje = (req, res) => {
 // jugadores
 
 exports.saveJugador = (req, res) => {
-  const nombre = req.body.nombre;
-  const alias = req.body.alias;
-  const posicion = req.body.posicion;
-  const num_camiseta = req.body.num_camiseta;
-  const fecha_nacimiento = req.body.fecha_nacimiento;
-  const nombreEquipo = req.body.nombreEquipo;
+  const codEquipo = req.body.codEquipo;
+  const nombreJugador = req.body.nombreJugador;
+  const aliasJugador = req.body.aliasJugador;
+  const posicionJugador = req.body.posicionJugador;
+  const nroCamisa = req.body.nroCamisa;
+  const fechaNac = req.body.fechaNac;
 
-  conexion.query("SELECT codEquipo FROM equipo WHERE nombre = ?",[nombreEquipo],(error,id_equipoTabla) =>{
-    let equipo_id = id_equipoTabla[0].codEquipo; // obtener el codEquipo de ese equipo para guardarlo
-    if(error){
-      console.log(error)
-    }else{
       conexion.query(
         "INSERT INTO jugador SET ?",
         {
-          nombre: nombre,
-          alias: alias,
-          fecha_nacimiento: fecha_nacimiento,
-          posicion: posicion,
-          num_camiseta: num_camiseta,
-          nombreEquipo: nombreEquipo,
-          equipo_id:equipo_id
+          nombreJugador: nombreJugador,
+          aliasJugador: aliasJugador,
+          fechaNac: fechaNac,
+          posicionJugador: posicionJugador,
+          nroCamisa: nroCamisa,
+          codEquipo:codEquipo
         },
         (error, results) => {
           if (error) {
@@ -260,32 +254,24 @@ exports.saveJugador = (req, res) => {
       );
     }
 
-    
-
-  })
-
-  
-};
-
-
 
 exports.updateJugador = (req, res) => {
   const codJugador = req.body.codJugador;
-  const nombre = req.body.nombre;
-  const alias = req.body.alias;
-  const fecha_nacimiento = req.body.fecha_nacimiento;
-  const posicion = req.body.posicion;
-  const num_camiseta = req.body.num_camiseta;
+  const nombreJugador = req.body.nombreJugador;
+  const aliasJugador = req.body.aliasJugador;
+  const fechaNac = req.body.fechaNac;
+  const posicionJugador = req.body.posicionJugador;
+  const nroCamisa = req.body.nroCamisa;
 
   conexion.query(
     "UPDATE jugador SET ? WHERE codJugador = ?",
     [
       {
-        nombre: nombre,
-        alias: alias,
-        fecha_nacimiento: fecha_nacimiento,
-        posicion: posicion,
-        num_camiseta: num_camiseta,
+        nombreJugador: nombreJugador,
+        aliasJugador: aliasJugador,
+        fechaNac: fechaNac,
+        posicionJugador: posicionJugador,
+        nroCamisa: nroCamisa,
       },
       codJugador,
     ],

@@ -20,24 +20,24 @@
                     <form action="/updateJugador" method="POST">
                          <input id="codJugador" name="codJugador" value="<%= name.codJugador %>" hidden>
                         <div class="mb-3">
-                          <label for="nombre" class="form-label">Nombre</label>
-                          <input type="text" class="form-control" id="nombre" name="nombre" tabindex="1" value="<%= name.nombre  %>">                        
+                          <label for="nombreJugador" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="nombreJugador" name="nombreJugador" tabindex="1" value="<%= name.nombreJugador  %>">                        
                         </div>   
                         <div class="mb-3">
-                            <label for="alias" class="form-label">Alias</label>
-                            <input type="text" class="form-control" id="alias" name="alias" tabindex="1" value="<%= name.alias  %>">                        
+                            <label for="aliasJugador" class="form-label">Alias</label>
+                            <input type="text" class="form-control" id="aliasJugador" name="aliasJugador" tabindex="1" value="<%= name.aliasJugador  %>">                        
                           </div>
                           <div class="mb-3">
-                            <label for="alias" class="form-label">Fecha de Nacimiento</label>
-                            <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" tabindex="1" value="<%= name.fecha_nacimiento  %>">                        
+                            <label for="aliasJugador" class="form-label">Fecha de Nacimiento</label>
+                            <input type="text" class="form-control" id="fechaNac" name="fechaNac" tabindex="1" value="<%= name.fechaNac  %>">                        
                           </div>
                           <div class="mb-3">
-                            <label for="posicion" class="form-label">Posición</label>
-                            <input type="text" class="form-control" id="posicion" name="posicion" tabindex="1" value="<%= name.posicion  %>">                        
+                            <label for="posicionJugador" class="form-label">Posición</label>
+                            <input type="text" class="form-control" id="posicionJugador" name="posicionJugador" tabindex="1" value="<%= name.posicionJugador  %>">                        
                           </div>
                           <div class="mb-3">
-                            <label for="num_camiseta" class="form-label">Número de Camisa</label>
-                            <input type="text" class="form-control" id="num_camiseta" name="num_camiseta" tabindex="1" value="<%= name.num_camiseta  %>">                        
+                            <label for="nroCamisa" class="form-label">Número de Camisa</label>
+                            <input type="text" class="form-control" id="nroCamisa" name="nroCamisa" tabindex="1" value="<%= name.nroCamisa  %>">                        
                           </div>
                           <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/jugadores" class="btn btn-secondary">Cancelar</a>

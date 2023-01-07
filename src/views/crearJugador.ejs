@@ -20,22 +20,22 @@
                         <form action="/saveJugador" method="POST">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nombre del Jugador</label>
-                                <input required type="text" class="form-control" id="nombre" name="nombre" tabindex="1">
+                                <input required type="text" class="form-control" id="nombreJugador" name="nombreJugador" tabindex="1">
                             </div>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Alias del Jugador</label>
-                                <input type="text" class="form-control" id="alias" name="alias" tabindex="1">
+                                <input type="text" class="form-control" id="aliasJugador" name="aliasJugador" tabindex="1">
                             </div>
                             <div class="mb-3">
                                 <label for="fecha" class="form-label">Fecha de Nacimiento</label>
-                                <input required type="date" class="form-control" id="fecha_nacimiento"
-                                    name="fecha_nacimiento" tabindex="1">
+                                <input required type="date" class="form-control" id="fechaNac"
+                                    name="fechaNac" tabindex="1">
                             </div>
 
 
                             <div class="mb-3">
-                                <label for="posicion" class="form-label">Posición</label>
-                                <select id="posicion" name="posicion" class="form-select"
+                                <label for="posicionJugador" class="form-label">Posición</label>
+                                <select id="posicionJugador" name="posicionJugador" class="form-select"
                                     aria-label="Default select example" tabindex="2">
                                     <option value="Portero" selected>Portero</option>
                                     <option value="Defensor Central" selected>Defensor Central</option>
@@ -52,14 +52,14 @@
                             </div>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Número de Camisa</label>
-                                <input required type="number" class="form-control" id="num_camiseta" name="num_camiseta"
+                                <input required type="number" class="form-control" id="nroCamisa" name="nroCamisa"
                                     tabindex="1">
                             </div>
                             <div class="mb-3">
-                                <label for="nombreEquipo" class="form-label">Equipo</label>
-                                <select name="nombreEquipo" id="nombreEquipo" class="form-select"> 
+                                <label for="codEquipo" class="form-label">Equipo</label>
+                                <select name="codEquipo" id="codEquipo" class="form-select"> 
                                     <% equipos.forEach((equipo)=>{ %>
-                                    <option value="<%= equipo.nombre %>"> <%= equipo.nombre %> </option>
+                                    <option value="<%= equipo.codEquipo %>"> <%= equipo.codEquipo %> </option>
                                     <% }) %>
                                 </select>
                             </div>
