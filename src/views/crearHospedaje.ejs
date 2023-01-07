@@ -18,28 +18,30 @@
                     <form action="/saveHospedaje" method="POST">
                         <div class="mb-3">
                             <label for="rol" class="form-label">Nombre del Hotel</label>
-                            <select id="id_hotel" name="id_hotel" class="form-select" aria-label="Default select example" tabindex="2" required>
+                            <select id="codHotel" name="codHotel" class="form-select" aria-label="Default select example" tabindex="2" required>
                                 <% hoteles.forEach((hotel)=>{ %>
-                                    <option value="<%= hotel.nombre %>"><%= hotel.nombre %></option>
+                                    <option value="<%= hotel.codHotel %>"><%= hotel.nombreHotel %></option>
                                 <% }) %>
                                 </select>
                             </div>  
                         <div class="mb-3">
                             <label for="rol" class="form-label">Equipo a hospedar en el hotel</label>
-                            <select id="id_equipo" name="id_equipo" class="form-select" aria-label="Default select example" tabindex="2" required>
+                            <select id="codEquipo" name="codEquipo" class="form-select" aria-label="Default select example" tabindex="2" required>
                                 <% equipos.forEach((equipo)=>{ %>
-                                    <option value="<%= equipo.nombre %>"><%= equipo.nombre %></option>
+                                    <option value="<%= equipo.codEquipo %>"><%= equipo.codEquipo %></option>
                                 <% }) %>
                                 </select>
                             </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Fecha Inicio</label>
-                            <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" tabindex="1"></input>
-                        </div> 
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Fecha Cierre</label>
-                            <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" tabindex="1"></input>
-                        </div> 
+
+                            <div class="mb-3">
+                                <label for="rol" class="form-label">Código Partido para la cual se alojarán</label>
+                                <select id="codPartido" name="codPartido" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                    <% partidos.forEach((partido)=>{ %>
+                                        <option value="<%= partido.codPartido %>"><%= partido.codPartido %></option>
+                                    <% }) %>
+                                    </select>
+                                </div>
+                        
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/hospedaje" class="btn btn-secondary">Cancelar</a>
                     </form>

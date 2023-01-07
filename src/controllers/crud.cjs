@@ -149,43 +149,16 @@ exports.saveEquipo = (req, res) => {
 // hospedaje
 
 exports.saveHospedaje = (req, res) => {
-  let id_hotel = req.body.id_hotel;
-  let fecha_inicio = req.body.fecha_inicio;
-  let fecha_fin = req.body.fecha_fin;
-  let nombreHotel = req.body.id_hotel;
-  let nombreEquipo = req.body.id_equipo;
-
-
-  // obtener el codHotel de hotel y guardar en la variable id_hotel
+  const codHotel = req.body.codHotel;
+  const codEquipo = req.body.codEquipo;
+  const codPartido = req.body.codPartido;
+  
   conexion.query(
-    "SELECT codHotel FROM hotel WHERE nombre = ?",
-    [id_hotel],
-    (error, results) => {
-      if (error) {
-        console.log(error);
-      } else {
-        id_hotel = results[0].codHotel;
-
-        let id_equipo = req.body.id_equipo;
-
-        id_equipo = conexion.query(
-          "SELECT codEquipo FROM equipo WHERE nombre = ?",
-          [id_equipo],
-          (error, results) => {
-            if (error) {
-              console.log(error);
-            } else {
-              id_equipo = results[0].codEquipo;
-
-              conexion.query(
                 "INSERT INTO alojan SET ?",
                 {
-                  id_hotel: id_hotel,
-                  id_equipo: id_equipo,
-                  nombreHotel: nombreHotel,
-                  nombreEquipo: nombreEquipo,
-                  fecha_inicio: fecha_inicio,
-                  fecha_fin: fecha_fin,
+                  codHotel: codHotel,
+                  codEquipo: codEquipo,
+                  codPartido:codPartido
                 },
                 (error, results) => {
                   if (error) {
@@ -196,12 +169,7 @@ exports.saveHospedaje = (req, res) => {
                 }
               );
             }
-          }
-        );
-      }
-    }
-  );
-};
+        
 
 exports.updateHospedaje = (req, res) => {
   const id = req.body.id;

@@ -21,29 +21,22 @@
           <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
     <thead>
       <tr class="bg-primary text-white">
-        <th scope="col">ID</th>
         <th scope="col">Código Hotel</th>            
-        <th scope="col">Nombre Hotel</th>            
-        <th scope="col">Código Equipo</th>    
-        <th scope="col">Nombre Equipo</th>    
-        <th scope="col">Fecha Inicio</th>           
-        <th scope="col">Fecha Cierre</th>           
+        <th scope="col">Código Equipo</th>            
+        <th scope="col">Código Partido</th>    
         <th scope="col">Acciones</th>           
       </tr>
     </thead>
     <tbody>
       <% alojamientos.forEach((hospedaje)=>{ %>
         <tr>  
-            <td><%= hospedaje.id %></td>
-            <td><%= hospedaje.id_hotel %></td>
-            <td><%= hospedaje.nombreHotel %></td>
-            <td><%= hospedaje.id_equipo %></td>
-            <td><%= hospedaje.nombreEquipo %></td>
-            <td><%= hospedaje.fecha_inicio %></td>
-            <td><%= hospedaje.fecha_fin %></td>
+            
+            <td><%= hospedaje.codHotel %></td>
+            <td><%= hospedaje.codEquipo %></td>
+            <td><%= hospedaje.codPartido %></td>
             <td>
-              <a href="/editarHospedaje/<%= hospedaje.id %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
-              <a onclick="confirmar('<%= hospedaje.id %>','deleteHospedaje')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
+              <a href="/editarHospedaje/<%=hospedaje.codHotel + hospedaje.codEquipo + hospedaje.codPartido %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+              <a onclick="confirmar('<%=hospedaje.codHotel + hospedaje.codEquipo + hospedaje.codPartido %>','deleteHospedaje')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
             </td>
         </tr>                                   
      <% }) %>

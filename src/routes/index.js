@@ -158,7 +158,7 @@ router.get("/hospedaje", (req, res) => {
     if(error){
       console.log(error);
     }else{
-      conexion.query("SELECT nombre FROM equipo", (error, equipos) => {
+      conexion.query("SELECT codEquipo FROM equipo", (error, equipos) => {
         if(error){
           console.log(error);
         }else{
@@ -170,22 +170,28 @@ router.get("/hospedaje", (req, res) => {
       });
 
       router.get("/crearHospedaje", (req, res) => {
-        conexion.query('SELECT nombre FROM hotel', (error, hoteles) => {
+        conexion.query('SELECT * FROM hotel', (error, hoteles) => {
           if(error){
             console.log(error);
           }else{
-            conexion.query('SELECT nombre FROM equipo', (error, equipos) => {
+            conexion.query('SELECT * FROM equipo', (error, equipos) => {
               if(error){
                 console.log(error);
               }else{
-                res.render('crearHospedaje.ejs',{hoteles:hoteles,equipos:equipos})
+                conexion.query('SELECT * FROM partido', (error, partidos) => {
+                  if(error){
+                    console.log(error);
+                  }else{
+                    res.render('crearHospedaje.ejs',{hoteles:hoteles,equipos:equipos,partidos:partidos})
+                  }
+                });
               }
             });
           }
         });
       });
 
-      router.get('/editarHospedaje/:id', (req,res)=>{    
+      router.get('/editarHospedaje/:codHotel+codEquipo+codPartido', (req,res)=>{    
         const id = req.params.id;
         
         conexion.query('SELECT * FROM alojan WHERE id=?',[id] , (error, alojan) => {
