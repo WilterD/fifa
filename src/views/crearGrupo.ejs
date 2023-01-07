@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/head.ejs') %>
+    <title>Crear grupo</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+
+    <div class="container mt-4">
+        <div class="card border-secondary">
+            <div class="card-header">Nuevo grupo</div>
+            <div class="card-body">
+                <form action="/saveGrupo" method="POST">
+                    <div class="mb-3">
+                        <label for="letraGrupo" class="form-label">Letra del grupo</label>
+                        <input type="text"  required class="form-control" id="letraGrupo" name="letraGrupo" tabindex="1">
+                    </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+ 
+    <%- include('partials/scripts.ejs') %>
+</body>
+</html>

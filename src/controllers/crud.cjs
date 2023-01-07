@@ -1,5 +1,20 @@
 const conexion = require("../database/db.cjs");
 
+exports.saveGrupo = (req, res) => {
+  const letraGrupo = req.body.letraGrupo;
+
+  conexion.query(
+    "INSERT INTO grupo SET ?",
+    {letraGrupo:letraGrupo},
+    (error, results) =>{
+      if(error) {
+        console.log(error);
+      } else {
+        res.redirect("/");
+      }
+    })
+}
+
 // arbitros
 exports.saveArbitro = (req, res) => {
   const nombre = req.body.nombre;

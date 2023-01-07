@@ -286,7 +286,24 @@ router.get("/crearConfederacion", (req, res) => {
     }
   );
 
-router.get('/editarConfederacion/:id', (req,res)=>{    
+
+router.get("/crearGrupo", (req, res) => {
+  res.render("crearGrupo.ejs");
+})
+
+
+router.get("/crearJugador", (req, res) => {
+  conexion.query('SELECT * FROM jugador', (error, jugador) => {
+    if(error){
+      console.log(error);
+    }else{
+      res.render('crearJugador.ejs',{jugador:jugador})
+    }
+  });
+});
+
+// Editar un registro
+router.get('/edit/:id', (req,res)=>{    
   const id = req.params.id;
   conexion.query('SELECT * FROM confederacion WHERE id=?',[id] , (error, conf) => {
       if (error) {
