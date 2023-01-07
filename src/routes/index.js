@@ -366,7 +366,7 @@ router.get('/editarPais/:codPais', (req,res)=>{
       if (error) {
           throw error;
       }else{  
-                conexion.query('SELECT nombre FROM confederacion', (error, conf)=>{
+                conexion.query('SELECT nombreConf FROM confederacion', (error, conf)=>{
                   if(error){
                     console.log(error);
                   }else{
