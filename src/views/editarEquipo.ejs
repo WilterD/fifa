@@ -4,6 +4,25 @@
   <%- include('partials/head.ejs') %>
   <link rel="stylesheet" href="/css/main.css">
     <title>Editar Equipo</title>
+    <style>
+        
+      .image_container{
+          width: 100%;
+          display: flex;
+          justify-content: left;
+          align-items: left;
+      }
+      .image_container img{
+          width: 300px;
+          display: block;
+          background-color: var(--color);
+      }
+      .image_container2 img{
+          width: 300px;
+          display: block;
+          background-color: var(--color2);
+      }
+          </style>
 </head>
 <body>
     <%- include('partials/navigation.ejs') %>
@@ -18,15 +37,6 @@
                   <div class="card-body">
                       <form action="/updateEquipo" method="POST">
                            <input id="codEquipo" name="codEquipo" value="<%= equipo.codEquipo %>" hidden>
-                          <!-- <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre Equipo</label>
-                            <select id="codEquipo" name="codEquipo" class="form-select" aria-label="Default select example" tabindex="2" required>
-                              <option value="" selected="selected" disabled>Seleccione un equipo</option>
-                              <% paises.forEach((pais)=>{ %>
-                                  <option value="<%= pais.codPais %>"><%= pais.nombrePais %></option>
-                              <% }) %>
-                              </select>                        
-                          </div>    -->
                           <div class="mb-3">
                             <label for="nombre" class="form-label">Eslogan</label>
                             <input type="text" class="form-control" id="esloganEquipo" name="esloganEquipo" tabindex="1" value="<%= equipo.esloganEquipo %>">                        
@@ -35,6 +45,22 @@
                             <label for="nombre" class="form-label">Director Técnico</label>
                             <input type="text" class="form-control" id="nombreDT" name="nombreDT" tabindex="1" value="<%= equipo.nombreDT %>">                        
                           </div>  
+
+                          <div class="mb-3 center">
+                            <label for="local" class="form-label">Color Uniforme (Local)</label>
+                            <input class="form-color" value="<%= colores.clocal %>" required type="color" class="form-control" id="color-select" name="clocal" tabindex="1"  />  
+                            <div class="image_container">
+                                <img src="/images/CamisaEspecial.png" width="100px" height="280px" alt="">
+                            </div>
+                     </div>  
+                     
+                     <div class="mb-3">
+                        <label for="visitante" class="form-label">Color Uniforme (Visitante)</label>
+                        <input required type="color" id="color-select2" class="form-color" name="cvisitante" tabindex="1" value="<%= colores.cvisitante %>">
+                        <div class="image_container2">
+                            <img src="/images/CamisaEspecial.png" width="100px" height="280px" alt="">
+                        </div>
+                     </div> 
   
                           <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                           <a href="/equipos" class="btn btn-secondary">Cancelar</a>
@@ -45,6 +71,28 @@
     </section>
       <% } %>
       <%- include('partials/scripts.ejs') %>
+      <script>
+        // Obtener el elemento select y la imagen de la camisa
+        const colorSelect = document.getElementById('color-select');
+        const colorSelect2 = document.getElementById('color-select2');
+        
+    
+        // Agregar un manejador de eventos para cuando el valor del select cambie
+        colorSelect.addEventListener('change', (event) => {
+          // Obtener el valor seleccionado
+        const color = event.target.value;
+        document.documentElement.style.setProperty('--color', color);
+          
+          // Cambiar el color de la imagen de la camisa
+        });
+        colorSelect2.addEventListener('change', (event) => {
+          // Obtener el valor seleccionado
+        const color = event.target.value;
+        document.documentElement.style.setProperty('--color2', color);
+          
+          // Cambiar el color de la imagen de la camisa
+        });
+      </script>
 
 </body>
 </html>

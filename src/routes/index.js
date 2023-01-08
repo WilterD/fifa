@@ -55,7 +55,7 @@ router.get("/crearArbitro", (req, res) => {
   });
 
 router.get("/equipos", (req, res) => {
-  conexion.query('SELECT * FROM equipo', (error, resultados) => {
+  conexion.query('SELECT * FROM equipo', (error, equipos) => {
     if(error){
       console.log(error);
     }else{
@@ -63,7 +63,7 @@ router.get("/equipos", (req, res) => {
         if(error){
           console.log(error);
         }else{
-          res.render('equipos.ejs',{resultados:resultados,colores:colores})
+          res.render('equipos.ejs',{equipos:equipos,colores:colores})
         }
       })
     }
@@ -88,7 +88,7 @@ router.get("/crearEquipo", (req, res) => {
 
 router.get('/editarEquipo/:codEquipo', (req,res)=>{    
   const codEquipo = req.params.codEquipo;
-  conexion.query('SELECT * FROM equipo WHERE codEquipo=?',[codEquipo] , (error, results) => {
+  conexion.query('SELECT * FROM equipo WHERE codEquipo=?',[codEquipo] , (error, equipos) => {
       if (error) {
           throw error;
       }else{            
@@ -96,12 +96,27 @@ router.get('/editarEquipo/:codEquipo', (req,res)=>{
           if(error){
             console.log(error);
           }else{
-            res.render('editarEquipo.ejs', {equipo:results[0],paises:paises});           
-      } 
-    });
-  }
-});
-}); 
+            conexion.query('SELECT * FROM coloresuniforme WHERE codEquipo=?',[codEquipo] , (error, colores) => {
+              if (error) {
+                console.log(error);
+              }else{
+                  res.render('editarEquipo.ejs', {equipo:equipos[0],paises:paises,colores:colores[0]}); 
+              }
+            })
+          }
+        })
+      }
+    }
+  )
+}
+)
+               
+                  
+    
+
+
+              
+                  
 
 router.get('/deleteEquipo/:codEquipo', (req, res) => {
   const codEquipo = req.params.codEquipo;

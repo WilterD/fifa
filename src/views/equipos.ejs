@@ -23,23 +23,27 @@
                 <th scope="col">Código</th>
                 <th scope="col">Eslogan</th>    
                 <th scope="col">Director Técnico</th>    
+                <th scope="col">Color Local</th>    
+                <th scope="col">Color Visitante</th>    
                 <th scope="col">Acciones</th>           
               </tr>
           </thead>
           <tbody>
-      <%  resultados.forEach((equipo)=>{ %>
+            <% for (let i = 0; i < equipos.length; i++) { %>
         <tr>  
-            <td><%= equipo.codEquipo %></td>  
-            <td><%= equipo.nombreDT %></td>
-            <td><%= equipo.esloganEquipo %></td>
+            <td><%= equipos[i].codEquipo %></td>  
+            <td><%= equipos[i].esloganEquipo %></td>
+            <td><%= equipos[i].nombreDT %></td>
+            <td><div class="rounded-circle p-3" style="transform: translate(100%);position:absolute; background-color: <%= colores[i].clocal %>; border-radius: 55px;"></div></td>
+            <td><div class="rounded-circle p-3" style="transform: translate(100%);position:absolute; background-color: <%= colores[i].cvisitante %>; border-radius: 55px;"></div></td>
         
             <td>
-              <a href="/editarEquipo/<%= equipo.codEquipo %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
-              <a onclick="confirmar('<%= equipo.codEquipo %>','deleteEquipo')" class="btn btn-outline-danger">
+              <a href="/editarEquipo/<%= equipos[i].codEquipo %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+              <a onclick="confirmar('<%= equipos[i].codEquipo %>','deleteEquipo')" class="btn btn-outline-danger">
                 <i class='bx bxs-trash'></i></a>
             </td>
         </tr>                                   
-     <% }) %>
+     <% } %>
             </tbody>
           </table>
         </div>
