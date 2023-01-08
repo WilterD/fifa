@@ -4,6 +4,25 @@
     <%- include('partials/head.ejs') %>
     <link rel="stylesheet" href="/css/main.css">
     <title>Crear Nuevo Equipo</title>
+    <style>
+        
+.image_container{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+.image_container img{
+    width: 300px;
+    display: block;
+    background-color: var(--color);
+}
+.image_container2 img{
+    width: 300px;
+    display: block;
+    background-color: var(--color2);
+}
+    </style>
 </head>
 <body>
     <%- include('partials/navigation.ejs') %>
@@ -34,14 +53,24 @@
                             <input type="text" required class="form-control" id="esloganEquipo" name="esloganEquipo" tabindex="1">
                         </div>  
                        
-                     <div class="mb-3">
+                     <div class="mb-3 center">
                             <label for="local" class="form-label">Color Uniforme (Local)</label>
-                            <input value="#920920" required type="color" class="form-control" id="local" name="clocal" tabindex="1" />  
+                            <input class="form-color" value="#920920" required type="color" class="form-control" id="color-select" name="clocal" tabindex="1" />  
+                            <div class="image_container">
+                                <img src="images/CamisaEspecial.png" width="100px" height="280px" alt="">
+                            </div>
                      </div>  
+                     
                      <div class="mb-3">
-                        <label for="visitante" class="form-label">Color Uniforme (Visitante)</label>
-                        <input required type="color" class="form-control" id="visitante" name="cvisitante" tabindex="1" value="#328733">
+                        <label for="visitante" class="form-label">Color Uniforme &nbsp; &nbsp; &nbsp; &nbsp;(Visitante)</label>
+                        <input required type="color" id="color-select2" class="form-color" name="cvisitante" tabindex="1" value="#328733">
+                        <div class="image_container2">
+                            <img src="images/CamisaEspecial.png" width="100px" height="280px" alt="">
+                        </div>
                      </div> 
+
+                     
+                    <!-- <input type="color" id="color-select" /> -->
                          
                         <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/equipos" class="btn btn-secondary">Cancelar</a>
@@ -51,5 +80,27 @@
       </div>
     </section>
       <%- include('partials/scripts.ejs') %>
+      <script>
+        // Obtener el elemento select y la imagen de la camisa
+        const colorSelect = document.getElementById('color-select');
+        const colorSelect2 = document.getElementById('color-select2');
+        
+    
+        // Agregar un manejador de eventos para cuando el valor del select cambie
+        colorSelect.addEventListener('change', (event) => {
+          // Obtener el valor seleccionado
+        const color = event.target.value;
+        document.documentElement.style.setProperty('--color', color);
+          
+          // Cambiar el color de la imagen de la camisa
+        });
+        colorSelect2.addEventListener('change', (event) => {
+          // Obtener el valor seleccionado
+        const color = event.target.value;
+        document.documentElement.style.setProperty('--color2', color);
+          
+          // Cambiar el color de la imagen de la camisa
+        });
+      </script>
 </body>
 </html>
