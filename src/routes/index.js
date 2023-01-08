@@ -247,6 +247,27 @@ router.get('/editarEquipo/:codigo', (req,res)=>{
 });
 });      
 
+router.get('/editarPartido/:id', (req, res)=>{
+  const id = req.params.id;
+
+  conexion.query('SELECT * FROM partido WHERE codPartido=?',[id] , (error, results) => {
+    if (error) {
+        throw error;
+    }else{            
+      conexion.query('SELECT * FROM juegan WHERE codPartido=?',[id], (error, partidos) => {
+        if(error){
+          console.log(error);
+        }else{
+          res.render('editarPartido.ejs', {partido:results[0],partido:partidos[0]});           
+    } 
+  });
+}
+});
+
+
+})
+
+
 // fin editar un registro
 
 // Eliminar un registro
@@ -308,6 +329,23 @@ router.get('/deleteJugador/:id', (req, res) => {
   })
 });
 
+router.get('/deletePartido/:id', (req, res)=> {
+  const id = req.params.id;
+  conexion.query('DELETE FROM partido WHERE codPartido = ?', [id], (error, results)=> {
+    if (error) {
+      console.log(error);
+    } else {
+      conexion.query('DELETE FROM juegan WHERE codPartido = ?', [id],(error, results)=> {
+        if (error) {
+          console.log(error);
+        } else {
+          res.redirect('/partidos');
+        }
+      })
+    }
+  });
+})
+
 router.get('/partidos', (req, res)=>{
   conexion.query('SELECT * FROM partido', (error, partidos)=>{
     if (error) {
@@ -344,9 +382,11 @@ router.post('/savePartido', mycrud.savePartido);
 
 // actualizar registros
 router.post('/update', mycrud.update);
+
 router.post('/updateArbitro', mycrud.updateArbitro);
 router.post('/updateHotel', mycrud.updateHotel);
 router.post('/updateJugador', mycrud.updateJugador);
 router.post('/updateEquipo', mycrud.updateEquipo);
+router.post('/updatePartido', mycrud.updatePartido);
 
 export default router;

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Editar</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+
+      <div class="container mt-4">          
+          <div class="card border-secondary">  
+                <div class="card-header">Editar Partido</div>
+                <div class="card-body">
+                    <form action="/updatePartido" method="POST">
+                        <div class="mb-3">
+                            <label for="fecha" class="form-label">Fecha del partido</label>
+                            <input required type="datetime-local" class="form-control" id="fecha" name="fecha" tabindex="1">
+                        </div>
+
+                    <label for="codEstadio" class="form-label">Seleccione estadio</label>
+                    <select id="codEstadio" name="codEstadio" class="form-select" aria-label="Default select example" tabindex="2" required>
+                        <% estadios.forEach((estadio)=>{ %>
+                            <option value="<%= estadio.codEstadio %>"><%= estadio.codEstadio %> - <%= estadio.nombreEstadio %></option>
+                        <% }) %>
+                    </select>
+                    <label for="codEquipo1" class="form-label">Nombre de Equipo 1</label>
+                    <select id="codEquipo1" name="codEquipo1" class="form-select" aria-label="Default select example" tabindex="2" required>
+                        <% equipos.forEach((equipo)=>{ %>
+                            <option value="<%= equipo.codEquipo %>"><%= equipo.codEquipo %> - <% paises.forEach((pais)=>{ %>
+                                <% if (equipo.codEquipo == pais.codPais) { %>
+                                    <%= pais.nombrePais %>
+                                <% } %>
+                           <% }) %> </option>
+                        <% }) %>
+                    </select>
+                    <label for="codEquipo2" class="form-label">Nombre de Equipo 2</label>
+                    <select id="codEquipo2" name="codEquipo2" class="form-select" aria-label="Default select example" tabindex="2" required>
+                        <% equipos.forEach((equipo)=>{ %>
+                            <option value="<%= equipo.codEquipo %>"><%= equipo.codEquipo %> - <% paises.forEach((pais)=>{ %>
+                                <% if (equipo.codEquipo == pais.codPais) { %>
+                                    <%= pais.nombrePais %>
+                                <% } %>
+                           <% }) %> </option>
+                        <% }) %>
+                    </select>
+                    </form>      
+                </div>
+            </div>     
+      </div>
+
+      <%- include('partials/scripts.ejs') %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

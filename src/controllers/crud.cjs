@@ -355,3 +355,33 @@ exports.updateArbitro = (req, res) => {
       }
     });
   };
+
+
+
+  exports.updatePartido = (req, res)=>{
+    const codPartido = req.body.codigo;
+    const fecha = req.body.fecha;
+    const codEstadio = req.body.estadio;
+    const codEquipo1 = req.body.codEquipo1;
+    const codEquipo2 = req.body.codEquipo2;
+
+    conexion.query("UPDATE equipo SET ? WHERE codPartido = ?", [{fecha, codEstadio}, codPartido], (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        conexion.query('UPDATE juegan SET ? WHERE codPartido = ?', [{codEquipo1, codEquipo2}, codPartido], (error, results) => {
+          if (error) {
+            console.log(error);
+          }  else {
+            res.redirect("/partidos");
+          }
+        
+        });
+
+        
+      }
+    });
+
+
+
+  }

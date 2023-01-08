@@ -165,3 +165,9 @@ CREATE TABLE estadisticasGenerales (
     pasesLargos INT NOT NULL,
     entradas INT NOT NULL
 );
+
+
+ALTER TABLE juegan
+ADD CONSTRAINT juegan_cascade
+FOREIGN KEY (codPartido) REFERENCES partido (codPartido)
+ON DELETE CASCADE;
