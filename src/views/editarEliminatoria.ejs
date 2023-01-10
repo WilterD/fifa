@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/main.css">
+    <title>Editar Eliminatoria</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+    <section class="home-section">
+      <div class="home-content">
+        <i class='bx bx-menu' ></i>
+      </div>
+      <% if (eliminatoria) { %>
+        
+      <div class="container mt-4">          
+          <div class="card border-secondary">  
+                <div class="card-header">Editar Eliminatoria</div>
+                <div class="card-body">
+                    <form action="/updateEliminatoria" method="POST">
+                         <div class="mb-3">
+                            <label for="codPais" class="form-label">Equipo</label>
+                            <select id="codPais" name="codPais" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <option selected disabled value="Selecciona un país">Selecciona un equipo</option>
+                              <% paises.forEach((pais)=>{ %>
+                                  <option value="<%= pais.codPais %>"><%= pais.nombrePais %></option>
+                              <% }) %>
+                          </select>
+                          </div> 
+                          <div class="mb-3">
+                            <label for="Juegos Ganados" class="form-label">Juegos Ganados</label>
+                            <input value="<%= eliminatoria.juegos_ganados %>" type="number" required class="form-control" id="juegos_ganados" name="juegos_ganados" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="Juegos Perdidos" class="form-label">Juegos Perdidos</label>
+                            <input value="<%= eliminatoria.juegos_perdidos %>" type="number" required class="form-control" id="juegos_perdidos" name="juegos_perdidos" tabindex="1">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="Goles a Favor" class="form-label">Goles a Favor</label>
+                            <input value="<%= eliminatoria.goles_a_favor %>" type="number" required class="form-control" id="goles_a_favor" name="goles_a_favor" tabindex="1">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="Goles en Contra" class="form-label">Goles en Contra</label>
+                            <input value="<%= eliminatoria.goles_en_contra %>" type="number" required class="form-control" id="goles_en_contra" name="goles_en_contra" tabindex="1">
+                        </div>   
+                        <div class="mb-3">
+                            <label for="clasificacion" class="form-label">Clasificación de País</label>
+                            <select id="clasificacion" name="clasificacion" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <option disabled selected value="Anfitrión">Selecciona una clasificación</option>
+                                    <option value="Anfitrión">Anfitrión</option>
+                                    <option value="1ro del grupo">1ro del grupo</option>
+                                    <option value="Top 2">Top 2</option>
+                                    <option value="Top 3">Top 3</option>
+                                    <option value="Top 4">Top 4</option>
+                                    <option value="Playoff de Europa">Playoff de Europa</option>
+                                    <option value="Playoff de África">Playoff de África</option>
+                                    <option value="Repechaje">Repechaje</option>
+                                </select>
+                     </div>
+                       
+
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/eliminatorias" class="btn btn-secondary">Cancelar</a>
+                    </form>      
+                </div>
+            </div>     
+      </div>
+    </section>
+      <% } %>
+      <%- include('partials/scripts.ejs') %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
