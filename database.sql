@@ -20,7 +20,7 @@ CREATE TABLE pais(
     nombrePais VARCHAR(50) NOT NULL UNIQUE,
     nombreConf VARCHAR(50),
     FOREIGN KEY(nombreConf) REFERENCES confederacion(nombreConf),
-    letraGrupo VARCHAR(50),
+    letraGrupo VARCHAR(1),
     FOREIGN KEY(letraGrupo) REFERENCES grupo(letraGrupo)
 );
 
@@ -164,3 +164,39 @@ CREATE TABLE estadisticasGenerales (
     pasesLargos INT NOT NULL,
     entradas INT NOT NULL
 );
+
+CREATE TABLE eliminatorias(
+    codEquipo VARCHAR(3),
+    FOREIGN KEY(codEquipo) REFERENCES equipo(codEquipo),
+    juegos_ganados INT NOT NULL,
+    juegos_perdidos INT NOT NULL,
+    goles_a_favor INT NOT NULL,
+    goles_en_contra INT NOT NULL,
+    clasificacion VARCHAR(255)
+);
+
+CREATE TABLE fase_eliminatorias(
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    codEquipo_a VARCHAR(3) NOT NULL,
+    FOREIGN KEY(codEquipo_a) REFERENCES equipo(codEquipo),
+    codEquipo_b VARCHAR(3) NOT NULL,
+    FOREIGN KEY(codEquipo_b) REFERENCES equipo(codEquipo),
+    ronda VARCHAR(255)
+);
+
+CREATE TABLE fase_grupos(
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    letraGrupo VARCHAR(1) NOT NULL,
+    FOREIGN KEY(letraGrupo) REFERENCES grupo(letraGrupo),
+    codEquipo VARCHAR(3) NOT NULL,
+    FOREIGN KEY(codEquipo) REFERENCES codEquipo(equipo),
+    partidos_jugados INT NOT NULL,
+    partidos_ganados INT NOT NULL,
+    empate INT NOT NULL,
+    partidos_perdidos INT NOT NULL,
+    goles_a_favor INT NOT NULL,
+    goles_en_contra INT NOT NULL,
+    dif_goles INT NOT NULL,
+    puntos INT NOT NULL
+);
+

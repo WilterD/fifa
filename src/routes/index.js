@@ -542,6 +542,18 @@ router.get("/", (req, res) => {
     });
 
 
+    router.get('/estadisticasGenerales', (req, res)=>{
+      conexion.query('SELECT * FROM estadisticasgenerales', (error, estadistica)=>{
+        if (error) {
+          console.log(error);
+        } else {
+          res.render('estadisticasGenerales.ejs', {estadistica:estadistica});
+        }
+      })
+      
+    })
+
+
 
 
 

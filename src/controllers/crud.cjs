@@ -149,6 +149,8 @@ exports.saveEquipo = (req, res) => {
 
     
 
+    
+
         conexion.query(
           "INSERT INTO equipo SET ?",
           {
