@@ -575,6 +575,27 @@ router.get("/", (req, res) => {
         })
       });
 
+      router.get('/editarEliminatoria/:codPais', (req,res)=>{    
+        const codPais = req.params.codPais;
+        conexion.query('SELECT * FROM eliminatorias WHERE codPais=?',[codPais] , (error, eliminatoria) => {
+            if (error) {
+                throw error;
+            }else{  
+                     conexion.query('SELECT * FROM pais', (error, paises) => {
+                      if(error){
+                        console.log(error);
+                      }else{
+                        res.render('editarEliminatoria.ejs', {eliminatoria:eliminatoria[0],paises:paises});
+                      }
+                    }
+                  )
+                }
+               }
+              )
+             }
+            )
+    
+
 
 
 
