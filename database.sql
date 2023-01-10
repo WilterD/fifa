@@ -86,7 +86,8 @@ CREATE TABLE juegan(
     FOREIGN KEY(codEquipo1) REFERENCES equipo(codEquipo),
     codEquipo2 VARCHAR(3) NOT NULL,
     FOREIGN KEY(codEquipo2) REFERENCES equipo(codEquipo),
-    PRIMARY KEY(codPartido)
+    PRIMARY KEY(codPartido),
+    ronda VARCHAR(255) NOT NULL,
 );
 
 CREATE TABLE coloresUniforme (
@@ -173,15 +174,6 @@ CREATE TABLE eliminatorias(
     goles_a_favor INT NOT NULL,
     goles_en_contra INT NOT NULL,
     clasificacion VARCHAR(255)
-);
-
-CREATE TABLE fase_eliminatorias(
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    codEquipo_a VARCHAR(3) NOT NULL,
-    FOREIGN KEY(codEquipo_a) REFERENCES equipo(codEquipo),
-    codEquipo_b VARCHAR(3) NOT NULL,
-    FOREIGN KEY(codEquipo_b) REFERENCES equipo(codEquipo),
-    ronda VARCHAR(255)
 );
 
 CREATE TABLE fase_grupos(
