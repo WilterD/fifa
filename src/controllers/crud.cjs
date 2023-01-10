@@ -1,4 +1,7 @@
 const conexion = require("../database/db.cjs");
+const Swal = require('sweetalert2')
+
+
 
 exports.saveGrupo = (req, res) => {
   const letraGrupo = req.body.letraGrupo;
@@ -383,4 +386,55 @@ exports.updatePais = (req, res) => {
       );
 
     }
+
+
+    exports.saveEliminatoria = (req, res) => {
+      const codPais = req.body.codPais;
+      const juegos_ganados = req.body.juegos_ganados;
+      const juegos_perdidos = req.body.juegos_perdidos;
+      const goles_a_favor = req.body.goles_a_favor;
+      const goles_en_contra = req.body.goles_en_contra;
+      const clasificacion = req.body.clasificacion;
+    
+      conexion.query(
+        "INSERT INTO eliminatorias SET ?",
+        {codPais:codPais,
+        juegos_ganados:juegos_ganados,
+        juegos_perdidos:juegos_perdidos,
+        goles_a_favor:goles_a_favor,
+        goles_en_contra:goles_en_contra,
+        clasificacion:clasificacion
+        },
+        (error, results) =>{
+          if(error) {
+            
+           console.log("error")
+            
+            console.log(error);
+          } else {
+            res.redirect("/eliminatorias");
+          }
+        })
+    }
+
+
+    exports.updateEliminatoria = (req, res) => {
+      const codPais = req.body.codPais;
+      const nombrePais = req.body.nombrePais;
+      const nombreConf = req.body.nombreConf;
+      
+    
+          conexion.query(
+            "UPDATE pais SET ? WHERE codPais = ?",    
+            [{ codPais: codPais, nombrePais: nombrePais, nombreConf: nombreConf}, codPais],
+            (error, results) => {
+              if (error) {
+                console.log(error);
+              } else {
+                res.redirect("/paises");
+              }
+            }
+          );
+    
+        }
 

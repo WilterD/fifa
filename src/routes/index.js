@@ -542,6 +542,40 @@ router.get("/", (req, res) => {
     });
 
 
+    router.get('/eliminatorias', (req, res)=>{
+      conexion.query('SELECT * FROM eliminatorias', (error, eliminatoria)=>{
+        if (error) {
+          console.log(error);
+        } else {
+          res.render('eliminatorias.ejs', {eliminatoria:eliminatoria});
+        }
+      })
+      
+    })
+
+    router.get("/crearEliminatoria", (req, res) => {
+      conexion.query('SELECT * FROM pais', (error, paises) => {
+        if(error){
+          console.log(error);
+        }else{
+            res.render('crearEliminatoria.ejs',{paises:paises})
+            }
+          });
+        }
+      );
+     
+      router.get('/deleteEliminatoria/:codPais', (req, res) => {
+        const codPais = req.params.codPais;
+        conexion.query('DELETE FROM eliminatorias WHERE codPais = ?',[codPais], (error, results)=>{
+            if(error){
+                console.log(error);
+            }else{           
+                res.redirect('/eliminatorias');         
+            }
+        })
+      });
+
+
 
 
 
@@ -557,6 +591,7 @@ router.post('/saveConfederacion', mycrud.saveConfederacion);
 router.post('/savePais', mycrud.savePais);
 router.post('/saveGrupo', mycrud.saveGrupo);
 router.post('/savePartido', mycrud.savePartido);
+router.post('/saveEliminatoria', mycrud.saveEliminatoria);
 
 // actualizar registros
 router.post('/updateArbitro', mycrud.updateArbitro);
@@ -566,5 +601,6 @@ router.post('/updateJugador', mycrud.updateJugador);
 router.post('/updateEquipo', mycrud.updateEquipo);
 router.post('/updateConfederacion', mycrud.updateConfederacion);
 router.post('/updatePais', mycrud.updatePais);
+router.post('/updateEliminatoria', mycrud.updateEliminatoria);
 
 export default router;

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Eliminatorias</title>
+    
+</head>
+<body>
+   <%- include('partials/navigation.ejs') %>
+  <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      >>> Eliminatorias
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="">
+          <a href="/crearEliminatoria" class="btn btn-outline-primary fs-2 btn-block ml-auto"> Agregar <i class='bx bxs-plus-circle'></i></a> 
+        </div> 
+        <div class="col-xs-12 mt-3">
+          <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th scope="col">Código Equipo</th>
+                <th scope="col">JG</th>
+                <th scope="col">JP</th>    
+                <th scope="col">GF</th>           
+                <th scope="col">GC</th>           
+                <th scope="col">Clasificación</th>           
+                <th scope="col">Acciones</th>           
+              </tr>
+            </thead>
+            <tbody>
+              <% eliminatoria.forEach((elim)=>{ %>
+                <tr>  
+                    <td><%= elim.codPais %></td>  
+                    <td><%= elim.juegos_ganados %></td>
+                    <td><%= elim.juegos_perdidos %></td>
+                    <td><%= elim.goles_a_favor %></td>
+                    <td><%= elim.goles_en_contra %></td>
+                    <td><%= elim.clasificacion %></td>
+                    <td>
+                      <a href="/editarEliminatoria/<%= elim.codPais %>" class="btn btn-outline-info"> <i class='bx bxs-pencil fs-5'></i></a>
+                      <a onclick="confirmar('<%= elim.codPais %>','deleteEliminatoria')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
+                    </td>
+                </tr>                                   
+             <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+  <section class="home-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 mx-auto">
+          <div id="mensajes">
+  <p id="mensaje"></p>
+  <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <%- include('partials/scripts.ejs') %>
+</body>
+</html>

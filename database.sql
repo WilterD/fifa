@@ -164,3 +164,13 @@ CREATE TABLE estadisticasGenerales (
     pasesLargos INT NOT NULL,
     entradas INT NOT NULL
 );
+
+CREATE TABLE eliminatorias(
+    codPais VARCHAR(3) NOT NULL PRIMARY KEY,
+    FOREIGN KEY(codPais) REFERENCES pais(codPais),
+    juegos_ganados INT NOT NULL,
+    juegos_perdidos INT NOT NULL,
+    goles_a_favor INT NOT NULL,
+    goles_en_contra INT NOT NULL,
+    clasificacion VARCHAR(255)
+);

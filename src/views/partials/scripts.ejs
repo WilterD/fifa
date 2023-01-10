@@ -4,7 +4,44 @@
   <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>        
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   
-  <script > 
+  <script type="text/javascript"> 
+
+let submitBtn = document.getElementById("submit-btn");
+  submitBtn.addEventListener("click", sendData);
+
+function sendData(){
+  // Aquí va tu lógica de petición HTTP
+  try {
+    fetch('http://localhost:3000', {
+    method: 'POST',
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Manejar respuesta exitosa
+  });
+  } catch (error) {
+    Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: '¡Ha ocurrido un error!',
+  showConfirmButton: false
+
+});
+
+setTimeout(function(){
+   window.location.href = "http://localhost:3000/eliminatorias";
+}, 3000);
+
+
+  }
+}
+
 
   $(document).ready(function(){
     $('#miTabla').DataTable({
