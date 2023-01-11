@@ -8,23 +8,44 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script type="text/javascript">
-   let url = window.location.href;
+
+  let url = window.location.href;
   let submitBtn = document.getElementById("submit-btn");
-    submitBtn.addEventListener("click", sendData);
+  submitBtn.addEventListener("click", sendData);
+
   // Obtener URL
-  function sendData() {
+  function sendData(e) {
+    e.preventDefault();
     try {
+      let codPais = document.getElementById('codPais').value
+      let nombrePais = document.getElementById('nombrePais').value
+      let nombreConf = document.getElementById('nombreConf').value
+      const datos = { codPais, nombrePais, nombreConf }
+
+
       fetch('http://localhost:3000/savePais', {
         method: 'POST',
-        body: JSON.stringify(data)
+        body: JSON.stringify(datos),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
         .then(response => {
           if (!response.ok) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: '¡Ha ocurrido un error!',
+              showConfirmButton: false
+            });
             throw new Error(response.statusText);
+          }else{
+            window.location = 'http://localhost:3000/paises';
           }
           return response.json();
         })
-        .then(data => {
+        .then(datos => {
+
         });
     } catch (error) {
       Swal.fire({
@@ -33,13 +54,8 @@
         text: '¡Ha ocurrido un error!',
         showConfirmButton: false
       });
-      
     }
   }
-
-
-
-
 
 
   $(document).ready(function () {

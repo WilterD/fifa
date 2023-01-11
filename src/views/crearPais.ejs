@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <%- include('partials/head.ejs') %>
@@ -15,10 +14,10 @@
             <div class="card border-secondary">  
                 <div class="card-header">Nuevo País</div>
                 <div class="card-body">
-                    <form action="/savePais" method="POST" id="miForm">
+                    <form id="miForm" action="/savePais" method="post">
                         <div class="mb-3">
                             <label for="name" class="form-label">codPais del País (3)</label>
-                            <input type="text" placeholder="Escribe un código de 3 caracteres de texto" class="form-control" id="codPais" name="codPais" tabindex="1" maxlength="3" value="COL">
+                            <input type="text" placeholder="Escribe un código de 3 caracteres de texto" class="form-control codPais" id="codPais" name="codPais" tabindex="1" maxlength="3" value="COL">
                             </div> 
                         <div class="mb-3">
                             <label for="name" class="form-label">Nombre del País</label>
@@ -27,7 +26,7 @@
                         
                         <div class="mb-3">
                             <label for="name" class="form-label">Confederación</label>
-                            <select id="conf" name="nombreConf" class="form-select" aria-label="Default select example" tabindex="2" required>
+                            <select id="nombreConf" name="nombreConf" class="form-select" aria-label="Default select example" tabindex="2" required>
                                 <% resultados.forEach((conf)=>{ %>
                                     <option value="<%= conf.nombreConf %>"><%= conf.nombreConf %></option>
                                 <% }) %>

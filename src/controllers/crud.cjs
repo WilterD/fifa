@@ -1,5 +1,5 @@
 const conexion = require("../database/db.cjs");
-const Swal = require('sweetalert2')
+const swal = require('sweetalert2');
 
 
 
@@ -353,10 +353,10 @@ exports.updateConfederacion = (req, res) => {
 
 
 exports.savePais = (req, res) => {
+  console.log('FUNCIONA', req.body);
   const codPais = req.body.codPais;
   const nombrePais = req.body.nombrePais;
   const nombreConf = req.body.nombreConf;
-
 
       conexion.query("INSERT INTO pais SET ?", {
         codPais:codPais,
@@ -365,8 +365,9 @@ exports.savePais = (req, res) => {
       },
       (error, results) => {
         if (error) {
-          console.log("Yujuuu error en savePais");
           console.log(error)
+          console.log("error mi loco")
+          res.status(400).json({"msg": "error"});
         } else {
           res.redirect("/paises");
         }
