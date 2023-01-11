@@ -15,14 +15,14 @@
             <div class="card border-secondary">  
                 <div class="card-header">Nuevo País</div>
                 <div class="card-body">
-                    <form action="/savePais" method="POST">
+                    <form action="/savePais" method="POST" id="miForm">
                         <div class="mb-3">
                             <label for="name" class="form-label">codPais del País (3)</label>
-                            <input type="text" placeholder="Escribe un código de 3 caracteres de texto" class="form-control" id="codPais" name="codPais" tabindex="1" maxlength="3">
+                            <input type="text" placeholder="Escribe un código de 3 caracteres de texto" class="form-control" id="codPais" name="codPais" tabindex="1" maxlength="3" value="COL">
                             </div> 
                         <div class="mb-3">
                             <label for="name" class="form-label">Nombre del País</label>
-                            <input type="text" class="form-control" id="nombrePais" name="nombrePais" tabindex="1">
+                            <input type="text" class="form-control" id="nombrePais" name="nombrePais" tabindex="1" value="colombia">
                         </div>  
                         
                         <div class="mb-3">
@@ -52,6 +52,7 @@
           </div>
       </div>
   </section>
+ 
       <%- include('partials/scripts.ejs') %>
 </body>
 </html>

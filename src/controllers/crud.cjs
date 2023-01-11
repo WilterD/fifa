@@ -357,6 +357,7 @@ exports.savePais = (req, res) => {
   const nombrePais = req.body.nombrePais;
   const nombreConf = req.body.nombreConf;
 
+
       conexion.query("INSERT INTO pais SET ?", {
         codPais:codPais,
         nombrePais:nombrePais,
@@ -364,7 +365,8 @@ exports.savePais = (req, res) => {
       },
       (error, results) => {
         if (error) {
-          console.log(error);
+          console.log("Yujuuu error en savePais");
+          console.log(error)
         } else {
           res.redirect("/paises");
         }

@@ -379,6 +379,19 @@ router.get("/paises", (req, res) => {
 });
 
 router.get("/crearPais", (req, res) => {
+  /*
+  const url = req.params;
+
+  if(url == true){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '¡Ha ocurrido un error!',
+        showConfirmButton: false
+
+      });
+  }
+*/
   conexion.query('SELECT * FROM confederacion', (error, resultados) => {
     if(error){
       console.log(error);
