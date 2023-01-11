@@ -383,7 +383,13 @@ router.get("/crearPais", (req, res) => {
     if(error){
       console.log(error);
     }else{
-      res.render('crearPais.ejs',{resultados:resultados})
+      conexion.query('SELECT * FROM pais', (error, paises) => {
+        if(error){
+          console.log(error);
+        }else{
+          res.render('crearPais.ejs',{paises:paises,resultados:resultados})
+        }
+      });
     }
   });
 });

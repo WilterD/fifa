@@ -3,7 +3,7 @@
 <head>
     <%- include('partials/head.ejs') %>
     <link rel="stylesheet" href="/css/main.css">
-    <title>Crear Nueva Eliminatoria Clasificatoria al Mundial</title>
+    <title>Crear Nuevo País</title>
 </head>
 <body>
     <%- include('partials/navigation.ejs') %>
@@ -13,56 +13,45 @@
         </div>
       <div class="container mt-4">     
             <div class="card border-secondary">  
-                <div class="card-header">Nueva Eliminatoria Clasificatoria al Mundial</div>
+                <div class="card-header">Nuevo País</div>
                 <div class="card-body">
-                    <form action="/saveEliminatoria" method="POST">
+                    <form action="/savePais" method="POST">
                         <div class="mb-3">
-                            <label for="nombrePais" class="form-label">País</label>
-                            <select id="nombrePais" name="nombrePais" class="form-select" aria-label="Default select example" tabindex="2" required>
-                                <% paises.forEach((pais)=>{ %>
-                                    <option value="<%= pais.codPais %>"><%= pais.nombrePais %></option>
+                            <label for="name" class="form-label">codPais del País (3)</label>
+                            <input type="text" placeholder="Escribe un código de 3 caracteres de texto" class="form-control" id="codPais" name="codPais" tabindex="1" maxlength="3">
+                            </div> 
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre del País</label>
+                            <input type="text" class="form-control" id="nombrePais" name="nombrePais" tabindex="1">
+                        </div>  
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Confederación</label>
+                            <select id="conf" name="nombreConf" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <% resultados.forEach((conf)=>{ %>
+                                    <option value="<%= conf.nombreConf %>"><%= conf.nombreConf %></option>
                                 <% }) %>
                                 </select>
-                        </div> 
-                        <div class="mb-3">
-                            <label for="Juegos Ganados" class="form-label">Juegos Ganados</label>
-                            <input type="number" class="form-control" id="juegos_ganados" name="juegos_ganados" tabindex="1">
-                        </div> 
-                        <div class="mb-3">
-                            <label for="Juegos Ganados" class="form-label">Juegos Perdidos</label>
-                            <input type="number" class="form-control" id="juegos_perdidos" name="juegos_perdidos" tabindex="1">
-                        </div>   
-                        <div class="mb-3">
-                            <label for="Goles a Favor" class="form-label">Goles a Favor</label>
-                            <input type="number" class="form-control" id="goles_a_favor" name="goles_a_favor" tabindex="1">
-                        </div> 
-                        <div class="mb-3">
-                            <label for="Goles en Contra" class="form-label">Goles en Contra</label>
-                            <input type="number" class="form-control" id="goles_en_contra" name="goles_en_contra" tabindex="1">
-                        </div> 
-                        <div class="mb-3">
-                            <label for="Clasificación" class="form-label">Clasificación</label>
-                            <input type="number" class="form-control" id="clasificacion" name="clasificacion" tabindex="1">
-                        </div> 
+                        </div>  
                         <button id="submit-btn" type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
-                        <a href="/eliminatorias" class="btn btn-secondary">Cancelar</a>
+                        <a href="/paises" class="btn btn-secondary">Cancelar</a>
                     </form>
                 </div>
             </div>        
       </div>
     </section>
     <section class="home-section">
-        <div class="container">
+      <div class="container">
           <div class="row">
-            <div class="col-xs-12 mx-auto">
-              <div id="mensajes">
-                <p id="mensaje"></p>
-                <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+              <div class="col-xs-12 mx-auto">
+                  <div id="mensajes">
+                      <p id="mensaje"></p>
+                      <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
-      </section>
+      </div>
+  </section>
       <%- include('partials/scripts.ejs') %>
 </body>
 </html>

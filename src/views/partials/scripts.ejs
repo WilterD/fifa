@@ -8,15 +8,13 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script type="text/javascript">
-
-  let submitBtn = document.getElementById("submit-btn");
-  submitBtn.addEventListener("click", sendData);
-
-  // Obtener URL
   let url = window.location.href;
 
+  let submitBtn = document.getElementById("submit-btn");
+    submitBtn.addEventListener("click", sendData);
+  // Obtener URL
+
   function sendData() {
-    // Aquí va tu lógica de petición HTTP
     try {
       fetch('http://localhost:3000', {
         method: 'POST',
@@ -29,7 +27,6 @@
           return response.json();
         })
         .then(data => {
-          // Manejar respuesta exitosa
         });
     } catch (error) {
       Swal.fire({
@@ -39,12 +36,9 @@
         showConfirmButton: false
 
       });
-
       setTimeout(function () {
         window.location.href = url;
       }, 5000);
-
-
     }
   }
 

@@ -425,18 +425,21 @@ exports.updatePais = (req, res) => {
 
     exports.updateEliminatoria = (req, res) => {
       const codPais = req.body.codPais;
-      const nombrePais = req.body.nombrePais;
-      const nombreConf = req.body.nombreConf;
+      const juegos_ganados = req.body.juegos_ganados;
+      const juegos_perdidos = req.body.juegos_perdidos;
+      const goles_a_favor = req.body.goles_a_favor;
+      const goles_en_contra = req.body.goles_en_contra;
+      const clasificacion = req.body.clasificacion;
       
     
           conexion.query(
-            "UPDATE pais SET ? WHERE codPais = ?",    
-            [{ codPais: codPais, nombrePais: nombrePais, nombreConf: nombreConf}, codPais],
+            "UPDATE eliminatorias SET ? WHERE codPais = ?",    
+            [{ juegos_ganados: juegos_ganados, juegos_perdidos: juegos_perdidos,goles_a_favor:goles_a_favor,goles_en_contra:goles_en_contra,clasificacion:clasificacion}, codPais],
             (error, results) => {
               if (error) {
                 console.log(error);
               } else {
-                res.redirect("/paises");
+                res.redirect("/elimiantorias");
               }
             }
           );

@@ -18,7 +18,7 @@ CREATE TABLE confederacion(
 CREATE TABLE pais(
     codPais VARCHAR(3) NOT NULL PRIMARY KEY,
     nombrePais VARCHAR(50) NOT NULL UNIQUE,
-    nombreConf VARCHAR(50),
+    nombreConf VARCHAR(50) NOT NULL,
     FOREIGN KEY(nombreConf) REFERENCES confederacion(nombreConf),
     letraGrupo VARCHAR(50),
     FOREIGN KEY(letraGrupo) REFERENCES grupo(letraGrupo)
