@@ -1,52 +1,58 @@
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
-  <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>        
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  
-  <script type="text/javascript"> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript"
+  src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript"
+  src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-let submitBtn = document.getElementById("submit-btn");
+<script type="text/javascript">
+
+  let submitBtn = document.getElementById("submit-btn");
   submitBtn.addEventListener("click", sendData);
 
-function sendData(){
-  // Aquí va tu lógica de petición HTTP
-  try {
-    fetch('http://localhost:3000', {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
-  .then(response => {
-    if (!response.ok) {
-        throw new Error(response.statusText);
+  // Obtener URL
+  let url = window.location.href;
+
+  function sendData() {
+    // Aquí va tu lógica de petición HTTP
+    try {
+      fetch('http://localhost:3000', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Manejar respuesta exitosa
+        });
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '¡Ha ocurrido un error!',
+        showConfirmButton: false
+
+      });
+
+      setTimeout(function () {
+        window.location.href = url;
+      }, 5000);
+
+
     }
-    return response.json();
-  })
-  .then(data => {
-    // Manejar respuesta exitosa
-  });
-  } catch (error) {
-    Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: '¡Ha ocurrido un error!',
-  showConfirmButton: false
-
-});
-
-setTimeout(function(){
-   window.location.href = "http://localhost:3000/eliminatorias";
-}, 3000);
-
-
   }
-}
 
 
-  $(document).ready(function(){
+  $(document).ready(function () {
     $('#miTabla').DataTable({
       pageLength: 5,
-      lengthMenu: [[5, 10, 20,50,100, -1], [5, 10, 20,50,100, 'Todos']],  
+      lengthMenu: [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, 'Todos']],
       "language": {
         "lengthMenu": "Mostrar _MENU_ registros por página",
         "zeroRecords": "No se encontraron registros",
@@ -59,114 +65,105 @@ setTimeout(function(){
           "last": "Último",
           "next": "Siguiente",
           "previous": "Anterior"
-           
+
         }
       }
     });
   });
-  
 
-  function confirmar(id,ruta) {
+
+  function confirmar(id, ruta) {
     Swal.fire({
-        title: '¿Confirma eliminar el registro seleccionado?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Confirmar',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        if (result.isConfirmed) {   
-          window.location = ruta+'/'+id;                              
-        }
+      title: '¿Confirma eliminar el registro seleccionado?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#6c757d',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location = ruta + '/' + id;
+      }
     });
   };
 
-  function errorDuplicado(){
-    Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: '¡Este equipo ya existe!'
-})
+
+</script>
+
+<!-- sidebar Menu  -->
+<script>
+  let arrow = document.querySelectorAll(".arrow");
+  for (var i = 0; i < arrow.length; i++) {
+    arrow[i].addEventListener("click", (e) => {
+      let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+      arrowParent.classList.toggle("showMenu");
+    });
+  }
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".bx-menu");
+  sidebarBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+  });
+</script>
+
+<script>
+  const mensajes = [
+    "Reducir, reutilizar y reciclar es importante para proteger el medio ambiente.",
+    "El cambio climático es una realidad y todos podemos contribuir a combatirlo.",
+    "La conservación de la biodiversidad es fundamental para el equilibrio del ecosistema.",
+    "El agua es un recurso escaso y debemos cuidarla y preservarla.",
+    "La contaminación del aire y del agua es un grave problema para la salud humana y el medio ambiente.",
+    "Es nuestra responsabilidad cuidar del planeta para las generaciones futuras.",
+    "Apaga las luces cuando no las necesites para ahorrar energía y proteger el medio ambiente.",
+    "Recicla tus residuos para reducir la cantidad de basura en los vertederos y proteger la Tierra.",
+    "Utiliza bolsas reutilizables en lugar de plásticas para reducir la contaminación y proteger el medio ambiente.",
+    "Apóyate en el transporte público, en bicicleta o caminando para reducir la contaminación del aire y proteger el medio ambiente.",
+    "Planta árboles y ayuda a mantener el equilibrio ecológico en tu comunidad.",
+    "Compra productos locales para reducir la cantidad de energía necesaria para transportarlos y proteger el medio ambiente.",
+    "Utiliza productos biodegradables para reducir la contaminación y proteger el medio ambiente.",
+    "Reduce el consumo de carne y productos lácteos para reducir la cantidad de emisiones de gases de efecto invernadero y proteger el medio ambiente.",
+    "Ahorra agua tomando duchas cortas y apagando el grifo mientras te cepillas los dientes.",
+    "Utiliza productos de limpieza ecológicos para proteger el medio ambiente y tu salud.",
+    "Compra productos con embalajes biodegradables o reciclables para proteger el medio ambiente.",
+    "Utiliza energía solar o eólica en tu hogar para reducir tu huella de carbono y proteger el medio ambiente.",
+    "Participa en la limpieza local de parques y playas para proteger el medio ambiente y mantener tu comunidad limpia y saludable.",
+    "Reduce el uso de plástico en tu hogar reemplazándolo por materiales biodegradables y reciclables.",
+    "Planta flores y hierbas en tu patio para atraer a polinizadores y ayudar a preservar la biodiversidad.",
+    "Separa tus residuos en contenedores de reciclaje y basura para asegurar que se procesen de manera adecuada y proteger el medio ambiente.",
+    "Apaga los dispositivos electrónicos cuando no los estés utilizando para reducir el consumo de energía y proteger el medio ambiente.",
+    "Compra productos orgánicos para evitar el uso de pesticidas y proteger el medio ambiente.",
+    "Utiliza ventiladores en lugar de aire acondicionado para reducir el consumo de energía y proteger el medio ambiente.",
+    "Recoge tus residuos durante tus paseos por la naturaleza y mantén a tu comunidad limpia y saludable.",
+    "Utiliza productos de jardinería ecológicos para proteger el medio ambiente y la salud de tu familia.",
+    "Planta árboles y plantas en tu jardín para ayudar a combatir el cambio climático y proteger el medio ambiente.",
+    "Recoge tus residuos durante tus actividades al aire libre y mantén a tu comunidad limpia y saludable.",
+    "Utiliza papel reciclado en lugar de papel virgen para reducir la tala de árboles y proteger el medio ambiente.",
+    "Apaga las luces y los dispositivos electrónicos cuando no los necesites para ahorrar energía y proteger el medio ambiente.",
+    "Utiliza productos biodegradables en tu hogar para reducir la contaminación y proteger el medio ambiente.",
+    "Participa en proyectos de conservación y protección del medio ambiente en tu comunidad.",
+    "Utiliza productos de limpieza ecológicos para reducir la contaminación y proteger el medio ambiente.",
+    "Reduce tu consumo de carne y productos lácteos para reducir las emisiones de gases de efecto invernadero y proteger el medio ambiente.",
+    "Utiliza energía solar o eólica en tu hogar para reducir tu impacto en el medio ambiente.",
+    "Utiliza productos con embalajes biodegradables o reciclables para reducir la contaminación y proteger el medio ambiente.",
+    "Compra productos locales para reducir la cantidad de energía necesaria para transportarlos y proteger el medio ambiente.",
+    "Utiliza bolsas reutilizables en lugar de plásticas para reducir la contaminación y proteger el medio ambiente.",
+    "Apóyate en el transporte público, en bicicleta o caminando para reducir la contaminación del aire y proteger el medio ambiente.",
+    "Planta árboles y ayuda a mantener el equilibrio ecológico en tu comunidad.",
+    "Compra productos orgánicos para evitar el uso de pesticidas y proteger el medio ambiente.",
+    "Recicla tus residuos para reducir la cantidad de basura en los vertederos y proteger el medio ambiente.",
+    "Utiliza ventiladores en lugar de aire acondicionado para reducir el consumo de energía y proteger el medio ambiente.",
+    "Separa tus residuos en contenedores de reciclaje y basura para asegurar que se procesen de manera adecuada y proteger el medio ambiente.",
+    "Utiliza productos de jardinería ecológicos para proteger el medio ambiente y la salud de tu familia."
+  ];
+
+  const mensaje = document.getElementById("mensaje");
+
+  function mostrarMensaje() {
+    const indiceAleatorio = Math.floor(Math.random() * mensajes.length);
+
+    mensaje.textContent = mensajes[indiceAleatorio];
   }
 
-
-  </script>
-
-  <!-- sidebar Menu  -->
-  <script>
-    let arrow = document.querySelectorAll(".arrow");
-    for (var i = 0; i < arrow.length; i++) {
-      arrow[i].addEventListener("click", (e)=>{
-     let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-     arrowParent.classList.toggle("showMenu");
-      });
-    }
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".bx-menu");
-    console.log(sidebarBtn);
-    sidebarBtn.addEventListener("click", ()=>{
-      sidebar.classList.toggle("close");
-    });
-    </script>
-
-    <script>
-      const mensajes = [
-  "Reducir, reutilizar y reciclar es importante para proteger el medio ambiente.",
-  "El cambio climático es una realidad y todos podemos contribuir a combatirlo.",
-  "La conservación de la biodiversidad es fundamental para el equilibrio del ecosistema.",
-  "El agua es un recurso escaso y debemos cuidarla y preservarla.",
-  "La contaminación del aire y del agua es un grave problema para la salud humana y el medio ambiente.",
-  "Es nuestra responsabilidad cuidar del planeta para las generaciones futuras.",
-  "Apaga las luces cuando no las necesites para ahorrar energía y proteger el medio ambiente.",
-"Recicla tus residuos para reducir la cantidad de basura en los vertederos y proteger la Tierra.",
-"Utiliza bolsas reutilizables en lugar de plásticas para reducir la contaminación y proteger el medio ambiente.",
-"Apóyate en el transporte público, en bicicleta o caminando para reducir la contaminación del aire y proteger el medio ambiente.",
-"Planta árboles y ayuda a mantener el equilibrio ecológico en tu comunidad.",
-"Compra productos locales para reducir la cantidad de energía necesaria para transportarlos y proteger el medio ambiente.",
-"Utiliza productos biodegradables para reducir la contaminación y proteger el medio ambiente.",
-"Reduce el consumo de carne y productos lácteos para reducir la cantidad de emisiones de gases de efecto invernadero y proteger el medio ambiente.",
-"Ahorra agua tomando duchas cortas y apagando el grifo mientras te cepillas los dientes.",
-"Utiliza productos de limpieza ecológicos para proteger el medio ambiente y tu salud.",
-"Compra productos con embalajes biodegradables o reciclables para proteger el medio ambiente.",
-"Utiliza energía solar o eólica en tu hogar para reducir tu huella de carbono y proteger el medio ambiente.",
-"Participa en la limpieza local de parques y playas para proteger el medio ambiente y mantener tu comunidad limpia y saludable.",
-"Reduce el uso de plástico en tu hogar reemplazándolo por materiales biodegradables y reciclables.",
-"Planta flores y hierbas en tu patio para atraer a polinizadores y ayudar a preservar la biodiversidad.",
-"Separa tus residuos en contenedores de reciclaje y basura para asegurar que se procesen de manera adecuada y proteger el medio ambiente.",
-"Apaga los dispositivos electrónicos cuando no los estés utilizando para reducir el consumo de energía y proteger el medio ambiente.",
-"Compra productos orgánicos para evitar el uso de pesticidas y proteger el medio ambiente.",
-"Utiliza ventiladores en lugar de aire acondicionado para reducir el consumo de energía y proteger el medio ambiente.",
-"Recoge tus residuos durante tus paseos por la naturaleza y mantén a tu comunidad limpia y saludable.",
-"Utiliza productos de jardinería ecológicos para proteger el medio ambiente y la salud de tu familia.",
-"Planta árboles y plantas en tu jardín para ayudar a combatir el cambio climático y proteger el medio ambiente.",
-"Recoge tus residuos durante tus actividades al aire libre y mantén a tu comunidad limpia y saludable.",
-"Utiliza papel reciclado en lugar de papel virgen para reducir la tala de árboles y proteger el medio ambiente.",
-"Apaga las luces y los dispositivos electrónicos cuando no los necesites para ahorrar energía y proteger el medio ambiente.",
-"Utiliza productos biodegradables en tu hogar para reducir la contaminación y proteger el medio ambiente.",
-"Participa en proyectos de conservación y protección del medio ambiente en tu comunidad.",
-"Utiliza productos de limpieza ecológicos para reducir la contaminación y proteger el medio ambiente.",
-"Reduce tu consumo de carne y productos lácteos para reducir las emisiones de gases de efecto invernadero y proteger el medio ambiente.",
-"Utiliza energía solar o eólica en tu hogar para reducir tu impacto en el medio ambiente.",
-"Utiliza productos con embalajes biodegradables o reciclables para reducir la contaminación y proteger el medio ambiente.",
-"Compra productos locales para reducir la cantidad de energía necesaria para transportarlos y proteger el medio ambiente.",
-"Utiliza bolsas reutilizables en lugar de plásticas para reducir la contaminación y proteger el medio ambiente.",
-"Apóyate en el transporte público, en bicicleta o caminando para reducir la contaminación del aire y proteger el medio ambiente.",
-"Planta árboles y ayuda a mantener el equilibrio ecológico en tu comunidad.",
-"Compra productos orgánicos para evitar el uso de pesticidas y proteger el medio ambiente.",
-"Recicla tus residuos para reducir la cantidad de basura en los vertederos y proteger el medio ambiente.",
-"Utiliza ventiladores en lugar de aire acondicionado para reducir el consumo de energía y proteger el medio ambiente.",
-"Separa tus residuos en contenedores de reciclaje y basura para asegurar que se procesen de manera adecuada y proteger el medio ambiente.",
-"Utiliza productos de jardinería ecológicos para proteger el medio ambiente y la salud de tu familia."
-];
-
-const mensaje = document.getElementById("mensaje");
-
-function mostrarMensaje() {
-  const indiceAleatorio = Math.floor(Math.random() * mensajes.length);
-  
-  mensaje.textContent = mensajes[indiceAleatorio];
-}
-
-mostrarMensaje();
-    </script>
+  mostrarMensaje();
+</script>

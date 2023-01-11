@@ -39,7 +39,7 @@
                             <label for="nroCamisa" class="form-label">Número de Camisa</label>
                             <input type="text" class="form-control" id="nroCamisa" name="nroCamisa" tabindex="1" value="<%= name.nroCamisa  %>">                        
                           </div>
-                          <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                          <button id="submit-btn" type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/jugadores" class="btn btn-secondary">Cancelar</a>
                     </form>      
                 </div>
@@ -48,6 +48,18 @@
         </section>
       <% } %>
       <%- include('partials/scripts.ejs') %>
+      <section class="home-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 mx-auto">
+                    <div id="mensajes">
+                        <p id="mensaje"></p>
+                        <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

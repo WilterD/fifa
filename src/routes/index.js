@@ -207,7 +207,11 @@ router.get("/hospedaje", (req, res) => {
       });
 
       router.get('/editarHospedaje/:codHotel+codEquipo+codPartido', (req,res)=>{    
-        const id = req.params.id;
+        const codHotel = req.params.split('+')[0];
+        const codEquipo = req.params.split('+')[1];
+        const codPartido = req.params.split('+')[2];
+
+        
         
         conexion.query('SELECT * FROM alojan WHERE id=?',[id] , (error, alojan) => {
             if (error) {
@@ -230,9 +234,12 @@ router.get("/hospedaje", (req, res) => {
           })});
       
       
-      router.get('/deleteHospedaje/:id', (req, res) => {
-        const id = req.params.id;
-        conexion.query('DELETE FROM alojan WHERE id = ?',[id], (error, results)=>{
+      router.get('/deleteHospedaje/:codHotel+codEquipo+codPartido', (req, res) => {
+        const codHotel = req.params.split('+')[0];
+        const codEquipo = req.params.split('+')[1];
+        const codPartido = req.params.split('+')[2];
+
+        conexion.query('DELETE FROM alojan WHERE codHotel AND codEquipo AND codPartido = ?',[codHotel,codEquipo,codPartido], (error, results)=>{
             if(error){
                 console.log(error);
             }else{           

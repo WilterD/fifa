@@ -1,66 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <%- include('partials/head.ejs') %>
     <title>Hospedaje</title>
 </head>
+
 <body>
-   <%- include('partials/navigation.ejs') %>
+  <%- include('partials/navigation.ejs') %>
 
-   <section class="home-section">
-    <div class="home-content">
-      <i class='bx bx-menu' ></i>
-      >>> Alojamiento
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="">
-          <a href="/crearHospedaje" class="btn btn-outline-primary fs-2 btn-block"> Agregar <i class='bx bxs-plus-circle'></i></a> 
-        </div> 
-        <div class="col-xs-12 mt-3">
-          <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
-    <thead>
-      <tr class="bg-primary text-white">
-        <th scope="col">Código Hotel</th>            
-        <th scope="col">Código Equipo</th>            
-        <th scope="col">Código Partido</th>    
-        <th scope="col">Acciones</th>           
-      </tr>
-    </thead>
-    <tbody>
-      <% alojamientos.forEach((hospedaje)=>{ %>
-        <tr>  
-            
-            <td><%= hospedaje.codHotel %></td>
-            <td><%= hospedaje.codEquipo %></td>
-            <td><%= hospedaje.codPartido %></td>
-            <td>
-              <a href="/editarHospedaje/<%=hospedaje.codHotel + hospedaje.codEquipo + hospedaje.codPartido %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
-              <a onclick="confirmar('<%=hospedaje.codHotel + hospedaje.codEquipo + hospedaje.codPartido %>','deleteHospedaje')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
-            </td>
-        </tr>                                   
-     <% }) %>
-    </tbody>
-  </table>
-</div>
-</div>
-</div>
-</section> 
+    <section class="home-section">
+      <div class="home-content">
+        <i class='bx bx-menu'></i>
+        >>> Alojamiento
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="">
+            <a href="/crearHospedaje" class="btn btn-outline-primary fs-2 btn-block"> Agregar <i
+                class='bx bxs-plus-circle'></i></a>
+          </div>
+          <div class="col-xs-12 mt-3">
+            <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
+              <thead>
+                <tr class="bg-primary text-white">
+                  <th scope="col">Código Hotel</th>
+                  <th scope="col">Código Equipo</th>
+                  <th scope="col">Código Partido</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% alojamientos.forEach((hospedaje)=>{ %>
+                  <tr>
 
-<section class="home-section">
-<div class="container">
-<div class="row">
-<div class="col-xs-12 mx-auto">
-  <div id="mensajes">
-  <p id="mensaje"></p>
-  <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
-</div>
-</div>
-</div>
-</div>
-</section>
+                    <td>
+                      <%= hospedaje.codHotel %>
+                    </td>
+                    <td>
+                      <%= hospedaje.codEquipo %>
+                    </td>
+                    <td>
+                      <%= hospedaje.codPartido %>
+                    </td>
+                    <td>
+                      <a href="/editarHospedaje/<%=hospedaje.codHotel + hospedaje.codEquipo + hospedaje.codPartido %>"
+                        class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+                      <a onclick="confirmar('<%=hospedaje.codHotel + hospedaje.codEquipo + hospedaje.codPartido %>','deleteHospedaje')"
+                        class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
+                    </td>
+                  </tr>
+                  <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 mx-auto">
+            <div id="mensajes">
+              <p id="mensaje"></p>
+              <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
-  <%- include('partials/scripts.ejs') %>
+    <%- include('partials/scripts.ejs') %>
 </body>
+
 </html>

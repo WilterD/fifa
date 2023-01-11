@@ -21,8 +21,8 @@ app.use('/', indexRoutes);
 app.use(express.static(join(__dirname,'public')));
 
 
-
 const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log('Server iniciado en puerto 3000');
 });

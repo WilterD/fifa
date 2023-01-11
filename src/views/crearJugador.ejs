@@ -20,16 +20,18 @@
                         <form action="/saveJugador" method="POST">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nombre del Jugador</label>
-                                <input required type="text" class="form-control" id="nombreJugador" name="nombreJugador" tabindex="1">
+                                <input required type="text" class="form-control" id="nombreJugador" name="nombreJugador"
+                                    tabindex="1">
                             </div>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Alias del Jugador</label>
-                                <input type="text" class="form-control" id="aliasJugador" name="aliasJugador" tabindex="1">
+                                <input type="text" class="form-control" id="aliasJugador" name="aliasJugador"
+                                    tabindex="1">
                             </div>
                             <div class="mb-3">
                                 <label for="fecha" class="form-label">Fecha de Nacimiento</label>
-                                <input required type="date" class="form-control" id="fechaNac"
-                                    name="fechaNac" tabindex="1">
+                                <input required type="date" class="form-control" id="fechaNac" name="fechaNac"
+                                    tabindex="1">
                             </div>
 
 
@@ -57,15 +59,29 @@
                             </div>
                             <div class="mb-3">
                                 <label for="codEquipo" class="form-label">Código Equipo</label>
-                                <select name="codEquipo" id="codEquipo" class="form-select"> 
+                                <select name="codEquipo" id="codEquipo" class="form-select">
                                     <% equipos.forEach((equipo)=>{ %>
-                                    <option value="<%= equipo.codEquipo %>"> <%= equipo.codEquipo %> </option>
-                                    <% }) %>
+                                        <option value="<%= equipo.codEquipo %>">
+                                            <%= equipo.codEquipo %>
+                                        </option>
+                                        <% }) %>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                            <button id="submit-btn" type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                             <a href="/jugadores" class="btn btn-secondary">Cancelar</a>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="home-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 mx-auto">
+                        <div id="mensajes">
+                            <p id="mensaje"></p>
+                            <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+                        </div>
                     </div>
                 </div>
             </div>

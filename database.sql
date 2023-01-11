@@ -101,9 +101,9 @@ CREATE TABLE alojan(
     FOREIGN KEY(codHotel) REFERENCES hotel(codHotel),
     codEquipo VARCHAR(3) NOT NULL,
     FOREIGN KEY (codEquipo) REFERENCES equipo(codEquipo),
-    codPartida INT NOT NULL, 
-    FOREIGN KEY(codPArtida) REFERENCES partida(codPArtida),
-    PRIMARY KEY(codHotel, codEquipo, codPartida)
+    codPartido INT NOT NULL, 
+    FOREIGN KEY(codPArtido) REFERENCES partido(codPartido),
+    PRIMARY KEY(codHotel, codEquipo, codPartido)
 );
 
 CREATE TABLE jugador(

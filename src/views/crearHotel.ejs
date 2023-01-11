@@ -24,17 +24,57 @@
                             <label for="name" class="form-label">Nombre del hotel</label>
                             <input type="text" class="form-control" id="nombreHotel" name="nombreHotel" tabindex="1">
                         </div>  
+                        <div class="mb-3" id="numTelefono">
+                          <label for="numTelefono" class="form-label">Números de teléfonos en hotel</label>
+                          <input type="number" class="form-control" name="numTelefono" tabindex="1">
+                          
+                          <div class="text-center mt-4" id="misTfls">
+                            
+                          </div>
+                          <div class="text-center mt-4">
+                          <button id="masNumeros" type="button" class="btn btn-outline-primary fs-3 text-center mx-auto btn-block rounded-circle" value="agregar"><i
+                            class='bx bxs-plus-circle'></i></button>
+                          </div>
+                      </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Dirección del hotel</label>
                             <textarea type="text" class="form-control" id="direccion" name="direccion" tabindex="1"></textarea>
                         </div>  
-                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <button id="submit-btn" type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/hotel" class="btn btn-secondary">Cancelar</a>
                     </form>
                 </div>
             </div>        
       </div>
     </section>
+    <section class="home-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 mx-auto">
+              <div id="mensajes">
+                <p id="mensaje"></p>
+                <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <%- include('partials/scripts.ejs') %>
+
+      <script type="text/javascript">
+        let masNumeros = document.querySelector('#masNumeros');
+        let misTfls = document.querySelector('#misTfls');
+
+        masNumeros.addEventListener('click', function(e){
+          console.log("hola")
+          
+            let div = document.createElement('div');
+            div.innerHTML = `
+            <input type="number" class="form-control mt-3" name="numTelefono" tabindex="1">
+            `;
+            
+            misTfls.appendChild(div);
+        });
+      </script>
 </body>
 </html>

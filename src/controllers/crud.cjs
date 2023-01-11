@@ -109,6 +109,9 @@ exports.saveHotel = (req, res) => {
   const codHotel = req.body.codHotel;
   const nombreHotel = req.body.nombreHotel;
   const direccion = req.body.direccion;
+  const numTelefono = req.body.numTelefono;
+
+  
 
   conexion.query(
     "INSERT INTO hotel SET ?",
@@ -117,9 +120,11 @@ exports.saveHotel = (req, res) => {
       if (error) {
         console.log(error);
       } else {
+        for(let i=0;i<numTelefono.length;i++){
+          conexion.query("INSERT INTO telefonos SET ?", { numTelefono: numTelefono[i], codHotel: codHotel });
+        }
         res.redirect("/hotel");
-      }
-    }
+    }}
   );
 };
 

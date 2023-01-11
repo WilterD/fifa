@@ -1,68 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <%- include('partials/head.ejs') %>
-    <link rel="stylesheet" href="/css/main.css">
-    <title>Crear Nuevo Equipo</title>
-    <style>
-        
-.image_container{
-    width: 100%;
-    display: flex;
-    justify-content: left;
-    align-items: left;
-}
-.image_container img{
-    width: 300px;
-    display: block;
-    background-color: var(--color);
-}
-.image_container2 img{
-    width: 300px;
-    display: block;
-    background-color: var(--color2);
-}
-    </style>
+        <link rel="stylesheet" href="/css/main.css">
+        <title>Crear Nuevo Equipo</title>
+        <style>
+            .image_container {
+                width: 100%;
+                display: flex;
+                justify-content: left;
+                align-items: left;
+            }
+
+            .image_container img {
+                width: 300px;
+                display: block;
+                background-color: var(--color);
+            }
+
+            .image_container2 img {
+                width: 300px;
+                display: block;
+                background-color: var(--color2);
+            }
+        </style>
 </head>
+
 <body>
     <%- include('partials/navigation.ejs') %>
-    <section class="home-section">
-        <div class="home-content">
-          <i class='bx bx-menu' ></i>
-        </div>
-      <div class="container mt-4">     
-            <div class="card border-secondary">  
-                <div class="card-header">Nueva Eliminatoria</div>
-                <div class="card-body">
-                    <form action="/saveEliminatoria" method="POST">
-                        <div class="mb-3">
+        <section class="home-section">
+            <div class="home-content">
+                <i class='bx bx-menu'></i>
+            </div>
+            <div class="container mt-4">
+                <div class="card border-secondary">
+                    <div class="card-header">Nueva Eliminatoria</div>
+                    <div class="card-body">
+                        <form action="/saveEliminatoria" method="POST">
+                            <div class="mb-3">
                                 <label for="codPais" class="form-label">Nombre de Equipo</label>
-                                <select id="codPais" name="codPais" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <select id="codPais" name="codPais" class="form-select"
+                                    aria-label="Default select example" tabindex="2" required>
                                     <% paises.forEach((pais)=>{ %>
-                                        <option value="<%= pais.codPais %>"><%= pais.nombrePais %></option>
-                                    <% }) %>
-                                    </select>
-                         </div>
-                         
-                        <div class="mb-3">
-                            <label for="Juegos Ganados" class="form-label">Juegos Ganados</label>
-                            <input type="number" required class="form-control" id="juegos_ganados" name="juegos_ganados" tabindex="1">
-                        </div>  
-                        <div class="mb-3">
-                            <label for="Juegos Perdidos" class="form-label">Juegos Perdidos</label>
-                            <input type="number" required class="form-control" id="juegos_perdidos" name="juegos_perdidos" tabindex="1">
-                        </div> 
-                        <div class="mb-3">
-                            <label for="Goles a Favor" class="form-label">Goles a Favor</label>
-                            <input type="number" required class="form-control" id="goles_a_favor" name="goles_a_favor" tabindex="1">
-                        </div> 
-                        <div class="mb-3">
-                            <label for="Goles en Contra" class="form-label">Goles en Contra</label>
-                            <input type="number" required class="form-control" id="goles_en_contra" name="goles_en_contra" tabindex="1">
-                        </div>   
-                        <div class="mb-3">
-                            <label for="clasificacion" class="form-label">Clasificación de País</label>
-                            <select id="clasificacion" name="clasificacion" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                        <option value="<%= pais.codPais %>">
+                                            <%= pais.nombrePais %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="Juegos Ganados" class="form-label">Juegos Ganados</label>
+                                <input type="number" required class="form-control" id="juegos_ganados"
+                                    name="juegos_ganados" tabindex="1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Juegos Perdidos" class="form-label">Juegos Perdidos</label>
+                                <input type="number" required class="form-control" id="juegos_perdidos"
+                                    name="juegos_perdidos" tabindex="1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Goles a Favor" class="form-label">Goles a Favor</label>
+                                <input type="number" required class="form-control" id="goles_a_favor"
+                                    name="goles_a_favor" tabindex="1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Goles en Contra" class="form-label">Goles en Contra</label>
+                                <input type="number" required class="form-control" id="goles_en_contra"
+                                    name="goles_en_contra" tabindex="1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="clasificacion" class="form-label">Clasificación de País</label>
+                                <select id="clasificacion" name="clasificacion" class="form-select"
+                                    aria-label="Default select example" tabindex="2" required>
                                     <option value="Anfitrión">Anfitrión</option>
                                     <option value="1ro del grupo">1ro del grupo</option>
                                     <option value="Top 2">Top 2</option>
@@ -72,28 +83,29 @@
                                     <option value="Playoff de África">Playoff de África</option>
                                     <option value="Repechaje">Repechaje</option>
                                 </select>
-                     </div>
-                      
-                        <button id="submit-btn" type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
-                        <a href="/eliminatorias" class="btn btn-secondary">Cancelar</a>
-                    </form>
+                            </div>
+
+                            <button id="submit-btn" type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                            <a href="/eliminatorias" class="btn btn-secondary">Cancelar</a>
+                        </form>
+                    </div>
                 </div>
-            </div>        
-      </div>
-    </section>
-    <section class="home-section">
-<div class="container">
-<div class="row">
-<div class="col-xs-12 mx-auto">
-  <div id="mensajes">
-  <p id="mensaje"></p>
-  <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
-</div>
-</div>
-</div>
-</div>
-</section>
-      <%- include('partials/scripts.ejs') %>
-      
+            </div>
+        </section>
+        <section class="home-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 mx-auto">
+                        <div id="mensajes">
+                            <p id="mensaje"></p>
+                            <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('partials/scripts.ejs') %>
+
 </body>
+
 </html>
