@@ -555,6 +555,62 @@ router.get("/", (req, res) => {
 
 
 
+router.get('/editarPartido/:id', (req, res)=>{
+  const id = req.params.id;
+
+  conexion.query('SELECT * FROM partido WHERE codPartido=?',[id] , (error, partido) => { 
+    if(error) {
+      console.log(error);
+    } else {
+      conexion.query('SELECT * FROM jornadas', (error, jornadas)=>{
+        if(error) {
+          console.log(error);
+        } else {
+          conexion.query('SELECT * FROM estadio', (error, estadios)=> {
+            if (error) {
+              console.log(error);
+            } else {
+              conexion.query('SELECT * FROM equipo', (error, equipos)=>{
+                if (error) {
+                  console.log(error);
+                } else {
+                  conexion.query('SELECT * FROM pais', (error, paises) =>{
+                    if (error) {
+                      console.log(error);
+                    } else {
+    
+                      /*conexion.query('SELECT * FROM arbitro', (error, arbitros) => {
+                        if (error) {
+                          console.log(error);
+                        } else {*/ 
+                        const fecha = partido[0].fecha.toISOString().slice(0, -1);
+                        console.log(partido[0].fecha);
+                          res.render('editarPartido.ejs', {jornadas:jornadas, estadios:estadios, equipos:equipos, paises:paises, fecha, partido:partido[0]});
+                        //}
+                      //});          
+                    }
+    
+                  })
+                  
+                }
+              });
+              
+            }
+          })
+        }
+      });
+
+
+
+    }
+    
+  });
+  
+
+});
+
+    
+    
 
 
 
