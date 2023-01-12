@@ -22,18 +22,9 @@
         formDatos.forEach((valor, llave) => {
           datos[llave] = valor;
         });
-        // let codPais = document.getElementById('codPais').value
-        // let nombrePais = document.getElementById('nombrePais').value
-        // let nombreConf = document.getElementById('nombreConf').value
-        // const datos = { codPais, nombrePais, nombreConf }
-
-
-        console.log(form)
-        console.log(datos)
         let actionUrl = form.action;
         let urlAtras = document.querySelector('.btn-secondary');
         urlAtras = urlAtras.href;
-
 
         fetch(actionUrl, {
           method: 'POST',
