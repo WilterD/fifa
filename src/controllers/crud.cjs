@@ -12,6 +12,7 @@ exports.saveGrupo = (req, res) => {
     (error, results) =>{
       if(error) {
         console.log(error);
+        res.status(400).json({"msg": "error"});;
       } else {
         res.redirect("/grupos");
       }
@@ -39,6 +40,7 @@ exports.savePartido = (req, res) => {
   (error, results)=>{
     if (error){
       console.log(error);
+        res.status(400).json({"msg": "error"});;
     } else {
       console.log(results.insertId);
       conexion.query('INSERT INTO juegan SET ?',
@@ -46,6 +48,7 @@ exports.savePartido = (req, res) => {
         (error, results) => {
         if (error) {
           console.log(error);
+        res.status(400).json({"msg": "error"});;
         } else {
           res.redirect("/partidos");
         }
@@ -58,6 +61,7 @@ exports.savePartido = (req, res) => {
   (error, results) => {
    if (error) {
      console.log(error);
+        res.status(400).json({"msg": "error"});;
    } else {
      res.redirect("/partidos");
    }
@@ -77,6 +81,7 @@ exports.saveArbitro = (req, res) => {
     (error, results) => {
       if (error) {
         console.log(error);
+        res.status(400).json({"msg": "error"});;
       } else {
         res.redirect("/arbitros");
       }
@@ -96,6 +101,7 @@ exports.updateArbitro = (req, res) => {
     (error, results) => {
       if (error) {
         console.log(error);
+        res.status(400).json({"msg": "error"});;
       } else {
         res.redirect("/arbitros");
       }
@@ -119,6 +125,7 @@ exports.saveHotel = (req, res) => {
     (error, results) => {
       if (error) {
         console.log(error);
+        res.status(400).json({"msg": "error"});;
       } else {
         for(let i=0;i<numTelefono.length;i++){
           conexion.query("INSERT INTO telefonos SET ?", { numTelefono: numTelefono[i], codHotel: codHotel });
@@ -140,6 +147,7 @@ exports.updateHotel = (req, res) => {
     (error, results) => {
       if (error) {
         console.log(error);
+        res.status(400).json({"msg": "error"});;
       } else {
         res.redirect("/hotel");
       }
@@ -167,6 +175,7 @@ exports.saveEquipo = (req, res) => {
           (error, results) => {
             if (error) {
               console.log(error);
+        res.status(400).json({"msg": "error"});;
             } else {
               const clocal = req.body.clocal;
               const cvisitante = req.body.cvisitante;
@@ -177,6 +186,7 @@ exports.saveEquipo = (req, res) => {
                 (error, results) => {
                   if (error) {
                     console.log(error);
+        res.status(400).json({"msg": "error"});;
                   } else {
                     res.redirect("/equipos");
                   }
@@ -195,6 +205,7 @@ exports.saveEquipo = (req, res) => {
       conexion.query("UPDATE equipo SET ? WHERE codEquipo = ?", [{nombreDT: nombreDT, esloganEquipo: esloganEquipo}, codEquipo], (error, results) => {
         if (error) {
           console.log(error);
+        res.status(400).json({"msg": "error"});;
         } else {
           res.redirect("/equipos");
         }
@@ -219,6 +230,7 @@ exports.saveHospedaje = (req, res) => {
                 (error, results) => {
                   if (error) {
                     console.log(error);
+        res.status(400).json({"msg": "error"});;
                   } else {
                     res.redirect("/hospedaje");
                   }
@@ -240,6 +252,7 @@ exports.updateHospedaje = (req, res) => {
     (error, results) => {
       if (error) {
         console.log(error);
+        res.status(400).json({"msg": "error"});;
       } else {
         res.redirect("/hospedaje");
       }
@@ -271,6 +284,7 @@ exports.saveJugador = (req, res) => {
         (error, results) => {
           if (error) {
             console.log(error);
+        res.status(400).json({"msg": "error"});;
           } else {
             res.redirect("/jugadores");
           }
@@ -302,6 +316,7 @@ exports.updateJugador = (req, res) => {
     (error, results) => {
       if (error) {
         console.log(error);
+        res.status(400).json({"msg": "error"});;
       } else {
         res.redirect("/jugadores");
       }
@@ -325,6 +340,7 @@ exports.saveConfederacion = (req, res) => {
     (error, results) => {
       if (error) {
         console.log(error);
+        res.status(400).json({"msg": "error"});;
       } else {
         res.redirect("/confederaciones");
       }
@@ -344,6 +360,7 @@ exports.updateConfederacion = (req, res) => {
     (error, results) => {
       if (error) {
         console.log(error);
+        res.status(400).json({"msg": "error"});;
       } else {
         res.redirect("/confederaciones");
       }
@@ -365,8 +382,8 @@ exports.savePais = (req, res) => {
       },
       (error, results) => {
         if (error) {
-          console.log(error)
-          console.log("error mi loco")
+          console.log(error);
+        res.status(400).json({"msg": "error"});
           res.status(400).json({"msg": "error"});
         } else {
           res.redirect("/paises");
@@ -387,6 +404,7 @@ exports.updatePais = (req, res) => {
         (error, results) => {
           if (error) {
             console.log(error);
+        res.status(400).json({"msg": "error"});;
           } else {
             res.redirect("/paises");
           }
@@ -415,10 +433,8 @@ exports.updatePais = (req, res) => {
         },
         (error, results) =>{
           if(error) {
-            
-           console.log("error")
-            
             console.log(error);
+        res.status(400).json({"msg": "error"});;
           } else {
             res.redirect("/eliminatorias");
           }
@@ -441,6 +457,7 @@ exports.updatePais = (req, res) => {
             (error, results) => {
               if (error) {
                 console.log(error);
+        res.status(400).json({"msg": "error"});;
               } else {
                 res.redirect("/elimiantorias");
               }
