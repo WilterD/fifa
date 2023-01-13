@@ -35,12 +35,13 @@
         }).then(response => {
           if (!response.ok) {
             console.log(response)
-            Swal.fire({
+            return Swal.fire({
               icon: 'error',
               title: 'Oops...',
               text: '¡Ha ocurrido un error!',
               showConfirmButton: false
             });
+            
             throw new Error(response.statusText);
           } else {
             window.location = urlAtras;

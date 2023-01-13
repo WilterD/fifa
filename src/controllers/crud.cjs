@@ -370,11 +370,11 @@ exports.updateConfederacion = (req, res) => {
 
 
 exports.savePais = (req, res) => {
-  console.log('FUNCIONA', req.body);
   const codPais = req.body.codPais;
   const nombrePais = req.body.nombrePais;
   const nombreConf = req.body.nombreConf;
 
+  if(codPais){
       conexion.query("INSERT INTO pais SET ?", {
         codPais:codPais,
         nombrePais:nombrePais,
@@ -383,13 +383,13 @@ exports.savePais = (req, res) => {
       (error, results) => {
         if (error) {
           console.log(error);
-        res.status(400).json({"msg": "error"});
           res.status(400).json({"msg": "error"});
         } else {
           res.redirect("/paises");
         }
       })
     }
+  }
   
 
 exports.updatePais = (req, res) => {
