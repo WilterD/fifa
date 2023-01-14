@@ -374,22 +374,19 @@ exports.savePais = (req, res) => {
   const nombrePais = req.body.nombrePais;
   const nombreConf = req.body.nombreConf;
 
-  if(codPais){
+  conexion.query('SELECT codPais FROM pais WHERE codPais=?',[codPais] , (error, pais) => {
+    if (pais.length == 1) {
+      res.status(400).json({"msg": "error"});
+    } else {
       conexion.query("INSERT INTO pais SET ?", {
         codPais:codPais,
         nombrePais:nombrePais,
         nombreConf: nombreConf
-      },
-      (error, results) => {
-        if (error) {
-          console.log(error);
-          res.status(400).json({"msg": "error"});
-        } else {
-          res.redirect("/paises");
-        }
       })
+      res.redirect("/paises");
     }
-  }
+  })
+}
   
 
 exports.updatePais = (req, res) => {

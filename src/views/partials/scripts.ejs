@@ -16,7 +16,6 @@
       // Obtener URL
       e.preventDefault();
       try {
-
         let formDatos = new FormData(form);
         let datos = {};
         formDatos.forEach((valor, llave) => {
@@ -25,7 +24,6 @@
         let actionUrl = form.action;
         let urlAtras = document.querySelector('.btn-secondary');
         urlAtras = urlAtras.href;
-
         fetch(actionUrl, {
           method: 'POST',
           body: JSON.stringify(datos),
@@ -34,23 +32,18 @@
           }
         }).then(response => {
           if (!response.ok) {
-            console.log(response)
-            return Swal.fire({
+            Swal.fire({
               icon: 'error',
               title: 'Oops...',
               text: '¡Ha ocurrido un error!',
               showConfirmButton: false
             });
-            
-            throw new Error(response.statusText);
           } else {
             window.location = urlAtras;
+            // volver a la pagina de mostrar registros
           }
           return response.json();
         })
-          .then(datos => {
-
-          });
       } catch (error) {
         console.log(error)
         Swal.fire({
