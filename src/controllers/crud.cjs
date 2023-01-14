@@ -384,3 +384,28 @@ exports.updatePais = (req, res) => {
 
     }
 
+    exports.saveEIndividuales = (req, res) => {
+      const codJugador = req.body.codJugador 
+      const codPartido = req.body.codPartida
+      const Ataque = req.body.ataque 
+      const Defensa = req.body.defensa
+      const Pases = req.body.pases 
+      const GolesAnotados = req.body.GolesAnotados 
+      const Asistencias = req.body.Asistencias
+      const Penaltis = req.body.penaltis
+      const Amarillas = req.body.TarjetasAmarillas
+      const Rojas = req.body.TarejtasRojas
+
+      conexion.query(
+        "INSERT INTO estadisticasIndividuales SET ?",
+        { codJugador:codJugador, codPartido:codPartido, Ataque:Ataque, Defensa:Defensa, Pases:Pases, GolesAnotados:GolesAnotados,
+          Asistencias:Asistencias, Penaltis:Penaltis, Amarillas:Amarillas, Rojas:Rojas },
+        (error, results) => {
+          if (error) {
+            console.log(error);
+          } else {
+            res.redirect("/estaditicasIndividuales");
+          }
+        }
+      );
+    };

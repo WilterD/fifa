@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Estadisticas Individuales</title>
+    
+</head>
+<body>
+   <%- include('partials/navigation.ejs') %>
+  <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      >>> Estadisticas Individuales
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="">
+          <a href="/crearEIndividuales" class="btn btn-outline-primary fs-2 btn-block ml-auto"> Agregar <i class='bx bxs-plus-circle'></i></a> 
+        </div> 
+        <div class="col-xs-12 mt-3">
+          <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th scope="col">CodJugador</th>
+                <th scope="col">CodPartida</th>
+                <th scope="col">Ataque</th>
+                <th scope="col">Defensa</th>
+                <th scope="col">Pases</th>
+                <th scope="col">GolesAnotados</th>
+                <th scope="col">Asistencias</th>
+                <th scope="col">Autogoles</th>
+                <th scope="col">Penaltis</th>        
+                <th scope="col">Amarillas</th> 
+                <th scope="col">Rojas</th> 
+                <th scope="col">Acciones</th>            
+              </tr>
+            </thead>
+            <tbody>
+              <%  individual.forEach((CJugador)=>{ %>
+                <tr>  
+                    <td><%= individual.codJugador %></td>  
+                    <td><%= individual.codPartida %></td>
+                    <td><%= individual.ataque %></td>
+                    <td><%= individual.defensa %></td>
+                    <td><%= individual.pases %></td>
+                    <td><%= individual.golesAnotados %></td>
+                    <td><%= individual.asistencias %></td>
+                    <td><%= individual.penaltis %></td>
+                    <td><%= individual.amarillas %></td>
+                    <td><%= individual.rojas %></td>
+                
+                    <td>
+                      <a href="/editarEIndividuales/<%= individual.codJugador %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+                      <a onclick="confirmar('<%= individual.codJugador %>','deletePais')" class="btn btn-outline-danger">
+                        <i class='bx bxs-trash'></i></a>
+                    </td>
+                </tr>                                   
+             <% }) %>
+                    </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+  <section class="home-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 mx-auto">
+          <div id="mensajes">
+  <p id="mensaje"></p>
+  <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <%- include('partials/scripts.ejs') %>
+</body>
+</html>

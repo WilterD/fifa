@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Estadisticas Generales</title>
+    
+</head>
+<body>
+   <%- include('partials/navigation.ejs') %>
+  <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      >>> Estadisticas Generales
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="">
+          <a href="/estadisticasGenerales" class="btn btn-outline-primary fs-2 btn-block ml-auto"> Agregar <i class='bx bxs-plus-circle'></i></a> 
+        </div> 
+        <div class="col-xs-12 mt-3">
+          <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th scope="col">CodEquipo</th>
+                <th scope="col">CodPartida</th>
+                <th scope="col">Posesion del Balon</th>
+                <th scope="col">Tiros Arco</th>
+                <th scope="col">Tiros Arco Acertados</th>
+                <th scope="col">Tiros Arco Fallados</th>
+                <th scope="col">Tiros Esquina</th>
+                <th scope="col">Atajadas Portero</th>
+                <th scope="col">Pases</th>        
+                <th scope="col">Pases Cortos</th> 
+                <th scope="col">Pases Largos</th> 
+                <th scope="col">Entradas</th>   
+                <th scope="col">Acciones</th>  
+              </tr> 
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+  <section class="home-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 mx-auto">
+          <div id="mensajes">
+            <p id="mensaje"></p>
+            <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <%- include('partials/scripts.ejs') %>
+</body>
+</html>
