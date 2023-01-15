@@ -26,55 +26,56 @@
                                     </select>
                          </div>
                          
-                        <div class="mb-3">
-                            <label for="codPartida" class="form-label">Codigo Partida</label>
-                            <input type="text" required class="form-control" id="codPartida" name="codPartida" tabindex="1">
-                                
-                                
+                         <div class="mb-3">
+                            <label for="codPartido" class="form-label">Codigo Partido</label>
+                            <select id="codPartido" name="codPartido" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <% partida.forEach((partido)=>{ %>
+                                    <option value="<%= partido.codPartido %>"><%= partido.codPartido %></option>
+                                <% }) %>
+                                </select>
                         </div>
                         
-                        
                         <div class="mb-3">
-                            <label for="Ataque" class="form-label">Ataque</label>
-                            <input type="text" required class="form-control" id="Ataque" name="Ataque" tabindex="1">
+                            <label for="ataque" class="form-label">Ataque</label>
+                            <input type="text" required class="form-control" id="ataque" name="ataque" tabindex="1">
                         </div>  
                         
                         <div class="mb-3">
-                            <label for="Defensa" class="form-label">Defensa</label>
-                            <input type="text" required class="form-control" id="Defensa" name="Defensa" tabindex="1">
+                            <label for="defensa" class="form-label">Defensa</label>
+                            <input type="text" required class="form-control" id="defensa" name="defensa" tabindex="1">
                         </div>  
                         <div class="mb-3">
-                            <label for="Pases" class="form-label">Pases</label>
-                            <input type="text" required class="form-control" id="Pases" name="Pases" tabindex="1">
+                            <label for="pases" class="form-label">Pases</label>
+                            <input type="text" required class="form-control" id="pases" name="pases" tabindex="1">
                         </div>  
                         <div class="mb-3">
                             <label for="golesAnotados" class="form-label">Goles Anotados</label>
                             <input type="text" required class="form-control" id="golesAnotados" name="golesAnotados" tabindex="1">
                         </div>  
                         <div class="mb-3">
-                            <label for="Asistencia" class="form-label">Asistencia</label>
-                            <input type="text" required class="form-control" id="Asistencia" name="Asistencia" tabindex="1">
+                            <label for="asistencias" class="form-label">Asistencias</label>
+                            <input type="text" required class="form-control" id="asistencias" name="asistencias" tabindex="1">
                         </div>  
                         <div class="mb-3">
-                            <label for="Autogoles" class="form-label">Autogoles</label>
-                            <input type="text" required class="form-control" id="Autogoles" name="Autogoles" tabindex="1">
+                            <label for="autogoles" class="form-label">Autogoles</label>
+                            <input type="text" required class="form-control" id="autogoles" name="autogoles" tabindex="1">
                         </div>  
                         <div class="mb-3">
-                            <label for="Penaltis" class="form-label">Penaltis</label>
-                            <input type="text" required class="form-control" id="Penaltis" name="Penaltis" tabindex="1">
+                            <label for="penaltis" class="form-label">Penaltis</label>
+                            <input type="text" required class="form-control" id="penaltis" name="penaltis" tabindex="1">
                         </div>  
                         <div class="mb-3">
-                            <label for="TarjetasAmarillas" class="form-label">Tarjetas Amarillas</label>
-                            <input type="text" required class="form-control" id="TarjetasAmarillas" name="TarjetasAmarillas" tabindex="1">
+                            <label for="tarjetasAmarillas" class="form-label">Tarjetas Amarillas</label>
+                            <input type="text" required class="form-control" id="tarjetasAmarillas" name="tarjetasAmarillas" tabindex="1">
                         </div>  
                         <div class="mb-3">
-                            <label for="TarjetasRojas" class="form-label">Tarjetas Rojas</label>
-                            <input type="text" required class="form-control" id="TarjetasRojas" name="TarjetasRojas" tabindex="1">
+                            <label for="tarjetasRojas" class="form-label">Tarjetas Rojas</label>
+                            <input type="text" required class="form-control" id="tarjetasRojas" name="tarjetasRojas" tabindex="1">
                         </div>  
 
                     
                          
-                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <button  type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/estadisticasIndividuales" class="btn btn-secondary">Cancelar</a>
                     </form>
                 </div>

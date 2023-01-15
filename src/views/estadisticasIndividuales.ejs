@@ -36,22 +36,22 @@
               </tr>
             </thead>
             <tbody>
-              <%  individual.forEach((CJugador)=>{ %>
+              <%  individuales.forEach((individuales)=>{ %>
                 <tr>  
-                    <td><%= individual.codJugador %></td>  
-                    <td><%= individual.codPartida %></td>
-                    <td><%= individual.ataque %></td>
-                    <td><%= individual.defensa %></td>
-                    <td><%= individual.pases %></td>
-                    <td><%= individual.golesAnotados %></td>
-                    <td><%= individual.asistencias %></td>
-                    <td><%= individual.penaltis %></td>
-                    <td><%= individual.amarillas %></td>
-                    <td><%= individual.rojas %></td>
-                
+                    <td><%= individuales.codJugador %></td>  
+                    <td><%= individuales.codPartido %></td>
+                    <td><%= individuales.ataque %></td>
+                    <td><%= individuales.defensa %></td>
+                    <td><%= individuales.pases %></td>
+                    <td><%= individuales.golesAnotados %></td>
+                    <td><%= individuales.asistencias %></td>
+                    <td><%= individuales.autogoles %></td>
+                    <td><%= individuales.penaltis %></td>
+                    <td><%= individuales.tarjetasAmarillas %></td>
+                    <td><%= individuales.tarjetasRojas %></td>
                     <td>
-                      <a href="/editarEIndividuales/<%= individual.codJugador %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
-                      <a onclick="confirmar('<%= individual.codJugador %>','deletePais')" class="btn btn-outline-danger">
+                      <a href="/editarEIndividuales/<%= individuales.codJugador %>" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+                      <a onclick="confirmar('<%= individuales.codJugador %>','deletePais')" class="btn btn-outline-danger">
                         <i class='bx bxs-trash'></i></a>
                     </td>
                 </tr>                                   

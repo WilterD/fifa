@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="">
-          <a href="/estadisticasGenerales" class="btn btn-outline-primary fs-2 btn-block ml-auto"> Agregar <i class='bx bxs-plus-circle'></i></a> 
+          <a href="/crearEGenerales" class="btn btn-outline-primary fs-2 btn-block ml-auto"> Agregar <i class='bx bxs-plus-circle'></i></a> 
         </div> 
         <div class="col-xs-12 mt-3">
           <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
@@ -36,6 +36,29 @@
                 <th scope="col">Acciones</th>  
               </tr> 
             </thead>
+            <tbody>
+              <%  generales.forEach((generales)=>{ %>
+                <tr>  
+                    <td><%= generales.codEquipo %></td>  
+                    <td><%= generales.codPartido %></td>
+                    <td><%= generales.posesionBalon %></td>
+                    <td><%= generales.tirosArco %></td>
+                    <td><%= generales.tirosArcoAcertados %></td>
+                    <td><%= generales.tirosArcoFallados %></td>
+                    <td><%= generales.tiroSEsquina %></td>
+                    <td><%= generales.atajadasPortero %></td>
+                    <td><%= generales.pases %></td>
+                    <td><%= generales.pasesCortos %></td>
+                    <td><%= generales.pasesLargos %></td>
+                    <td><%= generales.entradas %></td>
+                    <td>
+                      <a href="/" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+                      <a onclick="confirmar('<%= generales.codEquipo %>','deletePais')" class="btn btn-outline-danger">
+                        <i class='bx bxs-trash'></i></a>
+                    </td>
+                </tr>                                   
+             <% }) %>
+                    </tbody>
           </table>
         </div>
       </div>

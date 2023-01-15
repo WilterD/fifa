@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Crear Nueva estadistica Individual</title>
+</head>
+
+<body>
+    <%- include('partials/navigation.ejs') %>
+    <section class="home-section">
+        <div class="home-content">
+          <i class='bx bx-menu' ></i>
+        </div>
+      <div class="container mt-4">     
+            <div class="card border-secondary">  
+                <div class="card-header">Agregar Estadisticas Generales</div>
+                <div class="card-body">
+                    <form action="/saveEGenerales" method="POST">
+                        <div class="mb-3">
+                                <label for="codEquipo" class="form-label">Codigo Equipo</label>
+                                <select id="codEquipo" name="codEquipo" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                    <% equipo.forEach((equipos)=>{ %>
+                                        <option value="<%= equipos.codEquipo %>"><%= equipos.codEquipo %></option>
+                                    <% }) %>
+                                    </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="codPartido" class="form-label">Codigo Partido</label>
+                            <select id="codPartido" name="codPartido" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <% partida.forEach((partida)=>{ %>
+                                    <option value="<%= partida.codPartido %>"><%= partida.codPartido %></option>
+                                <% }) %>
+                                </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="posesionBalon" class="form-label">Posesion Balon</label>
+                            <input type="text" required class="form-control" id="posesionBalon" name="posesionBalon" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="tirosArco" class="form-label">Tiros Arco</label>
+                            <input type="text" required class="form-control" id="tirosArco" name="tirosArco" tabindex="1">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="tirosArcosAcertados" class="form-label">Tiros Arcos Acertados</label>
+                            <input type="text" required class="form-control" id="tirosArcosAcertados" name="tirosArcoAcertados" tabindex="1">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="tirosArcoFallados" class="form-label">Tiros Arco Fallados</label>
+                            <input type="text" required class="form-control" id="tirosArcoFallados" name="tirosArcoFallados" tabindex="1">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="tiroSEsquina" class="form-label">Tiros Esquina</label>
+                            <input type="text" required class="form-control" id="tiroSEsquina" name="tiroSEsquina" tabindex="1">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="atajadasPortero" class="form-label">Atajadas Portero</label>
+                            <input type="text" required class="form-control" id="atajadasPortero" name="atajadasPortero" tabindex="1">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="pases" class="form-label">Pases</label>
+                            <input type="text" required class="form-control" id="pases" name="pases" tabindex="1">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="pasesCortos" class="form-label">Pases Cortos</label>
+                            <input type="text" required class="form-control" id="pasesCortos" name="pasesCortos" tabindex="1">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="pasesLargos" class="form-label">Pases Largos</label>
+                            <input type="text" required class="form-control" id="pasesLargos" name="pasesLargos" tabindex="1">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="entradas" class="form-label">Entradas</label>
+                            <input type="text" required class="form-control" id="entradas" name="entradas" tabindex="1">
+                        </div> 
+             
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/estadisticasGenerales" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>        
+      </div>
+    </section>
+      <%- include('partials/scripts.ejs') %>
+</body>
+</html>

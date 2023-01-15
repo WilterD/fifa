@@ -592,12 +592,34 @@ router.get("/", (req, res) => {
       })
     });
 
+    router.get("/crearEGenerales", (req, res) => {
+      conexion.query('SELECT * FROM estadisticasGenerales', (error, generales) => {
+        if(error){
+          console.log(error);
+        }else{
+          conexion.query("SELECT * FROM equipo", (error,equipo) =>{
+            if(error){
+              console.log(error);
+            }else{
+          conexion.query("SELECT * FROM partido", (error,partida) =>{
+            if(error){
+              console.log(error);
+            }else{
+              res.render('crearEGenerales.ejs',{generales:generales,equipo:equipo,partida:partida})
+            }
+          })
+        }
+          })
+        }
+      });
+    });
+
     router.get('/estadisticasIndividuales', (req, res) => {
-      conexion.query('SELECT * FROM estadisticasIndividuales', (error, individual)=>{
+      conexion.query('SELECT * FROM estadisticasIndividuales', (error, individuales)=>{
           if(error){
               console.log(error);
           }else{           
-              res.render('estadisticasIndividuales.ejs', {individual:individual}); //render muestra el archivo ejs        
+              res.render('estadisticasIndividuales.ejs', {individuales:individuales}); //render muestra el archivo ejs        
           }
       })
     });
@@ -616,6 +638,7 @@ router.post('/savePais', mycrud.savePais);
 router.post('/saveGrupo', mycrud.saveGrupo);
 router.post('/savePartido', mycrud.savePartido);
 router.post('/saveEIndividuales', mycrud.saveEIndividuales);
+router.post('/saveEGenerales', mycrud.saveEGenerales);
 
 // actualizar registros
 router.post('/updateArbitro', mycrud.updateArbitro);
