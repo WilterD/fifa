@@ -287,6 +287,50 @@ h2 {
   border-radius: 6px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
+.card#paises{
+  background-color: #277BC0;
+  transition: .5s;
+}
+.card#paises:hover{
+  background-color: #2bb8f0;
+  transition: .5s;
+}
+.card#equipos{
+  background-color: #243763;
+}
+.card#equipos:hover{
+  background-color: #3a589e;
+  transition: .5s;
+}
+.card#jugadores{
+  background-color: #6F1AB6;
+}
+.card#jugadores:hover{
+  background-color: #9725f5;
+  transition: .5s;
+}
+.card#hoteles{
+  background-color: darkcyan;
+}
+.card#hoteles:hover{
+  background-color: rgb(14, 173, 173);
+  transition: .5s;
+}
+.card#estadios{
+  background-color: #850000;
+  transition: .5s;
+}
+.card#estadios:hover{
+  background-color: #b30d0d;
+  transition: .5s;
+}
+.card#arbitros{
+  background-color: #FF8B13;
+  transition: .5s;
+}
+.card#arbitros:hover{
+  background-color: #ffac13;
+}
 
 .card-title {
   font-size: 1.25rem;
@@ -310,6 +354,16 @@ h2 {
 #mensaje {
   font-size: 1.5em;
   font-weight: bold;
+}
+
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:link, a:visited {
+  text-decoration: none;
 }
 
 

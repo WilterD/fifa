@@ -32,6 +32,7 @@
           }
         }).then(response => {
           if (!response.ok) {
+            console.log(response);
             Swal.fire({
               icon: 'error',
               title: 'Oops...',

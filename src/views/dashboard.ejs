@@ -14,54 +14,65 @@
     <div class="container">
         <h1>Dashboard FIFA</h1>
         <div class="row mt-5">
+          <a href="/paises">
           <div class="col-4">
-            <div class="card bg-primary">
+            <div class="card shadow-lg" id="paises">
               <div class="card-body">
                 <h5 class="card-title">Países</h5>
                 <p class="card-text"><%= cantidadPaises %> <i class='bx bx-world'></i></p>
-                
               </div>
             </div>
+          </a>
           </div>
           <div class="col-4">
-            <div class="card shadow-lg" style="background-color:forestgreen;">
+            <a href="/equipos">
+            <div class="card shadow-lg" id="equipos" >
               <div class="card-body shadow-lg">
                 <h5 class="card-title">Equipos </h5>
                 <p class="card-text"><%= cantidadEquipos %> <i class='bx bx-football'></i></p>
               </div>
             </div>
+          </a>
           </div>
           <div class="col-4">
-            <div class="card bg-danger shadow-lg">
+            <div class="card shadow-lg" id="jugadores">
+              <a href="/jugadores">
               <div class="card-body shadow-lg">
                 <h5 class="card-title">Jugadores </h5>
                 <p class="card-text"><%= cantidadJugadores %> <i class='bx bxs-user-badge'></i></p>
               </div>
+            </a>
             </div>
           </div>
           <div class="col-4 mt-5">
-            <div class="card shadow-lg" style="background-color:darkcyan;">
+            <a href="/hotel">
+            <div class="card shadow-lg" id="hoteles">
               <div class="card-body shadow-lg">
                 <h5 class="card-title">Hoteles </h5>
                 <p class="card-text"> <%= cantidadHoteles %> <i class='bx bx-building-house' ></i></p>
               </div>
             </div>
+          </a>
           </div>
           <div class="col-4 mt-5">
-            <div style="background-color: blueviolet;" class="card shadow-lg">
+            <a href="/estadios">
+            <div class="card shadow-lg" id="estadios">
               <div class="card-body shadow-lg">
                 <h5 class="card-title">Estadios </h5>
                 <p class="card-text"><%= cantidadEstadios %> <i class='bx bx-sitemap'></i></p>
               </div>
             </div>
+          </a>
           </div>
           <div class="col-4 mt-5">
-            <div class="card shadow-lg" style="background-color:midnightblue;">
+            <a href="/arbitros">
+            <div class="card shadow-lg" id="arbitros">
               <div class="card-body shadow-lg">
                 <h5 class="card-title">Árbitros </h5>
                 <p class="card-text"><%= cantidadArbitros %> <i class='bx bxs-user-rectangle' ></i></p>
               </div>
             </div>
+          </a>
           </div>
         </div>
       </div>
