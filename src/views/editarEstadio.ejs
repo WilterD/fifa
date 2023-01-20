@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/main.css">
+    <title>Editar Estadio</title>
+</head>
+<body>
+    <%- include('partials/navigation.ejs') %>
+    <section class="home-section">
+      <div class="home-content">
+        <i class='bx bx-menu' ></i>
+      </div>
+      <% if (estadio) { %>
+        
+      <div class="container mt-4">          
+          <div class="card border-secondary">  
+                <div class="card-header">Editar Estadio</div>
+                <div class="card-body">
+                    <form action="/updateEstadio" method="POST">
+                         <input id="codEstadio" hidden name="codEstadio" value="<%= estadio.codEstadio %>">
+                        <div class="mb-3">
+                          <label for="nombre" class="form-label">Nombre</label>
+                          <input type="text" class="form-control" id="nombreEstadio" name="nombreEstadio" tabindex="1" value="<%= estadio.nombreEstadio  %>">                        
+                        </div>  
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Ubicación</label>
+                            <input type="text" class="form-control" id="ubicacion" name="ubicacion" tabindex="1" value="<%= estadio.ubicacion  %>">                        
+                          </div> 
+                          <div class="mb-3">
+                            <label for="capacidad" class="form-label">Capacidad</label>
+                            <input type="text" class="form-control" id="capacidad" name="capacidad" tabindex="1" value="<%= estadio.capacidad  %>">                        
+                          </div>
+                        <div class="mb-3">
+                            <label for="ubicacion" class="form-label">Ciudad</label>
+                            <select id="ubicacion" name="ubicacion" class="form-select" aria-label="Default select example" tabindex="2" required>
+                              <% ciudad.forEach((ciudad)=>{ %>
+                                  <option value="<%= ciudad.nombre %>"><%= ciudad.nombre %></option>
+                              <% }) %>
+                          </select>
+                          </div> 
+
+                        <button id="submit-btn" type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/estadios" class="btn btn-secondary">Cancelar</a>
+                    </form>      
+                </div>
+            </div>     
+      </div>
+    </section>
+      <% } %>
+      <section class="home-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 mx-auto">
+                    <div id="mensajes">
+                        <p id="mensaje"></p>
+                        <img class="rounded" src="/images/medioAmbiente.png" width="330" height="230">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+      <%- include('partials/scripts.ejs') %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

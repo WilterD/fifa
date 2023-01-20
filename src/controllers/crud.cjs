@@ -523,6 +523,47 @@ exports.updatePais = (req, res) => {
           );
         };
 
+        exports.updateEstadisticasGenerales = (req, res) => {
+          const codEquipo = req.body.codEquipo;
+          const codPartido = req.body.codPartido;
+          const posesionBalon = req.body.posesionBalon;
+          const tirosArco = req.body.tirosArco;
+          const tirosArcoAcertados = req.body.tirosArcoAcertados;
+          const tirosArcoFallados = req.body.tirosArcoFallados;
+          const tiroSEsquina = req.body.tiroSEsquina;
+          const atajadasPortero = req.body.atajadasPortero;
+          const pases = req.body.pases;
+          const pasesCortos = req.body.pasesCortos;
+          const pasesLargos = req.body.pasesLargos;
+          const entradas = req.body.entradas;
+
+          console.log(codEquipo)
+          console.log(codPartido)
+          console.log(posesionBalon)
+          console.log(tirosArco)
+          console.log(tirosArcoAcertados)
+          console.log(tirosArcoFallados)
+          console.log(tiroSEsquina)
+          console.log(atajadasPortero)
+          console.log(pases)
+          console.log(pasesCortos)
+          console.log(pasesLargos)
+          console.log(entradas)
+          
+          conexion.query(
+            "UPDATE estadisticasgenerales SET ? WHERE codEquipo = ? AND codPartido = ?",
+            [{ posesionBalon: posesionBalon, tirosArco: tirosArco, tirosArcoAcertados: tirosArcoAcertados,tirosArcoFallados:tirosArcoFallados,tiroSEsquina:tiroSEsquina,atajadasPortero:atajadasPortero,pases:pases,pasesCortos:pasesCortos,pasesLargos:pasesLargos,entradas:entradas }, codEquipo, codPartido],
+            (error, results) => {
+              if (error) {
+                console.log(error);
+                res.status(400).json({"msg": "error"});;
+              } else {
+                res.redirect("/estadisticasGenerales");
+              }
+            }
+          );
+        };
+
 
 
         exports.saveEstadios = (req, res) => {
@@ -550,4 +591,25 @@ exports.updatePais = (req, res) => {
               }
             })
         }
+
+
+        exports.updateEstadio = (req, res) => {
+          const codEstadio = req.body.codEstadio;
+          const nombreEstadio = req.body.nombreEstadio;
+          const ubicacion = req.body.ubicacion;
+          const capacidad = req.body.capacidad;
+          const nombreCiudad = req.body.nombreCiudad;
+          conexion.query(
+            "UPDATE estadio SET ? WHERE codEstadio = ?",
+            [{ nombreEstadio: nombreEstadio, ubicacion: ubicacion, capacidad: capacidad,nombreCiudad:nombreCiudad }, codEstadio],
+            (error, results) => {
+              if (error) {
+                console.log(error);
+                res.status(400).json({"msg": "error"});;
+              } else {
+                res.redirect("/estadios");
+              }
+            }
+          );
+        };
 

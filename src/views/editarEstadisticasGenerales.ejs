@@ -3,7 +3,7 @@
 <head>
   <%- include('partials/head.ejs') %>
   <link rel="stylesheet" href="/css/main.css">
-    <title>Editar Confederación</title>
+    <title>Editar Estadísticas Generales</title>
 </head>
 <body>
     <%- include('partials/navigation.ejs') %>
@@ -28,13 +28,37 @@
                         </div> 
                         
                         <label for="posesion" class="form-label">Tiros al arco</label>
-                          <input type="number" class="form-control" id="tirosArco" name="tirosArco" tabindex="1" value="<%= generales.tirosArco  %>" min="0" step="1">                        
+                          <input type="number" class="form-control" id="tirosArco" name="tirosArco" tabindex="1" value="<%= generales.tirosArco  %>" min="0" step="1">   
+                          
+                          <label for="posesion" class="form-label">Tiros al arco acertados</label>
+                          <input type="number" class="form-control" id="tirosArcoAcertados" name="tirosArcoAcertados" tabindex="1" value="<%= generales.tirosArcoAcertados  %>"> 
+
+                          <label for="posesion" class="form-label">Tiros al arco fallados</label>
+                          <input type="number" class="form-control" id="tirosArcoFallados" name="tirosArcoFallados" tabindex="1" value="<%= generales.tirosArcoFallados  %>"> 
+
+                          <label for="tiroSEsquina" class="form-label">Tiros de esquina</label>
+                          <input type="number" class="form-control" id="tiroSEsquina" name="tiroSEsquina" tabindex="1" value="<%= generales.tiroSEsquina  %>"> 
+
+                          <label for="atajadas" class="form-label">Atajadas Portero</label>
+                          <input type="number" class="form-control" id="atajadasPortero" name="atajadasPortero" tabindex="1" value="<%= generales.atajadasPortero  %>"> 
+
+                          <label for="pases" class="form-label">Pases</label>
+                          <input type="number" class="form-control" id="pases" name="pases" tabindex="1" value="<%= generales.pases  %>"> 
+
+                          <label for="pases cortos" class="form-label">Pases Cortos</label>
+                          <input type="number" class="form-control" id="pasesCortos" name="pasesCortos" tabindex="1" value="<%= generales.pasesCortos  %>">
+                          
+                          <label for="posesion" class="form-label">Pases largos</label>
+                          <input type="number" class="form-control" id="pasesLargos" name="pasesLargos" tabindex="1" value="<%= generales.pasesLargos  %>"> 
+
+                          <label for="Entradas" class="form-label">Entradas</label>
+                          <input type="number" class="form-control" id="entradas" name="entradas" tabindex="1" value="<%= generales.entradas  %>"> 
                         </div> 
           </div>
           
                       
                         <button id="submit-btn" type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
-                        <a href="/confederaciones" class="btn btn-secondary">Cancelar</a>
+                        <a href="/estadisticasGenerales" class="btn btn-secondary">Cancelar</a>
                     </form>      
                 </div>
             </div>     

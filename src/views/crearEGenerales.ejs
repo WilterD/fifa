@@ -29,6 +29,7 @@
                         <div class="mb-3">
                             <label for="codPartido" class="form-label">Codigo Partido</label>
                             <select id="codPartido" name="codPartido" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <option disabled selected value="Seleccione Un Código de Partido">Seleccione Un Código de Partido</option>
                                 <% partida.forEach((partida)=>{ %>
                                     <option value="<%= partida.codPartido %>"><%= partida.codPartido %></option>
                                 <% }) %>
@@ -37,7 +38,7 @@
 
                         <div class="mb-3">
                             <label for="posesionBalon" class="form-label">Posesion Balon</label>
-                            <input type="text" required class="form-control" id="posesionBalon" name="posesionBalon" tabindex="1">
+                            <input type="number" class="form-control" id="posesionBalon" name="posesionBalon" tabindex="1" value="<%= generales.posesionBalon  %>" max="100" min="0" step="1" maxlength="3" required> 
                         </div>  
                         <div class="mb-3">
                             <label for="tirosArco" class="form-label">Tiros Arco</label>
