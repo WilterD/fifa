@@ -539,7 +539,6 @@ exports.updatePais = (req, res) => {
             ubicacion:ubicacion,
             nombreEstadio:nombreEstadio,
             capacidad:capacidad,
-            goles_en_contra:goles_en_contra,
             nombreCiudad:nombreCiudad
             },
             (error, results) =>{

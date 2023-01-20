@@ -759,7 +759,7 @@ router.post('/savePartido', mycrud.savePartido);
 router.post('/saveEliminatoria', mycrud.saveEliminatoria);
 router.post('/saveEIndividuales', mycrud.saveEIndividuales);
 router.post('/saveEGenerales', mycrud.saveEGenerales);
-router.post('/saveEstadios', mycrud.saveEGenerales);
+router.post('/saveEstadios', mycrud.saveEstadios);
 
 // actualizar registros
 router.post('/updateArbitro', mycrud.updateArbitro);
