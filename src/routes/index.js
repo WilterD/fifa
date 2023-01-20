@@ -788,6 +788,23 @@ router.get("/crearEGenerales", (req, res) => {
   });
 });
 
+
+router.get("/deleteEstadisticasGenerales/:codEquipo-:codPartido", (req, res) => {
+  const codEquipo = req.params.codEquipo;
+    const codPartido = req.params.codPartido;
+  conexion.query(
+    "DELETE FROM estadisticasgenerales WHERE codEquipo = ? AND codPartido = ?",
+    [codEquipo, codPartido],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect("/estadisticasGenerales");
+      }
+    }
+  );
+});
+
 router.get("/estadisticasIndividuales", (req, res) => {
   conexion.query(
     "SELECT * FROM estadisticasIndividuales",
@@ -808,8 +825,7 @@ router.get(
   (req, res) => {
     const codEquipo = req.params.codEquipo;
     const codPartido = req.params.codPartido;
-    console.log(codEquipo);
-    console.log(codPartido);
+    
     conexion.query(
       "SELECT * FROM estadisticasgenerales WHERE codEquipo=? AND codPartido=?",
       [codEquipo, codPartido],
