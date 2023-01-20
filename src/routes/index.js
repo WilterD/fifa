@@ -620,6 +620,91 @@ router.get("/", (req, res) => {
               )
              }
             )
+
+
+
+            router.get("/crearEIndividuales", (req, res) => {
+              conexion.query('SELECT * FROM estadisticasIndividuales', (error, individuales) => {
+                if(error){
+                  console.log(error);
+                }else{
+                  conexion.query("SELECT * FROM jugador", (error,jugadores) =>{
+                    if(error){
+                      console.log(error);
+                    }else{
+                  conexion.query("SELECT * FROM partido", (error,partida) =>{
+                    if(error){
+                      console.log(error);
+                    }else{
+                      res.render('crearEIndividuales.ejs',{individuales:individuales,jugadores:jugadores,partida:partida})
+                    }
+                  })
+                }
+                  })
+                }
+              });
+            });
+            
+            router.get('/editarEIndividuales/:CodJugador+CodPartida', (req,res)=>{    
+              const codJugador = req.params.codJugador;
+              conexion.query('SELECT * FROM estadisticasIndividuales WHERE codJugador=?',[codJugador] , (error, CJugador) => {
+                  if (error) {
+                      throw error;
+                  }else{  
+                            conexion.query('SELECT codJugador FROM jugador', (error, estI)=>{
+                              if(error){
+                                console.log(error);
+                              }else{
+                                res.render('editarEIndividuales.ejs',{CJugador:CJugador[0],estI:estI}) 
+                            }
+                            })
+                          }
+                        })
+                      });
+
+
+
+                      router.get('/estadisticasGenerales', (req, res) => {
+                        conexion.query('SELECT * FROM estadisticasGenerales', (error, generales)=>{
+                            if(error){
+                                console.log(error);
+                            }else{           
+                                res.render('estadisticasGenerales.ejs', {generales:generales});         
+                            }
+                        })
+                      });
+                  
+                      router.get("/crearEGenerales", (req, res) => {
+                        conexion.query('SELECT * FROM estadisticasGenerales', (error, generales) => {
+                          if(error){
+                            console.log(error);
+                          }else{
+                            conexion.query("SELECT * FROM equipo", (error,equipo) =>{
+                              if(error){
+                                console.log(error);
+                              }else{
+                            conexion.query("SELECT * FROM partido", (error,partida) =>{
+                              if(error){
+                                console.log(error);
+                              }else{
+                                res.render('crearEGenerales.ejs',{generales:generales,equipo:equipo,partida:partida})
+                              }
+                            })
+                          }
+                            })
+                          }
+                        });
+                      });
+                  
+                      router.get('/estadisticasIndividuales', (req, res) => {
+                        conexion.query('SELECT * FROM estadisticasIndividuales', (error, individuales)=>{
+                            if(error){
+                                console.log(error);
+                            }else{           
+                                res.render('estadisticasIndividuales.ejs', {individuales:individuales}); //render muestra el archivo ejs        
+                            }
+                        })
+                      });
     
 
 
@@ -639,6 +724,8 @@ router.post('/savePais', mycrud.savePais);
 router.post('/saveGrupo', mycrud.saveGrupo);
 router.post('/savePartido', mycrud.savePartido);
 router.post('/saveEliminatoria', mycrud.saveEliminatoria);
+router.post('/saveEIndividuales', mycrud.saveEIndividuales);
+router.post('/saveEGenerales', mycrud.saveEGenerales);
 
 // actualizar registros
 router.post('/updateArbitro', mycrud.updateArbitro);

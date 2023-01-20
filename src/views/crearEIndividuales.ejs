@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Crear Nueva estadistica Individual</title>
+</head>
+
+<body>
+    <%- include('partials/navigation.ejs') %>
+    <section class="home-section">
+        <div class="home-content">
+          <i class='bx bx-menu' ></i>
+        </div>
+      <div class="container mt-4">     
+            <div class="card border-secondary">  
+                <div class="card-header">Agregar Estadisticas Individuales</div>
+                <div class="card-body">
+                    <form action="/saveEIndividuales" method="POST">
+                        <div class="mb-3">
+                                <label for="codJugador" class="form-label">Codigo Jugador</label>
+                                <select id="codJugador" name="codJugador" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                    <% jugadores.forEach((jugador)=>{ %>
+                                        <option value="<%= jugador.codJugador %>"><%= jugador.codJugador %></option>
+                                    <% }) %>
+                                    </select>
+                         </div>
+                         
+                         <div class="mb-3">
+                            <label for="codPartido" class="form-label">Codigo Partido</label>
+                            <select id="codPartido" name="codPartido" class="form-select" aria-label="Default select example" tabindex="2" required>
+                                <% partida.forEach((partido)=>{ %>
+                                    <option value="<%= partido.codPartido %>"><%= partido.codPartido %></option>
+                                <% }) %>
+                                </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="ataque" class="form-label">Ataque</label>
+                            <input type="text" required class="form-control" id="ataque" name="ataque" tabindex="1">
+                        </div>  
+                        
+                        <div class="mb-3">
+                            <label for="defensa" class="form-label">Defensa</label>
+                            <input type="text" required class="form-control" id="defensa" name="defensa" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="pases" class="form-label">Pases</label>
+                            <input type="text" required class="form-control" id="pases" name="pases" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="golesAnotados" class="form-label">Goles Anotados</label>
+                            <input type="text" required class="form-control" id="golesAnotados" name="golesAnotados" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="asistencias" class="form-label">Asistencias</label>
+                            <input type="text" required class="form-control" id="asistencias" name="asistencias" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="autogoles" class="form-label">Autogoles</label>
+                            <input type="text" required class="form-control" id="autogoles" name="autogoles" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="penaltis" class="form-label">Penaltis</label>
+                            <input type="text" required class="form-control" id="penaltis" name="penaltis" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="tarjetasAmarillas" class="form-label">Tarjetas Amarillas</label>
+                            <input type="text" required class="form-control" id="tarjetasAmarillas" name="tarjetasAmarillas" tabindex="1">
+                        </div>  
+                        <div class="mb-3">
+                            <label for="tarjetasRojas" class="form-label">Tarjetas Rojas</label>
+                            <input type="text" required class="form-control" id="tarjetasRojas" name="tarjetasRojas" tabindex="1">
+                        </div>  
+
+                    
+                         
+                        <button  type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/estadisticasIndividuales" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>        
+      </div>
+    </section>
+      <%- include('partials/scripts.ejs') %>
+</body>
+</html>

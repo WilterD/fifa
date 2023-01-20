@@ -1,4 +1,7 @@
 const conexion = require("../database/db.cjs");
+const Swal = require('sweetalert2')
+
+
 const swal = require('sweetalert2');
 
 
@@ -462,4 +465,61 @@ exports.updatePais = (req, res) => {
           );
     
         }
+
+
+
+        exports.saveEIndividuales = (req, res) => {
+          const codJugador = req.body.codJugador 
+          const codPartido = req.body.codPartido
+          const ataque = req.body.ataque 
+          const defensa = req.body.defensa
+          const pases = req.body.pases 
+          const golesAnotados = req.body.golesAnotados 
+          const asistencias = req.body.asistencias
+          const autogoles = req.body.autogoles
+          const penaltis = req.body.penaltis
+          const tarjetasAmarillas = req.body.tarjetasAmarillas
+          const tarjetasRojas = req.body.tarjetasRojas
+    
+          conexion.query(
+            "INSERT INTO estadisticasIndividuales SET ?",
+            { codJugador:codJugador, codPartido:codPartido, ataque:ataque, defensa:defensa, pases:pases, golesAnotados:golesAnotados,
+              asistencias:asistencias,autogoles:autogoles, penaltis:penaltis, tarjetasAmarillas:tarjetasAmarillas, tarjetasRojas:tarjetasRojas },
+            (error, results) => {
+              if (error) {
+                console.log(error);
+              } else {
+                res.redirect("/estadisticasIndividuales");
+              }
+            }
+          );
+        };
+    
+        exports.saveEGenerales = (req, res) => {
+          const codEquipo= req.body.codEquipo 
+          const codPartido = req.body.codPartido
+          const posesionBalon = req.body.posesionBalon 
+          const tirosArco = req.body.tirosArco
+          const tirosArcoAcertados = req.body.tirosArcoAcertados 
+          const tirosArcoFallados = req.body.tirosArcoFallados 
+          const tiroSEsquina = req.body.tiroSEsquina
+          const atajadasPortero = req.body.atajadasPortero
+          const pases = req.body.pases
+          const pasesCortos = req.body.pasesCortos
+          const pasesLargos = req.body.pasesLargos
+          const entradas = req.body.entradas
+    
+          conexion.query(
+            "INSERT INTO estadisticasGenerales SET ?",
+            { codEquipo:codEquipo, codPartido:codPartido, posesionBalon:posesionBalon, tirosArco:tirosArco, tirosArcoAcertados:tirosArcoAcertados, tirosArcoFallados:tirosArcoFallados,
+              tiroSEsquina:tiroSEsquina, atajadasPortero:atajadasPortero, pases:pases, pasesCortos:pasesCortos, pasesLargos:pasesLargos, entradas:entradas },
+            (error, results) => {
+              if (error) {
+                console.log(error);
+              } else {
+                res.redirect("/estadisticasGenerales");
+              }
+            }
+          );
+        };
 

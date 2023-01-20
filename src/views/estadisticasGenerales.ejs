@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('partials/head.ejs') %>
+    <title>Estadisticas Generales</title>
+    
+</head>
+<body>
+   <%- include('partials/navigation.ejs') %>
+  <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-menu' ></i>
+      >>> Estadisticas Generales
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="">
+          <a href="/crearEGenerales" class="btn btn-outline-primary fs-2 btn-block ml-auto"> Agregar <i class='bx bxs-plus-circle'></i></a> 
+        </div> 
+        <div class="col-xs-12 mt-3">
+          <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th scope="col">CodEquipo</th>
+                <th scope="col">CodPartida</th>
+                <th scope="col">Posesion del Balon</th>
+                <th scope="col">Tiros Arco</th>
+                <th scope="col">Tiros Arco Acertados</th>
+                <th scope="col">Tiros Arco Fallados</th>
+                <th scope="col">Tiros Esquina</th>
+                <th scope="col">Atajadas Portero</th>
+                <th scope="col">Pases</th>        
+                <th scope="col">Pases Cortos</th> 
+                <th scope="col">Pases Largos</th> 
+                <th scope="col">Entradas</th>   
+                <th scope="col">Acciones</th>  
+              </tr> 
+            </thead>
+            <tbody>
+              <%  generales.forEach((generales)=>{ %>
+                <tr>  
+                    <td><%= generales.codEquipo %></td>  
+                    <td><%= generales.codPartido %></td>
+                    <td><%= generales.posesionBalon %></td>
+                    <td><%= generales.tirosArco %></td>
+                    <td><%= generales.tirosArcoAcertados %></td>
+                    <td><%= generales.tirosArcoFallados %></td>
+                    <td><%= generales.tiroSEsquina %></td>
+                    <td><%= generales.atajadasPortero %></td>
+                    <td><%= generales.pases %></td>
+                    <td><%= generales.pasesCortos %></td>
+                    <td><%= generales.pasesLargos %></td>
+                    <td><%= generales.entradas %></td>
+                    <td>
+                      <a href="/" class="btn btn-outline-info"><i class='bx bxs-pencil fs-5'></i></a>
+                      <a onclick="confirmar('<%= generales.codEquipo %>','deletePais')" class="btn btn-outline-danger">
+                        <i class='bx bxs-trash'></i></a>
+                    </td>
+                </tr>                                   
+             <% }) %>
+                    </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+  <section class="home-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 mx-auto">
+          <div id="mensajes">
+            <p id="mensaje"></p>
+            <img class="rounded" src="images/medioAmbiente.png" width="330" height="230">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <%- include('partials/scripts.ejs') %>
+</body>
+</html>
