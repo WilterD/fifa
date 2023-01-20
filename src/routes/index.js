@@ -705,13 +705,15 @@ router.get("/", (req, res) => {
                             }
                         })
                       });
-    
 
-
-
-
-
-
+                      router.get('/editarEstadisticasGenerales/:codEquipo:codPartido', (req,res)=>{
+                        const { codEquipo, codPartido } = req.params;
+                        conexion.query('SELECT * FROM estadisticasGenerales WHERE codEquipo=? AND codPartido=?',[codEquipo,codPartido] , (error, generales) => {
+                            if (error) {
+                                throw error;
+                            }else{
+                              res.render('editarEstadisticasGenerales.ejs', {generales:generales[0]});
+                                      }})})
 
 // Guardar registros
 router.post('/saveArbitro', mycrud.saveArbitro);
