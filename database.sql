@@ -12,7 +12,8 @@ CREATE TABLE grupo (
 
 CREATE TABLE confederacion(
 	nombreConf VARCHAR(50) NOT NULL PRIMARY KEY,
-    continente VARCHAR(50) NOT NULL
+    continente VARCHAR(50) NOT NULL, 
+    siglasConf VARCHAR(3) NOT NULL UNIQUE
 );
 
 CREATE TABLE pais(
@@ -64,9 +65,9 @@ CREATE TABLE telefonos (
 CREATE TABLE arbitran (
     codArbitro INT NOT NULL,
     FOREIGN KEY(codArbitro) REFERENCES Arbitro(codArbitro),
-    codPartida INT NOT NULL,
-    FOREIGN KEY(codPartida) REFERENCES partida(codPartida),
-    PRIMARY KEY(codArbitro, codPartida)
+    codPartido INT NOT NULL,
+    FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
+    PRIMARY KEY(codArbitro, codPartido)
 );
 
 CREATE TABLE equipo(
@@ -120,9 +121,9 @@ CREATE TABLE jugador(
 CREATE TABLE estadisticasIndividuales (
     codJugador INT NOT NULL,
     FOREIGN KEY(codJugador) REFERENCES jugador(codJugador),
-    codPartida INT NOT NULL,
-    FOREIGN KEY(codPartida) REFERENCES partida(codPartida),
-    PRIMARY KEY(codJugador, codPartida),
+    codPartido INT NOT NULL,
+    FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
+    PRIMARY KEY(codJugador, codPartido),
     ataque INT NOT NULL,
     defensa INT NOT NULL,
     pases INT NOT NULL,
@@ -137,9 +138,9 @@ CREATE TABLE estadisticasIndividuales (
 CREATE TABLE estadisticasPortero (
     codJugador INT NOT NULL,
     FOREIGN KEY(codJugador) REFERENCES jugador(codJugador),
-    codPartida INT NOT NULL,
-    FOREIGN KEY(codPartida) REFERENCES partida(codPartida),
-    PRIMARY KEY(codJugador, codPartida),
+    codPartido INT NOT NULL,
+    FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
+    PRIMARY KEY(codJugador, codPartido),
     disparosAtajados INT NOT NULL,
     disparosDesviados INT NOT NULL,
     golesRecibidos INT NOT NULL,
@@ -150,9 +151,9 @@ CREATE TABLE estadisticasPortero (
 CREATE TABLE estadisticasGenerales (
     codEquipo VARCHAR(3) NOT NULL,
     FOREIGN KEY(codEquipo) REFERENCES equipo(codEquipo),
-    codPartida INT NOT NULL,
-    FOREIGN KEY(codPartida) REFERENCES partida(codPartida),
-    PRIMARY KEY(codEquipo, codPartida),
+    codPartido INT NOT NULL,
+    FOREIGN KEY(codPartido) REFERENCES partido(codPartido),
+    PRIMARY KEY(codEquipo, codPartido),
     posesionBalon INT NOT NULL,
     tirosArco INT NOT NULL,
     tirosArcoAcertados INT NOT NULL,
@@ -174,3 +175,39 @@ CREATE TABLE eliminatorias(
     goles_en_contra INT NOT NULL,
     clasificacion VARCHAR(255)
 );
+
+ALTER TABLE equipo
+ADD CONSTRAINT equipo_cascade
+FOREIGN KEY (codEquipo) REFERENCES pais (codPais)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+ALTER TABLE pais
+ADD CONSTRAINT pais_cascade_confederacion
+FOREIGN KEY (nombreConf) REFERENCES confederacion (nombreConf)
+ON DELETE CASCADE ON UPDATE CASCADE; 
+ALTER TABLE pais
+ADD CONSTRAINT pais_cascade_grupo 
+FOREIGN KEY (letraGrupo) REFERENCES grupo (letraGrupo)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+
+ALTER TABLE coloresUniforme
+ADD CONSTRAINT colores_cascade
+FOREIGN KEY (codEquipo) REFERENCES equipo (codEquipo)
+ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE juegan
+ADD CONSTRAINT juegan_cascade
+FOREIGN KEY (codPartido) REFERENCES partido (codPartido)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE jugador
+ADD CONSTRAINT jugador_cascade
+FOREIGN KEY(codEquipo) REFERENCES equipo(codEquipo)
+ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE telefonos 
+ADD CONSTRAINT telefonos_cascade
+FOREIGN KEY (codHotel) REFERENCES hotel(codHotel)
+ON DELETE CASCADE ON UPDATE CASCADE;

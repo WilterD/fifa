@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <%- include('partials/head.ejs') %>
-    <title>Grupos</title>
+    <title>Estadios</title>
     
 </head>
 <body>
@@ -10,28 +10,39 @@
   <section class="home-section">
     <div class="home-content">
       <i class='bx bx-menu' ></i>
-      >>> Grupos
+      >>> Estadios
     </div>
     <div class="container">
       <div class="row">
         <div class="">
-          <a href="/crearGrupo" class="btn btn-outline-primary fs-2 btn-block ml-auto"> Agregar <i class='bx bxs-plus-circle'></i></a> 
+          <a href="/crearEstadio" class="btn btn-outline-primary fs-2 btn-block ml-auto"> Agregar <i class='bx bxs-plus-circle'></i></a> 
         </div> 
         <div class="col-xs-12 mt-3">
           <table class="table table-bordered table-striped text-center mt-4" id="miTabla">
             <thead>
               <tr class="bg-primary text-white">
-                <th scope="col">Letra Grupo</th>
+                <th scope="col">Código Estadio</th>
+                <th scope="col">Ubicación</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Capacidad</th>
+                <th scope="col">Ciudad</th>
                 <th scope="col">Acciones</th>           
               </tr>
             </thead>
             <tbody>
-              <% grupos.forEach((grupos)=>{ %>
+              <% estadios.forEach((estadios)=>{ %>
                 <tr>  
-                    <td><%= grupos.letraGrupo %></td>  
+                    <td><%= estadios.codEstadio %></td>  
+                    <td><%= estadios.ubicacion %></td>  
+                    <td><%= estadios.nombreEstadio %></td>  
+                    <td><%= estadios.capacidad %></td>  
+                    <td><%= estadios.nombreCiudad %></td>  
                     <td>
+
+                        <a href="/editarEstadio/<%= estadios.codEstadio %>" class="btn btn-outline-info"> <i
+                            class='bx bxs-pencil fs-5'></i></a>
                      
-                      <a onclick="confirmar('<%= grupos.letraGrupo %>','deleteGrupo')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
+                      <a onclick="confirmar('<%= estadios.codEstadio %>','deleteEstadio')" class="btn btn-outline-danger"><i class='bx bxs-trash'></i></a>
                     </td>
                 </tr>                                   
              <% }) %>

@@ -11,18 +11,27 @@
       <div class="home-content">
         <i class='bx bx-menu' ></i>
       </div>
+
       
       
+      <% if (generales) { %>
       <div class="container mt-4">          
           <div class="card border-secondary">  
                 <div class="card-header">Editar Estadísticas Generales</div>
                 <div class="card-body">
-                    <form action="/updateConfederacion" method="POST">
+                    <form action="/updateEstadisticasGenerales" method="POST">
                         <div class="mb-3">
-                            <input type="text" class="form-control" hidden id="siglasConf" name="siglasConf" tabindex="1" value=""> 
-                          <label for="nombre" class="form-label">Nombre de Confederación</label>
-                          <input type="text" class="form-control" id="nombreConf" name="nombreConf" tabindex="1" value="">                        
+                            <input type="text" class="form-control" hidden id="codEquipo" name="codEquipo" tabindex="1" value="<%= generales.codEquipo  %>"> 
+                            <input type="text" class="form-control" hidden id="codPartido" name="codPartido" tabindex="1" value="<%= generales.codPartido  %>">  
+                          <label for="posesion" class="form-label">Posesión de balón</label>
+                          <input type="number" class="form-control" id="posesionBalon" name="posesionBalon" tabindex="1" value="<%= generales.posesionBalon  %>" max="100" min="0" step="1" maxlength="3">                        
                         </div> 
+                        
+                        <label for="posesion" class="form-label">Tiros al arco</label>
+                          <input type="number" class="form-control" id="tirosArco" name="tirosArco" tabindex="1" value="<%= generales.tirosArco  %>" min="0" step="1">                        
+                        </div> 
+          </div>
+          
                       
                         <button id="submit-btn" type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
                         <a href="/confederaciones" class="btn btn-secondary">Cancelar</a>
@@ -30,6 +39,8 @@
                 </div>
             </div>     
       </div>
+
+      <% } %>
     </section>
     <section class="home-section">
       <div class="container">

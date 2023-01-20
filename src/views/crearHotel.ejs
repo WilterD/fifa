@@ -24,9 +24,10 @@
                             <label for="name" class="form-label">Nombre del hotel</label>
                             <input type="text" class="form-control" id="nombreHotel" name="nombreHotel" tabindex="1">
                         </div>  
-                        <div class="mb-3" id="numTelefono">
+                        <div class="mb-3" >
                           <label for="numTelefono" class="form-label">Números de teléfonos en hotel</label>
                           <input type="number" class="form-control" name="numTelefono" tabindex="1">
+                          
                           
                           <div class="text-center mt-4" id="misTfls">
                             
@@ -66,11 +67,10 @@
         let misTfls = document.querySelector('#misTfls');
 
         masNumeros.addEventListener('click', function(e){
-          console.log("hola")
           
             let div = document.createElement('div');
             div.innerHTML = `
-            <input type="number" class="form-control mt-3" name="numTelefono" tabindex="1">
+            <input type="number" class="form-control mt-3" name="numTelefono[]" tabindex="1">
             `;
             
             misTfls.appendChild(div);

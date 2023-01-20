@@ -356,9 +356,9 @@ router.get('/editarConfederacion/:siglasConf', (req,res)=>{
     
       
 
-router.get('/deleteConfederacion/:siglasConf', (req, res) => {
-  const siglasConf = req.params.siglasConf;
-  conexion.query('DELETE FROM confederacion WHERE siglasConf = ?',[siglasConf], (error, results)=>{
+router.get('/deleteConfederacion/:nombreConf', (req, res) => {
+  const nombreConf = req.params.nombreConf;
+  conexion.query('DELETE FROM confederacion WHERE nombreConf = ?',[nombreConf], (error, results)=>{
       if(error){
           console.log(error);
       }else{           
@@ -706,14 +706,45 @@ router.get("/", (req, res) => {
                         })
                       });
 
-                      router.get('/editarEstadisticasGenerales/:codEquipo:codPartido', (req,res)=>{
-                        const { codEquipo, codPartido } = req.params;
-                        conexion.query('SELECT * FROM estadisticasGenerales WHERE codEquipo=? AND codPartido=?',[codEquipo,codPartido] , (error, generales) => {
+                      router.get('/editarEstadisticasGenerales/:codEquipo-:codPartido', (req,res)=>{
+                        const codEquipo = req.params.codEquipo;
+                        const codPartido = req.params.codPartido;
+                        console.log(codEquipo)
+                        console.log(codPartido)
+                        conexion.query('SELECT * FROM estadisticasgenerales WHERE codEquipo=? AND codPartido=?',[codEquipo,codPartido] , (error, generales) => {
                             if (error) {
                                 throw error;
                             }else{
                               res.render('editarEstadisticasGenerales.ejs', {generales:generales[0]});
                                       }})})
+
+
+                                      router.get('/estadios', (req, res) => {
+                                        conexion.query('SELECT * FROM estadio', (error, estadios)=>{
+                                            if(error){
+                                                console.log(error);
+                                            }else{           
+                                                res.render('estadios.ejs', {estadios:estadios}); //render muestra el archivo ejs        
+                                            }
+                                        })
+                                      });
+
+                                      router.get("/crearEstadio", (req, res) => {
+                                        conexion.query('SELECT * FROM estadio', (error, estadios) => {
+                                          if(error){
+                                            console.log(error);
+                                          }else{
+                                            conexion.query("SELECT * FROM ciudad", (error,ciudades) =>{
+                                              if(error){
+                                                console.log(error);
+                                              }else{
+                                                res.render('crearEstadio.ejs',{estadios:estadios,ciudades:ciudades})
+                                              }
+                                            });
+                                          }
+                                        });
+                                      });
+                                        
 
 // Guardar registros
 router.post('/saveArbitro', mycrud.saveArbitro);
@@ -728,6 +759,7 @@ router.post('/savePartido', mycrud.savePartido);
 router.post('/saveEliminatoria', mycrud.saveEliminatoria);
 router.post('/saveEIndividuales', mycrud.saveEIndividuales);
 router.post('/saveEGenerales', mycrud.saveEGenerales);
+router.post('/saveEstadios', mycrud.saveEGenerales);
 
 // actualizar registros
 router.post('/updateArbitro', mycrud.updateArbitro);

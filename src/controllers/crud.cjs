@@ -1,8 +1,6 @@
 const conexion = require("../database/db.cjs");
 const Swal = require('sweetalert2')
-
-
-const swal = require('sweetalert2');
+const bodyParser = require("body-parser");
 
 
 
@@ -120,6 +118,8 @@ exports.saveHotel = (req, res) => {
   const direccion = req.body.direccion;
   const numTelefono = req.body.numTelefono;
 
+  console.log(numTelefono)
+
   
 
   conexion.query(
@@ -130,9 +130,9 @@ exports.saveHotel = (req, res) => {
         console.log(error);
         res.status(400).json({"msg": "error"});;
       } else {
-        for(let i=0;i<numTelefono.length;i++){
-          conexion.query("INSERT INTO telefonos SET ?", { numTelefono: numTelefono[i], codHotel: codHotel });
-        }
+        // for(let i=0;i<numTelefono.length;i++){
+        //   conexion.query("INSERT INTO telefonos SET ?", { numTelefono: numTelefono, codHotel: codHotel });
+        // }
         res.redirect("/hotel");
     }}
   );
@@ -358,8 +358,8 @@ exports.updateConfederacion = (req, res) => {
   const continente = req.body.continente;
 
   conexion.query(
-    "UPDATE confederacion SET ? WHERE siglasConf = ?",    
-    [{ nombreConf: nombreConf, siglasConf: siglasConf, continente: continente }, siglasConf],
+    "UPDATE confederacion SET ? WHERE nombreConf = ?",    
+    [{ nombreConf: nombreConf, siglasConf: siglasConf, continente: continente }, nombreConf],
     (error, results) => {
       if (error) {
         console.log(error);
@@ -522,4 +522,33 @@ exports.updatePais = (req, res) => {
             }
           );
         };
+
+
+
+        exports.saveEstadios = (req, res) => {
+          const codEstadio = req.body.codEstadio;
+          const ubicacion = req.body.ubicacion;
+          const nombreEstadio = req.body.nombreEstadio;
+          const capacidad = req.body.capacidad;
+          const nombreCiudad = req.body.nombreCiudad;
+        
+        
+          conexion.query(
+            "INSERT INTO estadio SET ?",
+            {codEstadio:codEstadio,
+            ubicacion:ubicacion,
+            nombreEstadio:nombreEstadio,
+            capacidad:capacidad,
+            goles_en_contra:goles_en_contra,
+            nombreCiudad:nombreCiudad
+            },
+            (error, results) =>{
+              if(error) {
+                console.log(error);
+            res.status(400).json({"msg": "error"});;
+              } else {
+                res.redirect("/estadios");
+              }
+            })
+        }
 
